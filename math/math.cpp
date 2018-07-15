@@ -2,8 +2,6 @@
 
 using namespace std;
 
-typedef long long Long;
-
 const int N = 1010;
 const int MOD = 1e9 + 7;
 
