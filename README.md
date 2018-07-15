@@ -4,16 +4,16 @@ C++ Code library contains useful algorithms for competitive programming.
 
 ## Content
 
-#### Data Structures
+### Data Structures
 Will be added soon...
 
-#### Graphs
+### Graphs
 Will be added soon...
 
-#### Strings
+### Strings
 Will be added soon...
 
-#### Math
+### Math
 - GCD (iterative)
 - GCD (recursive)
 - LCM
@@ -29,8 +29,8 @@ Will be added soon...
 - Generate Divisors (of single number n)
 - Generate Divisors (of numbers from 1 to n)
 
-#### Geomerty
+### Geomerty
 Will be added soon...
 
-#### Other Algorithms
+### Other Algorithms
 Will be added soon...
