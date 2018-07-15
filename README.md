@@ -17,17 +17,18 @@ Will be added soon...
 - GCD (iterative)
 - GCD (recursive)
 - LCM
-- Bezout's coefficients (Extended Euclid)
+- Bézout's coefficients (using Extended Euclid)
 - Fast Power (iterative)
 - Fast Power (recursive)
 - Modular Inverse
 - Combinations (nCr)
 - Pascal Triangle
 - Is Prime
-- Generate Primes (Sieve of Eratosthenes)
+- Generate Primes (using Sieve of Eratosthenes)
 - Generate Prime Divisors (of numbers from 1 to n)
 - Generate Divisors (of single number n)
 - Generate Divisors (of numbers from 1 to n)
+- Matrix Class
 
 ### Geomerty
 Will be added soon...
