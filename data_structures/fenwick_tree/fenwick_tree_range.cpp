@@ -18,15 +18,14 @@ public:
     }
 
     int operator[](int idx) {
-        int sum = 0;
+        int res = 0;
         while (idx > 0) {
-            sum += BIT[idx];
+            res += BIT[idx];
             idx -= idx & -idx;
         }
-        return sum;
+        return res;
     }
 };
-
 
 class range_fenwick_tree {
     fenwick_tree M, C;

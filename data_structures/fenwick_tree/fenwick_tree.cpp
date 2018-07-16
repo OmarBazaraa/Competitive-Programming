@@ -14,10 +14,10 @@ void update(int idx, int val) {
 // Returns the sum of values from 1 to the given index.
 // O(log(n))
 int get(int idx) {
-    int sum = 0;
+    int res = 0;
     while (idx > 0) {
-        sum += BIT[idx];
+        res += BIT[idx];
         idx -= idx & -idx;
     }
-    return sum;
+    return res;
 }

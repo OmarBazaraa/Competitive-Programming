@@ -18,20 +18,17 @@ Will be added soon...
 Will be added soon...
 
 ### Math
-- GCD (iterative)
-- GCD (recursive)
+- GCD (iterative/recursive)
 - LCM
 - Bézout's coefficients using extended Euclid's method
-- Fast power (iterative)
-- Fast power (recursive)
+- Fast power (iterative/recursive)
 - Modular inverse
 - Combinations (nCr)
 - Pascal triangle
 - Check if an integer N is prime or not
 - Generate prime numbers using Sieve of Eratosthenes' algorithm
-- Generate prime divisors of all integers from 1 to N
-- Generate divisors of single integer N
-- Generate divisors of all integers from 1 to N
+- Generate prime divisors for all integers from 1 to N
+- Generate all divisors (for a single integer N, or for all integers from 1 to N)
 - Matrix class
 
 ### Geomerty
