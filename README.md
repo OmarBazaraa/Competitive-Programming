@@ -5,8 +5,9 @@ C++ Code library contains useful algorithms for competitive programming.
 ## Content
 
 ### Data Structures
-- Fenwick Tree (Binary Indexed Tree)
-- Fenwick Tree (Binary Indexed Tree) with range updates
+- Fenwick tree (Binary Indexed Tree)
+- Fenwick tree (Binary Indexed Tree) with range updates
+- Sparse table
 
 ### Graphs
 Will be added soon...
