@@ -5,7 +5,7 @@ C++ Code library contains useful algorithms for competitive programming.
 ## Content
 
 ### Data Structures
-Will be added soon...
+- Fenwick Tree (Binary Indexed Tree)
 
 ### Graphs
 Will be added soon...
