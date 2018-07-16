@@ -5,14 +5,14 @@ C++ Code library contains useful algorithms for competitive programming.
 ## Content
 
 ### Data Structures
-- Fenwick tree (Binary Indexed Tree)
-- Fenwick tree (Binary Indexed Tree) with range updates
+- Fenwick tree (binary indexed tree)
+- Fenwick tree (binary indexed tree) with range updates
 - Sparse table
 
-### Graphs
+### Strings
 Will be added soon...
 
-### Strings
+### Graphs
 Will be added soon...
 
 ### Math
@@ -27,15 +27,15 @@ Will be added soon...
 - Pascal triangle
 - Check if an integer N is prime or not
 - Generate prime numbers using Sieve of Eratosthenes' algorithm
-- Generate prime divisors of integers from 1 to N
+- Generate prime divisors of all integers from 1 to N
 - Generate divisors of single integer N
-- Generate divisors of integers from 1 to N
+- Generate divisors of all integers from 1 to N
 - Matrix class
 
 ### Geomerty
 Will be added soon...
 
 ### Other Algorithms
-- Compute the length of the longest increasing subsequence (LIS)
+- Compute the length of the longest increasing sub-sequence (LIS)
 - Stress test code
 - Some other definitions
