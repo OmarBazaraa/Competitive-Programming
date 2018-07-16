@@ -6,6 +6,7 @@ C++ Code library contains useful algorithms for competitive programming.
 
 ### Data Structures
 - Fenwick Tree (Binary Indexed Tree)
+- Fenwick Tree (Binary Indexed Tree) with range updates
 
 ### Graphs
 Will be added soon...
@@ -17,23 +18,23 @@ Will be added soon...
 - GCD (iterative)
 - GCD (recursive)
 - LCM
-- Bézout's coefficients (using Extended Euclid)
-- Fast Power (iterative)
-- Fast Power (recursive)
-- Modular Inverse
+- Bézout's coefficients using extended Euclid's method
+- Fast power (iterative)
+- Fast power (recursive)
+- Modular inverse
 - Combinations (nCr)
-- Pascal Triangle
-- Is Prime
-- Generate Primes (using Sieve of Eratosthenes)
-- Generate Prime Divisors (of numbers from 1 to n)
-- Generate Divisors (of single number n)
-- Generate Divisors (of numbers from 1 to n)
-- Matrix Class
+- Pascal triangle
+- Check if an integer N is prime or not
+- Generate prime numbers using Sieve of Eratosthenes' algorithm
+- Generate prime divisors of integers from 1 to N
+- Generate divisors of single integer N
+- Generate divisors of integers from 1 to N
+- Matrix class
 
 ### Geomerty
 Will be added soon...
 
 ### Other Algorithms
-- Compute Longest Increasing Subsequence
-- Stress Test
-- Some Other Definitions
+- Compute the length of the longest increasing subsequence (LIS)
+- Stress test code
+- Some other definitions
