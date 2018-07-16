@@ -8,6 +8,8 @@ C++ Code library contains useful algorithms for competitive programming.
 - Fenwick tree (binary indexed tree)
 - Fenwick tree (binary indexed tree) with range updates
 - Sparse table
+- Monotonic queue (implemented with deque)
+- Monotonic queue (implemented with two stacks)
 
 ### Strings
 Will be added soon...
