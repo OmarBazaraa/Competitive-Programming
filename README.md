@@ -10,6 +10,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - Sparse table
 - Monotonic queue (implemented with deque)
 - Monotonic queue (implemented with two stacks)
+- Multiset (implemented with Fenwick tree)
 
 ### Strings
 Will be added soon...
