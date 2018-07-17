@@ -14,7 +14,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - Treap
 
 ### Strings
-Will be added soon...
+- KMP
 
 ### Graphs
 - Lowest common ancestor (LCA)
