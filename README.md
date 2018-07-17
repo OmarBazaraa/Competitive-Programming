@@ -18,6 +18,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - Trie
 
 ### Graphs
+- Floyd Warshal APSP Algorithm
 - Lowest Common Ancestor (LCA)
 
 ### Math
@@ -30,8 +31,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - Pascal Triangle
 - Check if an integer N is prime or not
 - Generate Prime Numbers (using Sieve of Eratosthenes' algorithm)
-- Generate Prime Divisors
-- Generate Divisors
+- Generate All/Prime Divisors
 - Matrix Class
 
 ### Geomerty

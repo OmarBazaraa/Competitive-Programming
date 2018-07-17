@@ -142,15 +142,15 @@ void generatePrimes(int n) {
 
 // Generates all the prime divisors of the numbers from 1 to n.
 // After calling this function,
-// prime_divs[i] will contains all the prime divisors of number i.
+// primeDivs[i] will contains all the prime divisors of number i.
 // O(n.log(log(n)))
-vector<int> prime_divs[N];
+vector<int> primeDivs[N];
 void generatePrimeDivisors(int n) {
     for (int i = 2; i <= n; ++i) {
-        if (prime_divs[i].size()) continue;
+        if (primeDivs[i].size()) continue;
 
         for (int j = i; j <= n; j += i) {
-            prime_divs[j].push_back(i);
+            primeDivs[j].push_back(i);
         }
     }
 }

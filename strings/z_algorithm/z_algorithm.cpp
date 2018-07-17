@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 const int N = 100100;
 
 int z[N];
@@ -22,20 +18,4 @@ void z_function() {
             l = i,
             r = i + z[i] - 1;
     }
-}
-
-// Example
-// ABCABCABCAAAAB
-int main() {
-    cin >> s;
-
-    z_function();
-
-    for (int i = 0; s[i]; ++i) {
-        cout << z[i];
-    }
-
-    cout << endl;
-    
-    return 0;
 }

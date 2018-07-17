@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 const int N = 100100;
 
 int f[N];
@@ -22,20 +18,4 @@ void KMP() {
     for (int i = 1; s[i]; ++i) {
         f[i] = failure(s[i], f[i - 1]);
     }
-}
-
-// Example
-// ABCABCABCAAAAB
-int main() {
-    cin >> s;
-    
-    KMP();
-
-    for (int i = 0; s[i]; ++i) {
-        cout << f[i];
-    }
-
-    cout << endl;
-
-    return 0;
 }
