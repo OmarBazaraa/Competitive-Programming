@@ -15,6 +15,7 @@ C++ Code library contains useful algorithms for competitive programming.
 
 ### Strings
 - KMP
+- Z-Algorithm
 
 ### Graphs
 - Lowest common ancestor (LCA)
