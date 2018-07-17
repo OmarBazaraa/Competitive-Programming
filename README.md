@@ -5,37 +5,34 @@ C++ Code library contains useful algorithms for competitive programming.
 ## Content
 
 ### Data Structures
-- Sparse table
-- Monotonic queue (implemented with deque)
-- Monotonic queue (implemented with two stacks)
-- Fenwick tree (binary indexed tree)
-- Fenwick tree (binary indexed tree) with range updates
+- Sparse Table
+- Monotonic Queue
+- Fenwick Tree (Binary Indexed Tree) with Range Updates
 - Multiset (implemented with Fenwick tree)
 - Treap
+- Disjoint-Sets Union (DSU)
 
 ### Strings
 - KMP
 - Z-Algorithm
-- Trie (implemented with dynamic memory allocation)
-- Trie (implemented with static memory allocation)
+- Trie
 
 ### Graphs
-- Lowest common ancestor (LCA)
-- Lowest common ancestor (LCA) (implemented with Euler path and sparse table)
+- Lowest Common Ancestor (LCA)
 
 ### Math
-- Greatest common divisor (GCD) (iterative/recursive)
-- Least common multiple (LCM)
-- Bézout's coefficients using extended Euclid's method
-- Fast power (iterative/recursive)
-- Modular inverse
+- Greatest Common Divisor (GCD)
+- Least Common Multiple (LCM)
+- Bézout's coefficients (using extended Euclid's method)
+- Fast Power
+- Modular Inverse
 - Combinations (nCr)
-- Pascal triangle
+- Pascal Triangle
 - Check if an integer N is prime or not
-- Generate prime numbers using Sieve of Eratosthenes' algorithm
-- Generate prime divisors for all integers from 1 to N
-- Generate all divisors (for a single integer N, or for all integers from 1 to N)
-- Matrix class
+- Generate Prime Numbers (using Sieve of Eratosthenes' algorithm)
+- Generate Prime Divisors
+- Generate Divisors
+- Matrix Class
 
 ### Geomerty
 Will be added soon...
