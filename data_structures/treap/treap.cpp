@@ -199,6 +199,7 @@ node* getByIndex(node* root, int idx) {
     return root;
 }
 
+// Example
 int main() {
     init();
 

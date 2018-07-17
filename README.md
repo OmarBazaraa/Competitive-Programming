@@ -17,11 +17,11 @@ C++ Code library contains useful algorithms for competitive programming.
 Will be added soon...
 
 ### Graphs
-Will be added soon...
+- Lowest common ancestor (LCA)
 
 ### Math
-- GCD (iterative/recursive)
-- LCM
+- Greatest common divisor (GCD) (iterative/recursive)
+- Least common multiple (LCM)
 - Bézout's coefficients using extended Euclid's method
 - Fast power (iterative/recursive)
 - Modular inverse
