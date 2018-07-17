@@ -223,5 +223,8 @@ int main() {
     }
 
     printTree(root);
+
+    destroy(root);
+    
     return 0;
 }

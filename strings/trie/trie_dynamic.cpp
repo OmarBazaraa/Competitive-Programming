@@ -65,18 +65,14 @@ public:
         distinctWordsCount += (++cur->wordsEndCount == 1);
     }
 
-    // Removes a word from the trie if exists.
+    // Removes a word from the trie assuming its existance.
     // O(n)
     void remove(const char* str) {
-        if (!search(str)) {
-            return 0;
-        }
-
         node* cur = root;
 
         for (int i = 0; str[i]; ++i) {
-            cur->wordsCount--;
-            cur = cur->edges[str[i]];
+            node* nxt = cur->edges[str[i]];
+            cur = nxt;
         }
 
         cur->wordsCount--;
@@ -89,11 +85,13 @@ public:
         node* cur = root;
 
         for (int i = 0; str[i]; ++i) {
-            if (cur->edges[str[i]] == NULL) {
+            node* nxt = cur->edges[str[i]];
+
+            if (nxt == NULL) {
                 return 0;
             }
 
-            cur = cur->edges[str[i]];
+            cur = nxt;
         }
 
         return cur->wordsEndCount;
@@ -120,11 +118,17 @@ int main() {
 
     printf("Trie nodes count: \t\t%d\n", t.nodesCount);
     printf("Trie distinct words count: \t%d\n\n", t.distinctWordsCount);
-    
+
     printf("Trie(ABC): \t%d\n", t.search("ABC"));
     printf("Trie(AABC): \t%d\n", t.search("AABC"));
     printf("Trie(AB): \t%d\n", t.search("AB"));
     printf("Trie(ABY): \t%d\n", t.search("ABY"));
+
+    t.remove("ABC");
+    cout << t.search("ABC") << endl;
+
+    t.remove("ABC");
+    cout << t.search("ABC") << endl;
 
     t.clear();
 

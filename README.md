@@ -17,6 +17,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - KMP
 - Z-Algorithm
 - Trie (implemented with dynamic memory allocation)
+- Trie (implemented with static memory allocation)
 
 ### Graphs
 - Lowest common ancestor (LCA)
