@@ -28,11 +28,14 @@ void KMP() {
 // ABCABCABCAAAAB
 int main() {
     cin >> s;
+    
     KMP();
 
     for (int i = 0; s[i]; ++i) {
-        cout << f[i] << ' ';
+        cout << f[i];
     }
+
+    cout << endl;
 
     return 0;
 }

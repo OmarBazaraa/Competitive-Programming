@@ -72,6 +72,17 @@ void init() {
     root = nil = new node();
 }
 
+// Clear the given treap and releases the allocated memory
+void destroy(node* root) {
+    if (root == nil) {
+        return;
+    }
+
+    destroy(root->childL);
+    destroy(root->childR);
+    delete root;
+}
+
 // Splits the given treap (root) into two different treaps: L and R
 // such that L contains all the nodes with values <= key and R contains the other nodes.
 // Note that the original treap will not exist anymore after the split operation.
