@@ -4,33 +4,33 @@ using namespace std;
 
 const int N = 100100;
 
-char s[N], p[N];
+char s[N];
 
 int F[N];
 
 // KMP failure function
 int failure(char c, int l) {
-    while (l > 0 && c != p[l]) {
+    while (l > 0 && c != s[l]) {
         l = F[l - 1];
     }
 
-    return l + (c == p[l]);
+    return l + (c == s[l]);
 }
 
-// Computes the length of the longest suffix of the given string ending at
-// the i-th character matching a prefix of the pattern defined by the failure function,
-// and fill the results in the global F array.
+// Computes the length of the longest suffix ending at the i-th character
+// matching a prefix of the string, and fills the results in the global F array.
 // O(n)
-void KMP(const char* s) {
+void KMP() {
     for (int i = 1; s[i]; ++i) {
         F[i] = failure(s[i], F[i - 1]);
     }
 }
 
 // Example
+// ABCABCABCAAAAB
 int main() {
-    cin >> s >> p;
-    KMP(s);
+    cin >> s;
+    KMP();
 
     for (int i = 0; s[i]; ++i) {
         cout << F[i] << ' ';
