@@ -18,6 +18,7 @@ Will be added soon...
 
 ### Graphs
 - Lowest common ancestor (LCA)
+- Lowest common ancestor (LCA) (implemented with Euler path and sparse table)
 
 ### Math
 - Greatest common divisor (GCD) (iterative/recursive)
