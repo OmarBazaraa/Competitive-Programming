@@ -5,7 +5,7 @@ int n, a[N], ST[M][N], LOG[N];
 // Computes the floor of the log of integer from 1 to n.
 // After calling this function, LOG[i] will be equals to floor(log2(i)).
 // O(n)
-void compute_log() {
+void computeLog() {
     LOG[0] = -1;
     for (int i = 1; i <= n; ++i) {
         LOG[i] = LOG[i - 1] + !(i & (i - 1));
@@ -16,8 +16,8 @@ void compute_log() {
 // for any contiguous sub-segment of the array.
 // This is an example of sparse table computing the minimum value.
 // O(n.log(n))
-void build_sparse_table() {
-    compute_log();
+void buildST() {
+    computeLog();
 
     for (int i = 0; i < n; ++i) {
         ST[0][i] = i;

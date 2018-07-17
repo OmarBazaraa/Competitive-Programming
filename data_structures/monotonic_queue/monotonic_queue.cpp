@@ -5,8 +5,7 @@ using namespace std;
 template<class T>
 class monotonic_queue {
     queue<T> qu;
-    deque<T> mx;
-    deque<T> mn;
+    deque<T> mx, mn;
 
 public:
     void push(T v) {

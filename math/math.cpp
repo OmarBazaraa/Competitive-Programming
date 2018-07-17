@@ -21,7 +21,7 @@ int gcd(int a, int b) {
 // Worst case when (a, b) are two consecutive Fibonacci numbers.
 // O(log(n))
 int gcd_rec(int a, int b) {
-    return b == 0 ? a : gcd(b, a % b);
+    return b == 0 ? a : gcd_rec(b, a % b);
 }
 
 // Returns the least common multiple (LCM) of the given two numbers.
@@ -50,7 +50,7 @@ pair<int, int> extendedEuclid(int a, int b) {
 // Returns ((base^exp) mod m) using iterative fast power algorithm
 // Note that if (base=0, exp=0) is passed to the function it will return 1.
 // O(log(exp))
-int fast_power(int base, int exp, int mod) {
+int power(int base, int exp, int mod) {
     int ans = 1;
     base %= mod;
 
@@ -67,7 +67,7 @@ int fast_power(int base, int exp, int mod) {
 // Returns ((base^exp) mod m) using recursive fast power algorithm.
 // Note that if (base=0, exp=0) is passed to the function it will return 1.
 // O(log(exp))
-int fast_power_rec(int base, int exp, int mod) {
+int power_rec(int base, int exp, int mod) {
     if (exp == 0) {
         return 1;
     }
@@ -81,7 +81,7 @@ int fast_power_rec(int base, int exp, int mod) {
 // (i.e. (a * mod_inverse(a)) == 1 (mod m)).
 // Note that the function works correctly only if m is a prime number.
 // O(log(m))
-int mod_inverse(int a, int m) {
+int modInverse(int a, int m) {
     return fast_power(a, m - 2, m);
 }
 
@@ -104,7 +104,7 @@ int nCr(int n, int r) {
 // After calling this function, comb[n][r] will be equals to nCr.
 // O(n^2)
 int comb[N][N];
-void build_pascal_triangle(int n) {
+void buildPT(int n) {
     for (int i = comb[0][0] = 1; i <= n; ++i)
         for (int j = comb[i][0] = 1; j <= i; ++j)
             comb[i][j] = (comb[i - 1][j] + comb[i - 1][j - 1]) % MOD;
@@ -112,7 +112,7 @@ void build_pascal_triangle(int n) {
 
 // Returns whether the given number is prime or not.
 // O(sqrt(n))
-bool is_prime(int n) {
+bool isPrime(int n) {
     if (n < 2)
         return 0;
     if (n % 2 == 0)
@@ -128,7 +128,7 @@ bool is_prime(int n) {
 // After calling function, prime[i] will be equal 1 if i is prime, 0 otherwise.
 // O(n.log(log(n)))
 bool prime[N];
-void generate_primes(int n) {
+void generatePrimes(int n) {
     fill(prime, prime + n, 1);
 
     for (int i = 2; i * i <= n; ++i) {
@@ -145,7 +145,7 @@ void generate_primes(int n) {
 // prime_divs[i] will contains all the prime divisors of number i.
 // O(n.log(log(n)))
 vector<int> prime_divs[N];
-void generate_prime_divisors(int n) {
+void generatePrimeDivisors(int n) {
     for (int i = 2; i <= n; ++i) {
         if (prime_divs[i].size()) continue;
 
@@ -157,7 +157,7 @@ void generate_prime_divisors(int n) {
 
 // Returns a list of divisors of the given number.
 // O(sqrt(n))
-vector<int> get_divisors(int n) {
+vector<int> getDivisors(int n) {
     vector<int> divs;
 
     for (int i = 1; i * i <= n; ++i) {
@@ -180,10 +180,8 @@ vector<int> get_divisors(int n) {
 // divs[i] will contains all the divisors of number i.
 // O(n.log(n))
 vector<int> divs[N];
-void generate_divisors(int n) {
-    for (int i = 1; i <= n; ++i) {
-        for (int j = i; j <= n; j += i) {
+void generateDivisors(int n) {
+    for (int i = 1; i <= n; ++i)
+        for (int j = i; j <= n; j += i)
             divs[j].push_back(i);
-        }
-    }
 }

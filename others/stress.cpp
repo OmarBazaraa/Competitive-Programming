@@ -3,7 +3,7 @@
 using namespace std;
 
 // Generates random sample test case to a text file.
-void generate_case() {
+void generateRandomCase() {
     ofstream fout("input.txt");
 
     int n = 1 + rand() % 50;
@@ -30,7 +30,7 @@ int main() {
         cout << "Test Case #" << ++testCase << endl;
 
         // Generate random test case
-        generate_case();
+        generateRandomCase();
 
         // Run the WA program to read from "input.txt" and output to "wa.txt"
         system("wa < input.txt > wa.txt");
