@@ -5,12 +5,13 @@ C++ Code library contains useful algorithms for competitive programming.
 ## Content
 
 ### Data Structures
-- Fenwick tree (binary indexed tree)
-- Fenwick tree (binary indexed tree) with range updates
 - Sparse table
 - Monotonic queue (implemented with deque)
 - Monotonic queue (implemented with two stacks)
+- Fenwick tree (binary indexed tree)
+- Fenwick tree (binary indexed tree) with range updates
 - Multiset (implemented with Fenwick tree)
+- Treap
 
 ### Strings
 Will be added soon...
