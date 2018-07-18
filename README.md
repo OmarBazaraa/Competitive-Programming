@@ -21,6 +21,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - DFS
 - BFS
 - Topological Sort
+- Efficient Graph Representation
 - Floyd Warshal APSP Algorithm
 - Lowest Common Ancestor (LCA)
 

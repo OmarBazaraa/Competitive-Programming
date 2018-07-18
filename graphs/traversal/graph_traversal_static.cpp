@@ -34,7 +34,7 @@ bool vis[N];                // Visited array to mark whether node u has been vis
 // Initializes the graph
 void init() {
     edgeId = 0;
-    memset(head, -1, n * sizeof(head[0]));
+    memset(head, -1, (n + 1) * sizeof(head[0]));
 }
 
 // Adds a new edge from node f to node t with weight w.
@@ -76,7 +76,7 @@ void read() {
 
     while (m--) {
         int u, v, w;
-        scanf("%d %d", &u, &v, &w);
+        scanf("%d %d %d", &u, &v, &w);
         addBiEdge(u, v, w);
     }
 }
