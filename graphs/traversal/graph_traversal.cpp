@@ -6,6 +6,7 @@ const int N = 100100;
 
 
 int n;                      // Number of nodes
+int m;                      // Number of edges
 bool vis[N];                // Visited array to mark whether node u has been visited before or not
 vector<int> edges[N];       // Graph adjacency list
 vector<int> sortedNodes;    // List of topologically sorted nodes
@@ -109,19 +110,14 @@ void traverse() {
     }
 }
 
-// Example
-int main() {
-    // Read number of nodes
-    cin >> n;
+// Reads and constructs the graph (i.e. number of nodes, and the edges).
+// O(n)
+void read() {
+    cin >> n >> m;
 
-    // Read edges
-    int m, u, v;
-    cin >> m;
     while (m--) {
+        int u, v;
         scanf("%d %d", &u, &v);
         edges[u].push_back(v);
     }
-
-    traverse();
-    return 0;
 }

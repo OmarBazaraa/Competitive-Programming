@@ -106,31 +106,3 @@ public:
         distinctWordsCount = 0;
     }
 };
-
-// Example
-int main() {
-    trie t;
-
-    t.insert("ABC");
-    t.insert("ABD");
-    t.insert("AABC");
-    t.insert("ABC");
-
-    printf("Trie nodes count: \t\t%d\n", t.nodesCount);
-    printf("Trie distinct words count: \t%d\n\n", t.distinctWordsCount);
-
-    printf("Trie(ABC): \t%d\n", t.search("ABC"));
-    printf("Trie(AABC): \t%d\n", t.search("AABC"));
-    printf("Trie(AB): \t%d\n", t.search("AB"));
-    printf("Trie(ABY): \t%d\n", t.search("ABY"));
-
-    t.remove("ABC");
-    cout << t.search("ABC") << endl;
-
-    t.remove("ABC");
-    cout << t.search("ABC") << endl;
-
-    t.clear();
-
-    return 0;
-}

@@ -76,29 +76,3 @@ bool search(const char* str) {
 
     return wordsEndCount[cur];
 }
-
-// Example
-int main() {
-    init();
-
-    insert("ABC");
-    insert("ABD");
-    insert("AABC");
-    insert("ABC");
-
-    printf("Trie nodes count: \t\t%d\n", nodesCount);
-    printf("Trie distinct words count: \t%d\n\n", distinctWordsCount);
-
-    printf("Trie(ABC): \t%d\n", search("ABC"));
-    printf("Trie(AABC): \t%d\n", search("AABC"));
-    printf("Trie(AB): \t%d\n", search("AB"));
-    printf("Trie(ABY): \t%d\n", search("ABY"));
-
-    erase("ABC");
-    cout << search("ABC") << endl;
-
-    erase("ABC");
-    cout << search("ABC") << endl;
-
-    return 0;
-}
