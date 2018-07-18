@@ -44,7 +44,7 @@ bool checkNegativeCycle() {
     return ret;
 }
 
-// Prints the shortest between nodes u and v after running Floyd Warshall's algorithm.
+// Prints the shortest path from node u to node v after running Floyd Warshall's algorithm.
 // Note that the path is encoded in reversed order, so we need to print it recursively.
 void printPath(int u, int v) {
     if (u != v) {

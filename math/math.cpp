@@ -129,7 +129,7 @@ bool isPrime(int n) {
 // O(n.log(log(n)))
 bool prime[N];
 void generatePrimes(int n) {
-    fill(prime, prime + n, 1);
+    memset(prime, true, sizef(prime));
 
     for (int i = 2; i * i <= n; ++i) {
         if (!prime[i]) continue;
