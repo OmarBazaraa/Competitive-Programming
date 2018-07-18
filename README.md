@@ -11,6 +11,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - Multiset (implemented with Fenwick tree)
 - Treap
 - Disjoint-Sets Union (DSU)
+- Mo's Algorithm
 
 ### Strings
 - KMP
