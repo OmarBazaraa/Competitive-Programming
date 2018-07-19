@@ -15,12 +15,12 @@ C++ Code library contains useful algorithms for competitive programming.
 		- Basic Fenwick Tree
 		- Fenwick Tree with Range Update
 		- Fenwick Tree as Multiset
-	- Segment Tree (comming soon)
+	- Segment Tree **<i>(comming soon)</i>**
 		- Basic Segment Tree (static memory allocation)
 		- Basic Segment Tree (dynamic memory allocation)
 		- Persistent Segment Tree
 	- Treap
-	- Splay (comming soon)
+	- Splay **<i>(comming soon)</i>**
 - SQRT Decomposition
 	- Mo's Algorithm
 
@@ -30,8 +30,8 @@ C++ Code library contains useful algorithms for competitive programming.
 - Trie
 	- Implemented with static memory allocation
 	- Implemented with dynamic memory allocation
-- Suffix Array (comming soon)
-- Aho Corasick's Algorithm (comming soon)
+- Suffix Array **<i>(comming soon)</i>**
+- Aho Corasick's Algorithm **<i>(comming soon)</i>**
 
 ### Graphs
 - Optimized Graph Representation
@@ -49,15 +49,15 @@ C++ Code library contains useful algorithms for competitive programming.
 	- All Pair Shortest Path (APSP)
 		- Floyd Warshal's Algorithm
 - Minimum Spanning Tree
-	- Prim's Algorithm (comming soon)
-	- Kruskal's Algorithm (comming soon)
+	- Prim's Algorithm **<i>(comming soon)</i>**
+	- Kruskal's Algorithm **<i>(comming soon)</i>**
 - Strongly Connected Components (SCC)
 	- Kosaraju's Algorithm
 - Lowest Common Ancestor (LCA)
 	- Implemented with parent sparse table
 	- Implemented with Euler walk and RMQ
 - Max Flow
-	- Edmonds-Karp's Algorithm (comming soon)
+	- Edmonds-Karp's Algorithm **<i>(comming soon)</i>**
 
 ### Math
 - Greatest Common Divisor (GCD)
@@ -72,7 +72,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - Generate Divisors (single/bulk operation)
 	- All divisors
 	- Prime divisors
-- Matrix Power (comming soon)
+- Matrix Power **<i>(comming soon)</i>**
 - Matrix Class
 
 ### Geomerty
