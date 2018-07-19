@@ -24,15 +24,19 @@ bool sameSet(int u, int v) {
 }
 
 // Unions both sets of the given elements u and v.
-void unionSets(int u, int v) {
+// Returns false if the two elements were in the same set, true otherwise.
+bool unionSets(int u, int v) {
 	int x = findSet(u);
 	int y = findSet(v);
 
-	if (x != y) {
-		setsCount--;
-		siz[y] += siz[x];
-		par[x] = y;
+	if (x == y) {
+		return false;
 	}
+	
+	setsCount--;
+	siz[y] += siz[x];
+	par[x] = y;
+	return true;
 }
 
 // Returns the size of the set of the given element u.

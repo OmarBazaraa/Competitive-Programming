@@ -49,9 +49,9 @@ C++ Code library contains useful algorithms for competitive programming.
 		- [Optimized Bellman Ford's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford_optimized.cpp)
 	- All Pair Shortest Path (APSP)
 		- [Floyd Warshal's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/floyd_warshal.cpp)
-- Minimum Spanning Tree
+- [Minimum Spanning Tree](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/minimum_spanning_tree)
+	- [Kruskal's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/minimum_spanning_tree/kruskal.cpp)
 	- Prim's Algorithm **<i>(comming soon)</i>**
-	- Kruskal's Algorithm **<i>(comming soon)</i>**
 - [Strongly Connected Components (SCC)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/strongly_connected_components)
 	- [Kosaraju's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/strongly_connected_components/kosaraju.cpp)
 - [Lowest Common Ancestor (LCA)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/lowest_common_ancestor)
@@ -92,7 +92,7 @@ Will be added soon...
 - Radix Sort **<i>(comming soon)</i>**
 
 ### Other Algorithms
-- [Compute the length of the longest increasing sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
+- [Longest Increasing Sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
 - K-th Order Statistic **<i>(comming soon)</i>**
 - [Stress test code](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/stress.cpp)
 - [Code definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)

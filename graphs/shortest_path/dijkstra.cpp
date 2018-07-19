@@ -8,10 +8,9 @@ const int N = 100100;
 // Struct holds all needed information about the edges
 // with comparison operator defined for the priority queue sorting.
 struct edge {
-    int from;
-    int to;
-    int weight;
+    int from, to, weight;
 
+    edge() {}
     edge(int f, int t, int w) : from(f), to(t), weight(w) {}
 
     // Note that we are actually implementing the greater than operator (not the less than operator)
