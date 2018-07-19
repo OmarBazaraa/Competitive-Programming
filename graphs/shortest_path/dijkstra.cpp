@@ -26,12 +26,13 @@ vector<edge> edges[N];
 
 // Calculates the shortest path between the given node src and all other nodes
 // (Single-Source Shortest Path (SSSP)) for the given weighted graph,
-// and fills the results in the global shortest path array dis.
+// and fills the results in the global shortest path "dis" array.
 // O(n.log(n))
 void dijkstra(int src) {
     priority_queue<edge> q;
     q.push(edge(-1, src, 0));
 
+    memset(par, -1, sizeof(par));
     memset(dis, 0x3F, sizeof(dis));
 
     while (!q.empty()) {
@@ -66,6 +67,7 @@ void printPath(int v) {
     printf("%d ", v);
 }
 
+// Reads a weighted undirected graph.
 void read() {
     cin >> n >> m;
 

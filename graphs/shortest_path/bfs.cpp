@@ -9,15 +9,15 @@ vector<int> edges[N];
 
 // Calculates the shortest path between the given node u and all other nodes
 // (Single-Source Shortest Path (SSSP)) for the given unweighted graph,
-// and fills the results in the global shortest path array dis.
+// and fills the results in the global shortest path "dis" array.
 // O(n)
 void bfs(int u) {
     queue<int> q;
     q.push(u);
 
+    memset(par, -1, sizeof(par));
     memset(dis, -1, sizeof(dis));
     dis[u] = 0;
-    par[u] = -1;
 
     while (!q.empty()) {
         u = q.front();

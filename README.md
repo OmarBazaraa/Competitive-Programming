@@ -24,6 +24,7 @@ C++ Code library contains useful algorithms for competitive programming.
 - Topological Sort
 - BFS (SSSP)
 - Dijkstra's Algorithm (SSSP)
+- Bellman Ford's Algorithm (SSSP)
 - Floyd Warshal (APSP)
 - Kosaraju's Algorithm
 - Lowest Common Ancestor (LCA)
