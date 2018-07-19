@@ -29,10 +29,10 @@ vector<edge> edges[N];
 // and fills the results in the global shortest path array dis.
 // O(n.log(n))
 void dijkstra(int src) {
-    memset(dis, 0x3F, sizeof(dis));
-
     priority_queue<edge> q;
     q.push(edge(-1, src, 0));
+
+    memset(dis, 0x3F, sizeof(dis));
 
     while (!q.empty()) {
         int u = q.top().from;

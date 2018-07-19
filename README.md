@@ -31,7 +31,7 @@ C++ Code library contains useful algorithms for competitive programming.
 ### Math
 - Greatest Common Divisor (GCD)
 - Least Common Multiple (LCM)
-- Bézout's coefficients (using extended Euclid's method)
+- Bézout's Coefficients (using extended Euclid's method)
 - Fast Power
 - Modular Inverse
 - Combinations (nCr)

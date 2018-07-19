@@ -7,16 +7,16 @@ const int N = 100100, M = 20;
 
 // E[i] = the i-th node in Euler path.
 // L[i] = the level of the i-th node in Euler path (i.e. = dis[E[i]]).
-// F[i] = the index of the first occurence of the i-th node in Euler array.
-int n, m, u, v, F[N], ST[M][N], LOG[N];
+// F[i] = the index of the first occurence of the node i in Euler array.
+int n, m, u, v, dis[N], F[N], ST[M][N], LOG[N];
 vector<int> E, L, edges[N];
 
 // Depth first traversal on the tree to fill E, L, and F arrays
 // with the appropriate values.
 // O(n)
 void dfs(int u = 1, int par = 0, int lvl = 0) {
+    dis[u] = lvl;
     F[u] = E.size();
-
     E.push_back(u);
     L.push_back(lvl);
 
@@ -83,6 +83,12 @@ int query(int l, int r) {
 // O(1)
 int getLCA(int u, int v) {
     return E[query(F[u], F[v])];
+}
+
+// Returns the distance between any given pair of nodes
+// O(getLCA(u, v)) = O(log(1))
+int getDistance(int u, int v) {
+    return dis[u] + dis[v] - 2 * dis[getLCA(u, v)];
 }
 
 // Example
