@@ -46,7 +46,7 @@ C++ Code library contains useful algorithms for competitive programming.
 		- [BFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bfs.cpp)
 		- [Dijkstra's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/dijkstra.cpp)
 		- [Bellman Ford's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford.cpp)
-		- Optimized Bellman Ford's Algorithm **<i>(comming soon)</i>**
+		- [Optimized Bellman Ford's Algorithm]((https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford_optimized.cpp))
 	- All Pair Shortest Path (APSP)
 		- [Floyd Warshal's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/floyd_warshal.cpp)
 - Minimum Spanning Tree
@@ -85,3 +85,9 @@ Will be added soon...
 - [Compute the length of the longest increasing sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
 - [Stress test code](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/stress.cpp)
 - [Some other definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
+
+## Thanks
+Special thanks to anyone contributed to this repository:
+- By teaching me any of these topics.
+- By inspiring me any code optimizations.
+- By being supportive.
