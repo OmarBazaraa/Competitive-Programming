@@ -92,8 +92,8 @@ Will be added soon...
 - Radix Sort **<i>(comming soon)</i>**
 
 ### Other Algorithms
-- [Longest Increasing Sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
 - K-th Order Statistic **<i>(comming soon)</i>**
+- [Longest Increasing Sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
 - [Stress test code](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/stress.cpp)
 - [Code definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
 
