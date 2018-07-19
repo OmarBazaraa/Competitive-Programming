@@ -36,11 +36,11 @@ C++ Code library contains useful algorithms for competitive programming.
 ### Graphs
 - [Graph Traversal and Representation](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/traversal)
 	- [Optimized Representation](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal_static.cpp)
-	- [DFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp)
-	- [BFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp)
+	- [DFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp#L14)
+	- [BFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp#L25)
 - [Topological Sort](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/traversal)
-	- [DFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp)
-	- [BFS (Khan's Algorithm)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp)
+	- [DFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp#L43)
+	- [BFS (Khan's Algorithm)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/traversal/graph_traversal.cpp#L59)
 - [Shortest Path](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/shortest_path)
 	- Single Source Shortest Path (SSSP)
 		- [BFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bfs.cpp)
@@ -61,25 +61,27 @@ C++ Code library contains useful algorithms for competitive programming.
 	- Edmonds-Karp's Algorithm **<i>(comming soon)</i>**
 
 ### Math
-- Greatest Common Divisor (GCD)
-- Least Common Multiple (LCM)
-- Bézout's Coefficients (using extended Euclid's method)
-- Fast Power
-- Modular Inverse
-- Combinations (nCr)
-- Pascal Triangle
-- Check Integer Primality
-- Generate Prime Numbers (using Sieve of Eratosthenes' algorithm)
-- Generate Divisors (single/bulk operation)
-	- All divisors
-	- Prime divisors
-- Matrix Power **<i>(comming soon)</i>**
-- Matrix Class
+- [Basic Discrete Math & Modular Arithmetics](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/math)
+	- [Greatest Common Divisor (GCD)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L8)
+	- [Least Common Multiple (LCM)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L27)
+	- [Bézout's Coefficients (using extended Euclid's method)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L33)
+	- [Fast Power](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L50)
+	- [Modular Inverse](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L80)
+	- [Combinations (nCr)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L88)
+	- [Pascal Triangle](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L103)
+	- [Check Integer Primality](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L113)
+	- [Generate Prime Numbers (using Sieve of Eratosthenes' algorithm)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L126)
+	- [Generate Divisors (single/bulk operation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L143)
+		- All divisors
+		- Prime divisors
+- [Matrix Operations](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/math)
+	- [Matrix Class](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/matrix.cpp)
+	- Matrix Power **<i>(comming soon)</i>**
 
 ### Geomerty
 Will be added soon...
 
 ### Other Algorithms
-- Compute the length of the longest increasing sub-sequence (LIS)
-- Stress test code
-- Some other definitions
+- [Compute the length of the longest increasing sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
+- [Stress test code](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/stress.cpp)
+- [Some other definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
