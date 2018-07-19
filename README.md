@@ -46,7 +46,7 @@ C++ Code library contains useful algorithms for competitive programming.
 		- [BFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bfs.cpp)
 		- [Dijkstra's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/dijkstra.cpp)
 		- [Bellman Ford's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford.cpp)
-		- [Optimized Bellman Ford's Algorithm]((https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford_optimized.cpp))
+		- [Optimized Bellman Ford's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford_optimized.cpp)
 	- All Pair Shortest Path (APSP)
 		- [Floyd Warshal's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/floyd_warshal.cpp)
 - Minimum Spanning Tree
