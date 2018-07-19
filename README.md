@@ -81,10 +81,21 @@ C++ Code library contains useful algorithms for competitive programming.
 ### Geomerty
 Will be added soon...
 
+### Search Algorithms
+- Binary Search **<i>(comming soon)</i>**
+- Ternary Search **<i>(comming soon)</i>**
+
+### Sorting Algorithms
+- Heap Sort **<i>(comming soon)</i>**
+- Merge Sort **<i>(comming soon)</i>**
+- Quick Sort **<i>(comming soon)</i>**
+- Radix Sort **<i>(comming soon)</i>**
+
 ### Other Algorithms
 - [Compute the length of the longest increasing sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
+- K-th Order Statistic **<i>(comming soon)</i>**
 - [Stress test code](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/stress.cpp)
-- [Some other definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
+- [Code definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
 
 ## Thanks
 Special thanks to anyone contributed to this repository:
