@@ -2,9 +2,6 @@
 
 using namespace std;
 
-const int N = 100100;   // Max array size
-const int Q = 100100;   // Max queries size
-
 // Mo's algorithm is a SQRT decomposition algorithm that
 // solves some range queries problems offline in O((N+Q).sqrt(N))
 
@@ -13,6 +10,9 @@ const int Q = 100100;   // Max queries size
 
 // Other problems solved by Mo's algorithm have essentially similar code.
 // What actually need to be changed are function insert and function remove below.
+
+const int N = 100100;   // Max array size
+const int Q = 100100;   // Max queries size
 
 int n, m, a[N], cnt[N], ans[N];
 int curL, curR, curAns;

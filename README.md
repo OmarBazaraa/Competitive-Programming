@@ -17,8 +17,9 @@ C++ Code library contains useful algorithms for competitive programming.
 		- [Fenwick Tree as Multiset](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/fenwick_tree/multiset.cpp)
 	- [Segment Tree]((https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/segment_tree))
 		- [Basic Segment Tree (static memory allocation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/segment_tree/segment_tree_static.cpp)
-		- Basic Segment Tree (dynamic memory allocation) **<i>(comming soon)</i>**
+		- [Basic Segment Tree (dynamic memory allocation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/segment_tree/segment_tree_dynamic.cpp)
 		- Persistent Segment Tree **<i>(comming soon)</i>**
+		- Segment Tree as Multiset **<i>(comming soon)</i>**
 	- [Treap](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/treap)
 	- Splay Tree **<i>(comming soon)</i>**
 - [SQRT Decomposition](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/sqrt_decomposition)

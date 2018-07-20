@@ -2,30 +2,29 @@
 
 using namespace std;
 
-
-#define childL(id) (id * 2)
-#define childR(id) (id * 2 + 1)
-
-const int N = 100100;
-
 // This is an example of segment tree that calculates and updates the
 // values of any contiguous segment in an array in O(log(n)).
 
 // Other problems solved by the segment trees have similar code
 // with some modifications.
 
+#define childL(id) (id * 2)
+#define childR(id) (id * 2 + 1)
+
+const int N = 100100;
+
 int n, a[N];
 int tree[N * 4];
 int lazy[N * 4];
 
-// Updates a specific node by the given value v.
+// Updates a specific node by the given values.
 int updateNode(int v, int id, int l, int r) {
 	lazy[id] += v;
 	tree[id] += (r - l) * v;
 	return tree[id];
 }
 
-// Propagates and pushes down the lazy data of the given node.
+// Propagates and pushes down the lazy data of the given node to its children.
 void propagate(int id, int l, int r) {
 	int mid = (l + r) / 2;
 
