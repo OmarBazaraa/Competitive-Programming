@@ -15,10 +15,10 @@ C++ Code library contains useful algorithms for competitive programming.
 		- [Basic Fenwick Tree](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/fenwick_tree/fenwick_tree.cpp)
 		- [Fenwick Tree with Range Update](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/fenwick_tree/fenwick_tree_range.cpp)
 		- [Fenwick Tree as Multiset](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/fenwick_tree/multiset.cpp)
-	- Segment Tree **<i>(comming soon)</i>**
-		- Basic Segment Tree (static memory allocation)
-		- Basic Segment Tree (dynamic memory allocation)
-		- Persistent Segment Tree
+	- [Segment Tree]((https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/segment_tree))
+		- [Basic Segment Tree (static memory allocation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/segment_tree/segment_tree_static.cpp)
+		- Basic Segment Tree (dynamic memory allocation) **<i>(comming soon)</i>**
+		- Persistent Segment Tree **<i>(comming soon)</i>**
 	- [Treap](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/treap)
 	- Splay Tree **<i>(comming soon)</i>**
 - [SQRT Decomposition](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/sqrt_decomposition)
@@ -81,15 +81,15 @@ C++ Code library contains useful algorithms for competitive programming.
 ### Geomerty
 Will be added soon...
 
-### Search Algorithms
-- Binary Search **<i>(comming soon)</i>**
-- Ternary Search **<i>(comming soon)</i>**
+### Search Algorithms **<i>(comming soon)</i>**
+- Binary Search
+- Ternary Search
 
-### Sorting Algorithms
-- Heap Sort **<i>(comming soon)</i>**
-- Merge Sort **<i>(comming soon)</i>**
-- Quick Sort **<i>(comming soon)</i>**
-- Radix Sort **<i>(comming soon)</i>**
+### Sorting Algorithms **<i>(comming soon)</i>**
+- Heap Sort 
+- Merge Sort
+- Quick Sort
+- Radix Sort
 
 ### Other Algorithms
 - K-th Order Statistic **<i>(comming soon)</i>**

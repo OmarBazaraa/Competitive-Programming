@@ -23,7 +23,7 @@ void boostIO() {
 
 // Returns the length of the longest increasing subsequence of the array.
 // O(n.log(n))
-int n, seq[N];
+int n, a[N];
 int getLIS() {
     int len = 0;
     vector<int> LIS(n, INT_MAX);
