@@ -30,6 +30,25 @@ public:
         clear();
     }
 
+    // Clears and removes all the elements from the multiset.
+    void clear() {
+        cnt = 0;
+        memset(BIT, 0, sizeof(BIT));
+    }
+
+    // Returns the total number of integers in the multiset.
+    int size() {
+        return cnt;
+    }
+
+    // Returns the number of occurrence of the given integer in the multiset.
+    int count(int val) {
+        if (val < 1 || val > N)
+            return 0;
+
+        return get(val) - get(val - 1);
+    }
+
     // Inserts a new integer value x (1 <= x <= N) to the multiset.
     void insert(int val) {
         if (val < 1 || val > N) {
@@ -46,25 +65,6 @@ public:
             update(val, -1);
             cnt--;
         }
-    }
-
-    // Clears and removes all the elements from the multiset.
-    void clear() {
-        cnt = 0;
-        memset(BIT, 0, sizeof(BIT));
-    }
-
-    // Returns the number of occurrence of the givne integer in the multiset.
-    int count(int val) {
-        if (val < 1 || val > N)
-            return 0;
-
-        return get(val) - get(val - 1);
-    }
-
-    // Returns the total number of integers in the multiset.
-    int size() {
-        return cnt;
     }
 
     // Returns integer from the multiset by its index.

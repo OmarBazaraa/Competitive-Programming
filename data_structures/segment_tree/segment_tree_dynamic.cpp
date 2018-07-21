@@ -3,7 +3,7 @@
 using namespace std;
 
 // This is an example of segment tree that calculates and updates the
-// values of any contiguous segment in an array in O(log(n)).
+// sum of values of any contiguous segment in an array in O(log(n)).
 
 // Other problems solved by the segment trees have similar code
 // with some modifications.
@@ -31,7 +31,7 @@ struct node {
         childR = r;
     }
 
-    // Propagates and pushes down the lazy data of the given node to its children.
+    // Propagates the lazy updated data of this node down to its children.
     void propagate(int l, int r) {
         int mid = (l + r) / 2;
 
@@ -41,7 +41,7 @@ struct node {
         lazy = 0;
     }
 
-    // Updates the node by the given value values.
+    // Updates the node by the given values.
     int update(int v, int l, int r) {
         lazy += v;
         data += (r - l) * v;
@@ -95,7 +95,7 @@ void init() {
     root = build();
 }
 
-// Clear the given segment tree and releases the allocated memory
+// Clears the given segment tree and releases the allocated memory.
 // O(n)
 void destroy(node* root = ::root) {
     if (root == nil) {

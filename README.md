@@ -1,8 +1,10 @@
 # Competitive Programming
 
-C++ Code library contains useful algorithms for competitive programming.
+C++ code library contains useful algorithms for competitive programming.
 
 ## Content
+
+A brief explanation to each of the following topics will be added soon, hopefully.
 
 ### Data Structures
 - [Disjoint-Sets Union (DSU)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/disjoint_sets_union)

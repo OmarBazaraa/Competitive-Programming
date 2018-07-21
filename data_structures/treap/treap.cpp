@@ -72,7 +72,7 @@ void init() {
     root = nil = new node();
 }
 
-// Clear the given treap and releases the allocated memory
+// Clears the given treap and releases the allocated memory.
 void destroy(node* root) {
     if (root == nil) {
         return;
