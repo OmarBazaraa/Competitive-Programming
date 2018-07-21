@@ -19,7 +19,7 @@ One can recall from basic data structure courses or tutorials that we can implem
 - Dedicate one of the two stacks (say **_S1_**) for **_push_** operations only.
 - Dedicate the other stack (say **_S2_**) for **_pop_** operations only.
 - Whenever we want to **_push_** an element into the queue, we will push it to **_S1_**.
-- Whenever we want to **_pop_** an element from, we will pop it from **_S2_**.
+- Whenever we want to **_pop_** an element from the queue, we will pop it from **_S2_**.
 - Whenever **_S2_** is empty during the **_pop_** operation, we will flip **_S1_** into **_S2_**.
 
 In that way we can implement a queue using two stacks.
