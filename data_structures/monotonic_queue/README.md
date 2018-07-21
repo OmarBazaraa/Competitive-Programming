@@ -21,6 +21,7 @@ One can recall from basic data structure courses or tutorials that we can implem
 - Whenever we want to **_push_** an element into the queue, we will push it to **_S1_**.
 - Whenever we want to **_pop_** an element from, we will pop it from **_S2_**.
 - Whenever **_S2_** is empty during the **_pop_** operation, we will flip **_S1_** into **_S2_**.
+
 In that way we can implement a queue using two stacks.
 
 In order to implement a monotonic queue, we will essentially do a similar approach but with few modifications.<br>
@@ -46,7 +47,7 @@ That is because every element will be inserted in either stacks at most once and
 You can find a complete code for the monotonic queue implemented by two stacks in this [link](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/monotonic_queue/monotonic_queue_using_stacks.cpp).
 
 ### Double Ended Queue
-In this implementation, in order to find the maximum value pushed in the queue so far, we will use a double ended queue (say **_deq_**) (i.e. a simple queue but can be accessed from either ended: front, and back).
+In this implementation, in order to find the maximum value pushed in the queue so far, we will use a double ended queue (say **_deq_**) (i.e. a simple queue but can be accessed from either ends: front, or back).
 
 We will also need a basic queue (say **_que_**) to store the actual elements.
 
