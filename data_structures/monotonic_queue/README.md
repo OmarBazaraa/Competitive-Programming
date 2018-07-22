@@ -92,4 +92,5 @@ That is because every element will be inserted in the double ended queue at most
 You can find a complete code for the monotonic queue implemented by double ended queue in this [link](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/monotonic_queue/monotonic_queue.cpp).
 
 ## Problems
-Will be added soon...
+
+1. [Codeforces Exposition](http://codeforces.com/contest/6/problem/E) => [Solution](http://codeforces.com/contest/6/submission/40634813)
