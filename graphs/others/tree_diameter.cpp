@@ -32,8 +32,8 @@ int bfs(int u) {
     return u;
 }
 
-// Returns the diameter of the tree
-// (i.e. the lengthe of the longest path in the tree)
+// Returns the length of the diameter of the tree.
+// (i.e. the length of the longest path in the tree).
 // O(n)
 int calcTreeDiameter(int root) {
     int u = bfs(root);
