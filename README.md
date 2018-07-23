@@ -64,6 +64,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- Edmonds-Karp's Algorithm **<i>(comming soon)</i>**
 - [Others](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/others)
 	- [Tree Diameter](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/tree_diameter.cpp)
+	- [Bipartite Graph Check](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/bipartite_graph.cpp)
 	- [Graph Bridges](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/graph_bridges.cpp)
 	- [Bridge Tree](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/bridge_tree.cpp)
 
