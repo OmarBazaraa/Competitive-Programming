@@ -26,16 +26,16 @@ bool sameSet(int u, int v) {
 // Unions both sets of the given elements u and v.
 // Returns false if the two elements were in the same set, true otherwise.
 bool unionSets(int u, int v) {
-	int x = findSet(u);
-	int y = findSet(v);
+	u = findSet(u);
+	v = findSet(v);
 
-	if (x == y) {
+	if (u == v) {
 		return false;
 	}
 	
 	setsCount--;
-	siz[y] += siz[x];
-	par[x] = y;
+	siz[v] += siz[u];
+	par[u] = v;
 	return true;
 }
 

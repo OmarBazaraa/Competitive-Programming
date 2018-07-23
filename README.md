@@ -62,6 +62,8 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- [Implemented with Euler walk and RMQ](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/lowest_common_ancestor/LCA_Euler.cpp)
 - Max Flow
 	- Edmonds-Karp's Algorithm **<i>(comming soon)</i>**
+- [Others](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/others)
+	- [Tree Diameter](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/tree_diameter.cpp)
 
 ### Math
 - [Basic Discrete Math & Modular Arithmetics](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/math)
