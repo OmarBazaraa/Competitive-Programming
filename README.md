@@ -65,6 +65,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 - [Others](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/others)
 	- [Tree Diameter](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/tree_diameter.cpp)
 	- [Graph Bridges](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/graph_bridges.cpp)
+	- [Bridge Tree](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/bridge_tree.cpp)
 
 ### Math
 - [Basic Discrete Math & Modular Arithmetics](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/math)
