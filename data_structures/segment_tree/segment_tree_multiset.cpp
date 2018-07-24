@@ -25,17 +25,18 @@ struct node {
     }
 };
 
-class multiset_int {
+// 0-indexed multiset that stores integers in range of [-N, N].
+class segment_multiset {
     node *nil, *root;
 
 public:
     // Default constructor.
-    multiset_int() {
+    segment_multiset() {
         root = nil = new node();
     }
 
     // Destructor
-    ~multiset_int() {
+    ~segment_multiset() {
         clear();
         delete nil;
     }
@@ -110,7 +111,25 @@ public:
     // greater than or equals to the given number.
     // Note that indices are referenced as if all elements are sorted by their value.
     int lower_bound(int val) {
-        return lower_bound(root, val, -N, N);
+        int ret = 0;
+
+        node* cur = root;
+        int l = -N, r = N;
+
+        while (l < val) {
+            int mid = l + (r - l) / 2;
+
+            if (val <= mid) {
+                cur = cur->childL;
+                r = mid;
+            } else {
+                ret += cur->childL->size;
+                cur = cur->childR;
+                l = mid + 1;
+            }
+        }
+
+        return ret;
     }
 
     // Returns the smallest index of an integer with value
@@ -168,23 +187,6 @@ private:
         remove(root, ret);
 
         return ret;        
-    }
-
-    // Returns the smallest index of an integer with value greater than or equals to the given number.
-    int lower_bound(node* root, int val, int l, int r) {
-        if (l >= val) {
-            return 0;
-        }
-
-        if (r < val) {
-            return root->size;
-        }
-
-        int mid = l + (r - l) / 2;
-
-        return 
-            lower_bound(root->childL, val, l, mid) + 
-            lower_bound(root->childR, val, mid + 1, r);
     }
 
     // Removes "cnt" occurances of from given root node and destories it if

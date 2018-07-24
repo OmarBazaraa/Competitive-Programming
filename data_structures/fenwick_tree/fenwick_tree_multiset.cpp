@@ -5,7 +5,7 @@ using namespace std;
 const int N = (1 << 17);    // Must be power of 2
 
 // 1-indexed multiset that stores positive integers only.
-class multiset_int {
+class fenwick_multiset {
     int cnt, BIT[N + 1];
 
     void update(int idx, int val) {
@@ -26,7 +26,7 @@ class multiset_int {
 
 public:
     // Default constructor.
-    multiset_int() {
+    fenwick_multiset() {
         clear();
     }
 
