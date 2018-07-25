@@ -20,7 +20,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- [Segment Tree](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/segment_tree)
 		- [Basic Segment Tree (static memory allocation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/segment_tree/segment_tree_static.cpp)
 		- [Basic Segment Tree (dynamic memory allocation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/segment_tree/segment_tree_dynamic.cpp)
-		- Persistent Segment Tree **<i>(comming soon)</i>**
+		- [Persistent Segment Tree](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/segment_tree/persistent_segment_tree.cpp)
 		- [Segment Tree as Multiset](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/segment_tree/segment_tree_multiset.cpp)
 	- [Treap](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/treap)
 	- Splay Tree **<i>(comming soon)</i>**
