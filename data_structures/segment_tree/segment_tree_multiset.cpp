@@ -21,7 +21,7 @@ struct node {
     }
 
     void update() {
-        size = childL->size + childR->size + 1;
+        size = childL->size + childR->size;
     }
 };
 
@@ -73,13 +73,16 @@ public:
     }
 
     // Inserts a new integer value to the multiset.
-    void insert(int val) {
-        insert(root, val, -N, N);
+    void insert(int val, int cnt = 1) {
+        assert(cnt > 0);
+        insert(root, val, cnt, -N, N);
     }
 
-    // Removes the given integer from the multiset if exists.
-    bool erase(int val) {
-        return erase(root, val, -N, N);
+    // Erases "cnt" occurances of the given integer from the multiset if exists.
+    // Returns the number of deleted elements.
+    int erase(int val, int cnt = 1) {
+        assert(cnt > 0);
+        return erase(root, val, cnt, -N, N);
     }
 
     // Returns integer from the multiset by its index (0-indexed).
@@ -142,7 +145,7 @@ public:
 private:
 
     // Inserts a new integer value to the multiset.
-    void insert(node*& root, int val, int l, int r) {
+    void insert(node*& root, int val, int cnt, int l, int r) {
         if (val < l || val > r) {
             return;
         }
@@ -151,7 +154,7 @@ private:
             root = new node(0, nil, nil);
         }
 
-        root->size++;
+        root->size += cnt;
 
         if (l == r) {
             return;
@@ -159,12 +162,13 @@ private:
 
         int mid = l + (r - l) / 2;
 
-        insert(root->childL, val, l, mid);
-        insert(root->childR, val, mid + 1, r);
+        insert(root->childL, val, cnt, l, mid);
+        insert(root->childR, val, cnt, mid + 1, r);
     }
 
-    // Removes the given integer from the multiset if exists.
-    bool erase(node*& root, int val, int l, int r) {
+    // Erases "cnt" occurances of the given integer from the multiset if exists.
+    // Returns the number of deleted elements.
+    int erase(node*& root, int val, int cnt, int l, int r) {
         if (val < l || val > r) {
             return 0;
         }
@@ -174,30 +178,32 @@ private:
         }
 
         if (l == r) {
-            return remove(root, 1), 1;
+            return remove(root, cnt);
         }
 
         int mid = l + (r - l) / 2;
 
-        bool ret = 0;
+        int ret = 0;
 
-        ret |= erase(root->childL, val, l, mid);
-        ret |= erase(root->childR, val, mid + 1, r);
+        ret += erase(root->childL, val, cnt, l, mid);
+        ret += erase(root->childR, val, cnt, mid + 1, r);
 
-        remove(root, ret);
-
-        return ret;        
+        return remove(root, ret);        
     }
 
     // Removes "cnt" occurances of from given root node and destories it if
     // its size become smaller than or equals zero.
-    void remove(node*& root, int cnt) {
+    int remove(node*& root, int cnt) {
+        int ret = min(cnt, root->size);
+
         root->size -= cnt;
 
         if (root->size <= 0) {
             destroy(root);
             root = nil;
         }
+
+        return ret;
     }
 
     // Clears the given segment tree and releases the allocated memory.
