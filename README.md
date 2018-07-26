@@ -7,11 +7,11 @@ C++ code library contains useful algorithms for competitive programming.
 A brief explanation to each of the following topics will be added soon, hopefully.
 
 ### Data Structures
-- [Disjoint-Sets Union (DSU)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/disjoint_sets_union)
+- [Sparse Table](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/sparse_table)
 - [Monotonic Queue](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/monotonic_queue)
 	- [Implemented with two stacks](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/monotonic_queue/monotonic_queue_using_stacks.cpp)
 	- [Implemented with double ended queue](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/monotonic_queue/monotonic_queue.cpp)
-- [Sparse Table](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/sparse_table)
+- [Disjoint-Sets Union (DSU)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/disjoint_sets_union)
 - Trees
 	- [Fenwick Tree (Binary Indexed Tree)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/data_structures/fenwick_tree)
 		- [Basic Fenwick Tree](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/data_structures/fenwick_tree/fenwick_tree.cpp)

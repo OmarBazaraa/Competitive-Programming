@@ -5,13 +5,13 @@ using namespace std;
 // Persistent segment tree is a segment tree that maintain its
 // previous versions upon an update query.
 
-// This code is an example of persistent segment tree that require to answer the following:
+// This code is an example of persistent segment tree to answer the following:
 // Given an array a[i] of length n, find Q(l, r, k).
 // Where Q(l, r, k) is the k-th smallest element in the sub-array of a[i] from l to r (i.e. a[l...r])
 
 struct node;
 
-const int N = (1 << 17), R = 1e9;
+const int N = (1 << 17);
 
 node *nil, *roots[N];
 int n, q, x, l, r, k;
