@@ -2,10 +2,6 @@
 
 using namespace std;
 
-struct node;
-
-node *nil, *root;
-
 // Treap node struct
 struct node {
     int key, priority, size;
@@ -16,8 +12,8 @@ struct node {
         childL = childR = this;
     }
 
-    node(int val, node* l = nil, node* r = nil) {
-        key = val;
+    node(int k, node* l, node* r) {
+        key = k;
         childL = l;
         childR = r;
         size = 1;
@@ -29,202 +25,202 @@ struct node {
     }
 };
 
-ostream& operator<<(ostream& out, node* root) {
-    out << "(" << root->key << ", " << root->size << ")";
-    return out;
-}
+// 0-indexed treap-based multiset.
+class treap {
+    node *nil, *root;
 
-void print(node* root, int indent) {
-    if (root == nil) {
-        return;
+public:
+    // Constructs an emptry treap.
+    treap() {
+        srand(time(0));
+        root = nil = new node();
     }
 
-    if (root->childL != nil && root->childR != nil) {
-        cout << string(indent - 1, '\t') << "      /" << "\t       \\" << endl;
-
-        cout << string(indent - 1, '\t');
-        cout << root->childL;
-
-        cout << string(2, '\t');
-        cout << root->childR << endl;
-    }
-    else if (root->childL != nil) {
-        cout << string(indent - 1, '\t') << "      /" << endl;
-        cout << string(indent - 1, '\t') << root->childL << endl;
-    }
-    else if (root->childR != nil) {
-        cout << string(indent, '\t') << "       \\" << endl;
-        cout << string(indent + 1, '\t') << root->childR << endl;
+    // Destructor.
+    ~treap() {
+        destroy(root);
+        delete nil;
     }
 
-    print(root->childL, indent - 1);
-    print(root->childR, indent + 1);
-}
-
-void printTree(node* root) {
-    cout << string(root->size, '\t') << root << endl;
-    print(root, root->size);
-}
-
-// Initializes the treap operations.
-void init() {
-    srand(time(0));
-    root = nil = new node();
-}
-
-// Clears the given treap and releases the allocated memory.
-void destroy(node* root) {
-    if (root == nil) {
-        return;
+    // Clears all the inserted elements from the multiset.
+    void clear() {
+        destroy(root);
+        root = nil;
     }
 
-    destroy(root->childL);
-    destroy(root->childR);
-    delete root;
-}
-
-// Splits the given treap (root) into two different treaps: L and R
-// such that L contains all the nodes with values <= key and R contains the other nodes.
-// Note that the original treap will not exist anymore after the split operation.
-void split(node* root, node*& l, node*& r, int key) {
-    if (root == nil) {
-        l = r = nil;
-        return;
+    // Returns the total number of integers in the multiset.
+    int size() {
+        return root->size;
     }
 
-    if (key >= root->key) {
-        l = root;
-        split(root->childR, l->childR, r, key);
-    }
-    else {
-        r = root;
-        split(root->childL, l, r->childL, key);
-    }
+    // Returns the number of occurrence of the given integer in the multiset.
+    int count(int key) {
+        int res = 0;
+        node* cur = root;
 
-    root->update();
-}
-
-// Merges the given two treaps L and R into a single treap (root).
-// Note that the largest value of L must be less than the smallest value of R
-// in order to get a correct merge operation.
-// Note that L and R will not exist anymore after the merge operation.
-void merge(node* l, node* r, node*& root) {
-    if (l == nil) {
-        root = r;
-        return;
-    }
-
-    if (r == nil) {
-        root = l;
-        return;
-    }
-
-    if (l->priority > r->priority) {
-        root = l;
-        merge(l->childR, r, root->childR);
-    }
-    else {
-        root = r;
-        merge(l, r->childL, root->childL);
-    }
-
-    root->update();
-}
-
-// Inserts a new node into the given treap.
-void insert(node*& root, node* newNode) {
-    if (root == nil) {
-        root = newNode;
-        return;
-    }
-
-    if (newNode->priority > root->priority) {
-        split(root, newNode->childL, newNode->childR, newNode->key);
-        root = newNode;
-    }
-    else {
-        insert((newNode->key <= root->key) ? root->childL : root->childR, newNode);
-    }
-
-    root->update();
-}
-
-// Erases a single node from the treap having its key matches
-// the given key if exists.
-void erase(node*& root, int key) {
-    if (root == nil) {
-        return;
-    }
-
-    if (key == root->key) {
-        node* temp = root;
-        merge(root->childL, root->childR, root);
-        delete temp;
-    }
-    else {
-        erase((key <= root->key) ? root->childL : root->childR, key);
-    }
-
-    root->update();
-}
-
-// Returns the smallest index of a node with key
-// greater than or equals to the given key.
-// Note that indices are referenced as if all nodes are sorted by their keys.
-int lowerBound(node* root, int key) {
-    int ret = 0;
-
-    while (root != nil) {
-        if (key <= root->key) {
-            root = root->childL;
+        while (cur != nil) {
+            if (key <= cur->key) {
+                res += (key == cur->key);
+                cur = cur->childL;
+            } else {
+                cur = cur->childR;
+            }
         }
-        else {
-            ret += root->childL->size + 1;
-            root = root->childR;
-        }
+
+        return res;
     }
 
-    return ret;
-}
-
-// Returns the smallest index of a node with key
-// greater than the given key.
-// Note that indices are referenced as if all nodes are sorted by their keys.
-int upperBound(node* root, int key) {
-    return lowerBound(root, key + 1);
-}
-
-// Returns the idx-th node in the given treap.
-// Note that indices are referenced as if all nodes are sorted by their keys.
-node* getByIndex(node* root, int idx) {
-    while (root != nil && idx != root->childL->size) {
-        if (idx < root->childL->size) {
-            root = root->childL;
-        }
-        else {
-            idx -= root->childL->size + 1;
-            root = root->childR;
-        }
+    // Inserts the given element into the given treap.
+    void insert(int key) {
+        insert(root, new node(key, nil, nil));
     }
 
-    return root;
-}
-
-// Example
-int main() {
-    init();
-
-    vector<int> vec = { 2, 2, 3, 7, 7, 9 };
-
-    random_shuffle(vec.begin(), vec.end());
-
-    for (int x : vec) {
-        insert(root, new node(x));
+    // Erases the given element from the treap if exists.
+    bool erase(int key) {
+        return erase(root, key);
     }
 
-    printTree(root);
+    // Returns the idx-th node in the given treap.
+    // Note that indices are referenced as if all nodes are sorted by their keys.
+    int operator[](int idx) {
+        node* cur = root;
 
-    destroy(root);
-    
-    return 0;
-}
+        while (cur != nil && idx != cur->childL->size) {
+            if (idx < cur->childL->size) {
+                cur = cur->childL;
+            } else {
+                idx -= cur->childL->size + 1;
+                cur = cur->childR;
+            }
+        }
+
+        return cur->key;
+    }
+
+    // Returns the smallest index of a node with key
+    // greater than or equals to the given key.
+    // Note that indices are referenced as if all nodes are sorted by their keys.
+    int lower_bound(int val) {
+        int ret = 0;
+
+        node* cur = root;
+
+        while (cur != nil) {
+            if (val <= cur->key) {
+                cur = cur->childL;
+            } else {
+                ret += cur->childL->size + 1;
+                cur = cur->childR;
+            }
+        }
+
+        return ret;
+    }
+
+    // Returns the smallest index of a node with key
+    // greater than the given key.
+    // Note that indices are referenced as if all nodes are sorted by their keys.
+    int upper_bound(int key) {
+        return lower_bound(key + 1);
+    }
+
+private:
+
+    // Inserts a new node into the given treap.
+    void insert(node*& root, node* newNode) {
+        if (root == nil) {
+            root = newNode;
+            return;
+        }
+
+        if (newNode->priority > root->priority) {
+            split(root, newNode->childL, newNode->childR, newNode->key);
+            root = newNode;
+        } else {
+            insert((newNode->key <= root->key) ? root->childL : root->childR, newNode);
+        }
+
+        root->update();
+    }
+
+    // Erases a single node from the treap having its key matches
+    // the given key if exists.
+    bool erase(node*& root, int key) {
+        if (root == nil) {
+            return 0;
+        }
+
+        bool ret = 1;
+
+        if (key == root->key) {
+            node* temp = root;
+            merge(root->childL, root->childR, root);
+            delete temp;
+        } else {
+            ret = erase((key <= root->key) ? root->childL : root->childR, key);
+            root->update();
+        }   
+
+        return ret;
+    }
+
+    // Splits the given treap (root) into two different treaps: rootL and rootR
+    // such that L contains all the nodes with values <= key and R contains the other nodes.
+    // Note that the original treap will not exist anymore after the split operation.
+    // O(log(n))
+    void split(node* root, node*& rootL, node*& rootR, int key) {
+        if (root == nil) {
+            rootL = rootR = nil;
+            return;
+        }
+
+        if (key >= root->key) {
+            rootL = root;
+            split(root->childR, rootL->childR, rootR, key);
+        } else {
+            rootR = root;
+            split(root->childL, rootL, rootR->childL, key);
+        }
+
+        root->update();
+    }
+
+    // Merges the given two treaps rootL and rootR into a single treap (root).
+    // Note that the largest value of L must be less than the smallest value of R
+    // in order to get a correct merge operation.
+    // Note that L and R will not exist anymore after the merge operation.
+    // O(log(n))
+    void merge(node* rootL, node* rootR, node*& root) {
+        if (rootL == nil) {
+            root = rootR;
+            return;
+        }
+
+        if (rootR == nil) {
+            root = rootL;
+            return;
+        }
+
+        if (rootL->priority > rootR->priority) {
+            root = rootL;
+            merge(rootL->childR, rootR, root->childR);
+        } else {
+            root = rootR;
+            merge(rootL, rootR->childL, root->childL);
+        }
+
+        root->update();
+    }
+
+    // Clears the given treap and releases the allocated memory.
+    // O(n)
+    void destroy(node* root) {
+        if (root == nil) {
+            return;
+        }
+
+        destroy(root->childL);
+        destroy(root->childR);
+        delete root;
+    }
+};
