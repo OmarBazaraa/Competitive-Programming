@@ -79,7 +79,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- [Pascal Triangle](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L103)
 	- [Check Integer Primality](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L113)
 	- [Generate Prime Numbers (using Sieve of Eratosthenes' algorithm)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L126)
-	- [Generate Divisors (single/bulk operation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L143)
+	- [Generate Divisors (single/bulk operation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L144)
 		- All divisors
 		- Prime divisors
 - [Matrix Operations](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/math)
@@ -100,7 +100,7 @@ Will be added soon...
 - Radix Sort
 
 ### Other Algorithms
-- K-th Order Statistic **<i>(comming soon)</i>**
+- [K-th Order Statistic](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/kth_order_statistic.cpp)
 - [Longest Increasing Sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
 - [Stress test code](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/stress.cpp)
 - [Code definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/others/others.cpp)
