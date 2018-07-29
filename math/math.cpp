@@ -82,7 +82,7 @@ int power_rec(int base, int exp, int mod) {
 // Note that the function works correctly only if m is a prime number.
 // O(log(m))
 int modInverse(int a, int m) {
-    return fast_power(a, m - 2, m);
+    return power(a, m - 2, m);
 }
 
 // Returns n choose r.
@@ -125,11 +125,12 @@ bool isPrime(int n) {
 
 // Generates all the prime numbers from 1 to the given number n
 // using Sieve of Eratosthenes' algorithm.
-// After calling function, prime[i] will be equal 1 if i is prime, 0 otherwise.
+// After calling this function, prime[i] will be equal 1 if i is prime, 0 otherwise.
 // O(n.log(log(n)))
 bool prime[N];
 void generatePrimes(int n) {
-    memset(prime, true, sizef(prime));
+    memset(prime, true, sizeof(prime));
+    prime[0] = prime[1] = false;
 
     for (int i = 2; i * i <= n; ++i) {
         if (!prime[i]) continue;
