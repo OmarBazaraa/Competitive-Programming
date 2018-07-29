@@ -32,9 +32,8 @@ int randomizedPartition(int l, int r) {
 
 // Returns the k-th order statistic (k-th smallest element)
 // in the given range of the array.
-// 2 3 7 6 1 4 9
-// 1 2 3 4 6 7 9
-// O(n)
+// Worst Case Complexity:       O(n^2)
+// Expected Case Complexity:    O(n)
 int getKthOrderStatistic(int k, int l = 0, int r = n - 1) {
     int pivotIdx = randomizedPartition(l, r);
 
