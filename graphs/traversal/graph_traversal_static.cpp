@@ -9,11 +9,11 @@ const int M = 100100;       // Max number of edges
 int n;                      // Number of nodes
 int m;                      // Number of edges
 
-int edgeId;                 // The next edge id to be inserted
-int head[N];                // head[u]      : the id of the last edge added from node u
-int nxt[M];                 // nxt[e]       : the next edge id pointed from the same node as e
-int to[M];                  // to[e]        : the id of the node pointed by edge e
-int weight[M];              // weight[e]    : the weight of edge e
+int edgeId;                 // Next edge id to be inserted
+int head[N];                // head[u]      : id of the last edge added from node u
+int nxt[M];                 // nxt[e]       : next edge id pointed from the same node as e
+int to[M];                  // to[e]        : id of the node pointed by edge e
+int weight[M];              // weight[e]    : weight of edge e
 
 bool vis[N];                // Visited array to mark whether node u has been visited before or not
 
@@ -41,13 +41,14 @@ void init() {
 void addEdge(int f, int t, int w) {
     int e = edgeId++;
 
-    nxt[e] = head[f];
     to[e] = t;
-    head[f] = e;
     weight[e] = w;
+    
+    nxt[e] = head[f];
+    head[f] = e;
 }
 
-// Adds a bi-directional edge between nodes f and t with weight w
+// Adds a bi-directional edge between nodes f and t with weight w.
 void addBiEdge(int f, int t, int w) {
     addEdge(f, t, w);
     addEdge(t, f, w);

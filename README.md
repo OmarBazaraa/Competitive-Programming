@@ -60,8 +60,8 @@ A brief explanation to each of the following topics will be added soon, hopefull
 - [Lowest Common Ancestor (LCA)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/lowest_common_ancestor)
 	- [Implemented with parent sparse table](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/lowest_common_ancestor/LCA.cpp)
 	- [Implemented with Euler walk and RMQ](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/lowest_common_ancestor/LCA_Euler.cpp)
-- Max Flow
-	- Edmonds-Karp's Algorithm **<i>(comming soon)</i>**
+- [Max Flow]((https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/max_flow))
+	- [Edmonds-Karp's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/max_flow/edmonds_karp.cpp)
 - [Others](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/others)
 	- [Tree Diameter](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/tree_diameter.cpp)
 	- [Bipartite Graph Check](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/others/bipartite_graph.cpp)
