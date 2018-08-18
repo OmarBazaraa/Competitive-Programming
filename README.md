@@ -47,6 +47,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 - [Shortest Path](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/shortest_path)
 	- Single Source Shortest Path (SSSP)
 		- [BFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bfs.cpp)
+		- [BFS on Complement Graph](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bfs_complement_graph.cpp)
 		- [Dijkstra's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/dijkstra.cpp)
 		- [Bellman Ford's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford.cpp)
 		- [Optimized Bellman Ford's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/bellman_ford_optimized.cpp)

@@ -46,7 +46,7 @@ void addAugEdge(int f, int t, int c) {
 
 // Finds a path from the source node to the sink node while respecting 
 // the constraints on the capacities of the edges.
-// Returns whether a path is found from src to snk of not.
+// Returns whether a path is found from src to snk or not.
 bool findPath() {
     queue<int> q;
     q.push(src);
