@@ -90,12 +90,12 @@ A brief explanation to each of the following topics will be added soon, hopefull
 ### Geomerty
 Will be added soon...
 
-### Search Algorithms **<i>(comming soon)</i>**
-- Binary Search
-- Ternary Search
+### Search Algorithms
+- [Binary Search](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/search/binary_search.cpp)
+- [Ternary Search](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/search/ternary_search.cpp)
 
 ### Sorting Algorithms **<i>(comming soon)</i>**
-- Heap Sort 
+- Heap Sort
 - Merge Sort
 - Quick Sort
 - Radix Sort
