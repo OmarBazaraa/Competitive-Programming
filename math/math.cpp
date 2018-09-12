@@ -72,7 +72,7 @@ int power_rec(int base, int exp, int mod) {
         return 1;
     }
 
-    int p = fast_power_rec((base * base) % mod, exp >> 1, mod);
+    int p = power_rec((base * base) % mod, exp >> 1, mod);
 
     return (exp & 1) ? (p * base) % mod : p;
 }
