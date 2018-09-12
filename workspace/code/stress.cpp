@@ -4,7 +4,7 @@ using namespace std;
 
 // Generates random sample test case to a text file.
 void generateRandomCase() {
-    ofstream fout("input.txt");
+    ofstream fout("test_case.txt");
 
     const int N = 1e9;
     const int L = 1e4;
@@ -36,14 +36,14 @@ int main() {
         // Generate random test case
         generateRandomCase();
 
-        // Run the AC program to read from "input.txt" and output to "ac.txt"
-        system("ac.exe < input.txt > ac.txt");
+        // Run the AC program to read from "test_case.txt" and output to "ac.txt"
+        system("ac.exe < test_case.txt > ac.txt");
         ifstream acf("ac.txt");
         getline(acf, ac, char(EOF));
         acf.close();
 
-        // Run the WA program to read from "input.txt" and output to "wa.txt"
-        system("wa.exe < input.txt > wa.txt");
+        // Run the WA program to read from "test_case.txt" and output to "wa.txt"
+        system("wa.exe < test_case.txt > wa.txt");
         ifstream waf("wa.txt");
         getline(waf, wa, char(EOF));
         waf.close();
