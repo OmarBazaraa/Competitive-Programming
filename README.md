@@ -33,7 +33,9 @@ A brief explanation to each of the following topics will be added soon, hopefull
 - [Trie](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/strings/trie)
 	- [Implemented with static memory allocation](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/strings/trie/trie_static.cpp)
 	- [Implemented with dynamic memory allocation](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/strings/trie/trie_dynamic.cpp)
-- Suffix Array **<i>(comming soon)</i>**
+- Suffix Array
+	- [Suffix Array O(n.log^2(n))](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/strings/suffix_array/suffix_array_slow.cpp)
+	- Suffix Array O(n.log(n)) **<i>(comming soon)</i>**
 - Aho Corasick's Algorithm **<i>(comming soon)</i>**
 
 ### Graphs
