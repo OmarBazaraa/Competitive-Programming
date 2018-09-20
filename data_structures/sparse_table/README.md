@@ -13,10 +13,10 @@ Where **_Q(l, r)_** can be any _duplicate-invariant function_ as...
 What I mean by _duplicate-invariant function_ is any function that output the same value for duplicate inputs.<br>
 So for example:<br>
 
-| Function                          | Description                        |
-| ----------------------------------|:----------------------------------:|
-| _min(2, 3) = min(2, 2, 3, 3) = 2_ | is _duplicate-invariant function_  |
-| _(2 + 3) != (2 + 2 + 3 + 3)_      | is not _duplicate-invariant_.      |
+| Function                          | Description                                |
+| ----------------------------------|:------------------------------------------:|
+| _min(2, 3) = min(2, 2, 3, 3) = 2_ | minimum is _duplicate-invariant function_  |
+| _(2 + 3) != (2 + 2 + 3 + 3)_      | addition is not _duplicate-invariant_.     |
 
 ## Sparse Table Structure
 The structure of sparse table is a 2D array **_ST[j][i]_**,<br>
