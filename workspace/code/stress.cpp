@@ -18,9 +18,14 @@ void generateRandomCase() {
 }
 
 int main() {
-    // Compile both programs: the correct and the wrong ones.
-    system("g++ -O2 -std=c++14 acc.cpp -o ac.exe");
-    system("g++ -O2 -std=c++14 src.cpp -o wa.exe");
+    //
+    // Compile both the AC and the WA codes.
+    //
+    cout << "Compiling the AC code..." << endl;
+    system("g++ -O2 -std=c++14 ../code/acc.cpp -o ac.exe");
+
+    cout << "Compiling the WA code..." << endl;
+    system("g++ -O2 -std=c++14 ../code/src.cpp -o wa.exe");
 
     // Set random seed
     srand(time(0));
@@ -29,9 +34,10 @@ int main() {
     int testCase = 0;
     string wa, ac;
 
+    // Loop until the output of both programs mis-matches
     while (wa == ac) {
         // Print test case number
-        cout << "Test Case #" << ++testCase << endl;
+        cout << "Running @" << ++testCase << endl;
 
         // Generate random test case
         generateRandomCase();

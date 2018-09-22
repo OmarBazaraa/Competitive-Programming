@@ -35,7 +35,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- [Implemented with dynamic memory allocation](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/strings/trie/trie_dynamic.cpp)
 - Suffix Array
 	- [Suffix Array O(n.log^2(n))](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/strings/suffix_array/suffix_array_slow.cpp)
-	- Suffix Array O(n.log(n)) **<i>(comming soon)</i>**
+	- [Suffix Array O(n.log(n))](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/strings/suffix_array/suffix_array.cpp)
 - Aho Corasick's Algorithm **<i>(comming soon)</i>**
 
 ### Graphs

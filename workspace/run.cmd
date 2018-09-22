@@ -1,1 +1,1 @@
-build\src.exe < build\input.txt
+build\src.exe < input.txt

@@ -15,7 +15,7 @@ using namespace std;
  */
 
 // The maximum length of the string
-const int N = 10010;
+const int N = 1e5 + 5;
 
 // SA:      the suffix array, holding all the suffixes in lexicographical order.
 // bucket:  array holding the bucket (i.e. the order) of the i-th suffix after sorting.
@@ -41,7 +41,7 @@ struct comparator {
 
 /**
  * Builds the suffix array of the given string in time complexity of
- * O(n.log^2(n)), where n is the length of the given string.
+ * O(n.log(n)), where n is the length of the given string.
  *
  * Upon calling this function:
  * @var SA[i]       will hold the i-th smallest suffix of the string
@@ -55,7 +55,7 @@ void buildSuffixArray(const string& str) {
     int n = str.size() + 1;
 
     // Initially fill the suffixes and let their buckets be the first char in each suffix
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i <= n; ++i) {
         SA[i] = i;
         bucket[i] = str[i];
     }
@@ -63,26 +63,42 @@ void buildSuffixArray(const string& str) {
     // Sort suffixes on the first letter
     sort(SA, SA + n, comparator(0));
 
-    // Temporary bucket array needed in the following calculations
-    vector<int> sortedBucket(n + 1, 0);
+    // Temporary arrays needed in the following calculations
+    vector<int> sortedSA(n, n - 1), sortedBucket(n), bucketStart(n);
 
     // Keep sorting until the number of buckets become equals to the number of suffixes
     for (int h = 1; sortedBucket[n - 1] != n - 1; h <<= 1) {
-        // Initialize a comparator on the first 2h letters
-        comparator comp(h);
-
-        // Sort the suffixes on the first 2h letters,
-        // given they are sorted in the first h letters
-        sort(SA, SA + n, comp);
-
-        // Compute the new buckets of the suffixes after sorting on the first 2h letters.
+        // Compute the new buckets of the previous sorting iteration
+        // During the h-th iteration, all the suffixes begin with the the same h letters
+        // will be in the same bucket (i.e. have the same bucket id)
+        comparator comp(h >> 1);
         for (int i = 1; i < n; ++i) {
             sortedBucket[i] = sortedBucket[i - 1] + comp(SA[i - 1], SA[i]);
         }
 
-        // Re-map buckets into bucket array to be indexed by the suffix id
-        for (int i = 0; i < n; ++i) {
+        // Compute where each bucket starts,
+        // and re-map buckets to be indexed by suffix id
+        for (int i = 1; i < n; ++i) {
             bucket[SA[i]] = sortedBucket[i];
+
+            if (sortedBucket[i] > sortedBucket[i - 1]) {
+                bucketStart[sortedBucket[i]] = i;
+            }
+        }
+
+        // Sort the suffixes on their first 2h letters in a temporary array (i.e. sortedSA),
+        // given they are sorted on the first h letters
+        for (int i = 0; i < n; ++i) {
+            int k = SA[i] - h;
+
+            if (k >= 0) {
+                sortedSA[bucketStart[bucket[k]]++] = k;
+            }
+        }
+
+        // Copy the sorted suffix of the h-th iteration in the global suffix array
+        for (int i = 0; i < n; ++i) {
+            SA[i] = sortedSA[i];
         }
     }
 }
