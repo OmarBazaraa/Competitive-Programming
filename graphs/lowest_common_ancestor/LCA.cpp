@@ -2,35 +2,53 @@
 
 using namespace std;
 
-const int N = 100100, M = 20;
+const int N = 100100, LOG_N = 20;
 
-// par[j][i]    = the (2^j)-th ancestor of node number i.
-// dis[i]       = the distance to reach node i from the root (node 1).
-// LOG[i]       = floor(log2(i)).
-int n, m, u, v, dis[N], par[M][N], LOG[N];
+// dep[i]       : the distance to reach node i from the root (node 1) (i.e. the depth).
+// LOG[i]       : floor(log2(i)).
+// par[j][i]    : the (2^j)-th ancestor of node number i.
+int n, m, u, v, dep[N];
+int par[LOG_N][N], LOG[N];
 vector<int> edges[N];
 
-// Depth first traversal on the tree to fill par[j][i] and dis[i] arrays
-// with the appropriate values.
-// O(n.log(n))
-void dfs(int u = 1, int p = 0, int lvl = 0) {
-    dis[u] = lvl;
+
+/**
+ * Runs a depth first traversal on the tree to fill the global variables
+ * with the appropriate values.
+ *
+ * Upon calling this function:
+ * @var dep[i]      will be filled with the depth of node i.
+ * @var par[j][i]   will be filled with the (2^j)-th ancestor of node number i.
+ *
+ * Complexity:      O(n.log(n))
+ *
+ * @param u         the root of the current sub-tree.
+ * @param p         the parent of node u.
+ * @param d         the depth or the level of node u from the root.
+ */
+void dfs(int u = 1, int p = 0, int d = 0) {
+    dep[u] = d;
     par[0][u] = p;
 
-    for (int i = 1; (1 << i) <= lvl; ++i) {
+    for (int i = 1; (1 << i) <= d; ++i) {
         par[i][u] = par[i - 1][par[i - 1][u]];
     }
 
     for (int v : edges[u]) {
         if (v != p) {
-            dfs(v, u, lvl + 1);
+            dfs(v, u, d + 1);
         }
     }
 }
 
-// Computes the floor of the log of integer from 1 to n.
-// After calling this function, LOG[i] will be equals to floor(log2(i)).
-// O(n)
+/**
+ * Computes the floor of the log of integer from 1 to n.
+ *
+ * Upon calling this function:
+ * @var LOG[i]  will be filled with floor(log2(i)).
+ *
+ * Complexity:  O(n)
+ */
 void computeLog() {
     LOG[0] = -1;
     for (int i = 1; i <= n; ++i) {
@@ -38,15 +56,26 @@ void computeLog() {
     }
 }
 
-// Builds the LCA structure.
-// O(n.log(n))
+/**
+ * Builds the LCA data structure.
+ *
+ * Complexity:  O(n.log(n))
+ */
 void buildLCA() {
     dfs();
     computeLog();
 }
 
-// Returns the k-th ancestor of node u.
-// O(log(k))
+/**
+ * Computes the k-th ancestor of the given node.
+ *
+ * Complexity:  O(log(k))
+ *
+ * @param u     the id of the node to get its k-th ancestor.
+ * @param k     the order of the ancestor to return.
+ *
+ * @return      the id of the k-th ancestor of node u.
+ */
 int getAncestor(int u, int k) {
     while (k > 0) {
         int x = k & -k;
@@ -57,20 +86,28 @@ int getAncestor(int u, int k) {
     return u;
 }
 
-// Returns the lowest common ancestor of nodes u and v.
-// O(log(n))
+/**
+ * Computes the lowest common ancestor (LCA) of nodes u and v.
+ *
+ * Complexity:  O(log(n))
+ *
+ * @param u     the first node id.
+ * @param v     the second node id.
+ *
+ * @return      the LCA of the given nodes.
+ */
 int getLCA(int u, int v) {
-    if (dis[u] > dis[v]) {
+    if (dep[u] > dep[v]) {
         swap(u, v);
     }
 
-    v = getAncestor(v, dis[v] - dis[u]);
+    v = getAncestor(v, dep[v] - dep[u]);
 
     if (u == v) {
         return u;
     }
 
-    for (int i = LOG[dis[u]]; i >= 0; --i) {
+    for (int i = LOG[dep[u]]; i >= 0; --i) {
         if (par[i][u] != par[i][v]) {
             u = par[i][u];
             v = par[i][v];
@@ -80,10 +117,18 @@ int getLCA(int u, int v) {
     return par[0][u];
 }
 
-// Returns the distance between any given pair of nodes
-// O(getLCA(u, v)) = O(log(log(n)))
+/**
+ * Computes the distance between the given pair of nodes: u and v.
+ *
+ * Complexity:  O(1)
+ *
+ * @param u     the first node id.
+ * @param v     the second node id.
+ *
+ * @return      the distance between the given nodes.
+ */
 int getDistance(int u, int v) {
-    return dis[u] + dis[v] - 2 * dis[getLCA(u, v)];
+    return dep[u] + dep[v] - 2 * dep[getLCA(u, v)];
 }
 
 // Example

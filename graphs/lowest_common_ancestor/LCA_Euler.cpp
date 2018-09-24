@@ -2,93 +2,121 @@
 
 using namespace std;
 
-const int N = 100100, M = 20;
+const int N = 100100, LOG_N = 20;
 
+// dep[i]   : the distance between node i and the root of the tree.
+// E[i]     : the i-th node in Euler path.
+// F[i]     : the index of the first occurence of the node i in Euler array.
+// LOG[i]   : floor(log2(i)).
+// ST[j][i] : the index of the node with the minimum depth in Eular tour array in range [i, i+(2^j)-1].
+int n, m, u, v, dep[N];
+int F[N], ST[LOG_N][N << 1], LOG[N << 1];
+vector<int> E, edges[N];
 
-// E[i] = the i-th node in Euler path.
-// L[i] = the level of the i-th node in Euler path (i.e. = dis[E[i]]).
-// F[i] = the index of the first occurence of the node i in Euler array.
-int n, m, u, v, dis[N], F[N], ST[M][N], LOG[N];
-vector<int> E, L, edges[N];
-
-// Depth first traversal on the tree to fill E, L, and F arrays
-// with the appropriate values.
-// O(n)
-void dfs(int u = 1, int par = 0, int lvl = 0) {
-    dis[u] = lvl;
+/**
+ * Runs an Eular tour on the tree, and fills the global variables
+ * with the appropriate values.
+ *
+ * Upon calling this function:
+ * @var dep[i]  will be filled with the depth of node i.
+ * @var E[i]    will be filled with the i-th node in the Eular tour.
+ * @var F[i]    will be filled with the index of the first occurence of node i in Euler array.
+ *
+ * Complexity:  O(n)
+ *
+ * @param u     the root of the current sub-tree.
+ * @param p     the parent of node u.
+ * @param d     the depth or the level of node u from the root.
+ */
+void dfs(int u = 1, int p = 0, int d = 0) {
+    dep[u] = d;
     F[u] = E.size();
     E.push_back(u);
-    L.push_back(lvl);
 
     for (int v : edges[u]) {
-        if (v != par) {
-            dfs(v, u, lvl + 1);
+        if (v != p) {
+            dfs(v, u, d + 1);
             E.push_back(u);
-            L.push_back(lvl);
         }
     }
 }
 
-// Computes the floor of the log of integer from 1 to n.
-// After calling this function, LOG[i] will be equals to floor(log2(i)).
-// O(n)
-void computeLog() {
-    LOG[0] = -1;
-    for (int i = 1; i <= L.size(); ++i) {
-        LOG[i] = LOG[i - 1] + !(i & (i - 1));
-    }
-}
-
-// Builds the spase table to hold the index of the node with
-// minimum level in Euler path.
-// O(n.log(n))
+/**
+ * Builds the spase table to hold the index of the node with
+ * the minimum depth in Euler tour array.
+ *
+ * Upon calling this function:
+ * @var LOG[i]      will be filled with floor(log2(i)).
+ * @var ST[j][i]    will be filled with the index of the node with the minimum depth
+ *                  in Eular tour array in range [i, i+(2^j)-1].
+ *
+ * Complexity:      O(n.log(n))
+ */
 void buildRMQ() {
-    for (int i = 0; i < L.size(); ++i) {
+    int i, j, x, y;
+    for (i = 0, LOG[0] = -1; i < E.size(); ++i) {
         ST[0][i] = i;
+        LOG[i + 1] = LOG[i] + !(i & (i + 1));
     }
-
-    for (int j = 1; (1 << j) <= L.size(); ++j) {
-        for (int i = 0; (i + (1 << j)) <= L.size(); ++i) {
-            int x = ST[j - 1][i];
-            int y = ST[j - 1][i + (1 << (j - 1))];
-            ST[j][i] = (L[x] < L[y]) ? x : y;
+    for (j = 1; (1 << j) <= E.size(); ++j) {
+        for (i = 0; (i + (1 << j)) <= E.size(); ++i) {
+            x = ST[j - 1][i];
+            y = ST[j - 1][i + (1 << (j - 1))];
+            ST[j][i] = (dep[E[x]] < dep[E[y]]) ? x : y;
         }
     }
 }
 
-// Builds the LCA structure.
-// O(n.log(n))
+/**
+ * Builds the LCA data structure.
+ *
+ * Complexity:  O(n.log(n))
+ */
 void buildLCA() {
     dfs();
     buildRMQ();
-    computeLog();
 }
 
-// Queries the sparse table to get the index of the node
-// with the minimum level in Euler path within the given range.
-// O(1)
+/**
+ * Queries the sparse table to get the index of the node
+ * with the minimum depth in Euler tour array within the given range.
+ *
+ * Complexity:  O(1)
+ */
 int query(int l, int r) {
-    if (l > r) {
-        swap(l, r);
-    }
-
+    if (l > r) swap(l, r);
     int g = LOG[r - l + 1];
     int x = ST[g][l];
     int y = ST[g][r - (1 << g) + 1];
-
-    return (L[x] < L[y]) ? x : y;
+    return (dep[E[x]] < dep[E[y]]) ? x : y;
 }
 
-// Returns the lowest common ancestor of nodes u and v.
-// O(1)
+/**
+ * Computes the lowest common ancestor (LCA) of nodes u and v.
+ *
+ * Complexity:  O(1)
+ *
+ * @param u     the first node id.
+ * @param v     the second node id.
+ *
+ * @return      the LCA of the given nodes.
+ */
 int getLCA(int u, int v) {
     return E[query(F[u], F[v])];
 }
 
-// Returns the distance between any given pair of nodes
-// O(getLCA(u, v)) = O(log(1))
+/**
+ * Computes the distance between the given pair of nodes: u and v.
+ *
+ * Complexity:  O(1)
+ *
+ * @param u     the first node id.
+ * @param v     the second node id.
+ *
+ * @return      the distance between the given nodes.
+ */
 int getDistance(int u, int v) {
-    return dis[u] + dis[v] - 2 * dis[getLCA(u, v)];
+    return dep[u] + dep[v] - 2 * dep[getLCA(u, v)];
 }
 
 // Example
