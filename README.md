@@ -2,6 +2,9 @@
 
 C++ code library contains useful algorithms for competitive programming.
 
+#### PDF Version
+You can download an easy printable minified PDF version of this library from [here](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/Momentum%20Library.pdf).
+
 ## Content
 
 A brief explanation to each of the following topics will be added soon, hopefully.
