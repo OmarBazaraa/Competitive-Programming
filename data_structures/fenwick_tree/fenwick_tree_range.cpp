@@ -1,7 +1,14 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
 const int N = (1 << 17);
 
 int n;
 
+/**
+ * Regular Fenwick tree class.
+ */
 class fenwick_tree {
     int BIT[N];
 
@@ -10,6 +17,9 @@ public:
         memset(BIT, 0, sizeof(BIT));
     }
 
+    /**
+     * Updates the given index by the given value.
+     */
     void update(int idx, int val) {
         while (idx <= n) {
             BIT[idx] += val;
@@ -17,6 +27,9 @@ public:
         }
     }
 
+    /**
+     * Returns the sum of values from 1 to the given index.
+     */
     int operator[](int idx) {
         int res = 0;
         while (idx > 0) {
@@ -27,11 +40,16 @@ public:
     }
 };
 
+/**
+ * Fenwick tree class with range updates.
+ */
 class range_fenwick_tree {
     fenwick_tree M, C;
 
 public:
-    // Updates the range from l to r with the given value.
+    /**
+     * Updates the range from l to r with the given value.
+     */
     void update(int l, int r, int val) {
         M.update(l, val);
         M.update(r + 1, -val);
@@ -39,7 +57,9 @@ public:
         C.update(r + 1, val * r);
     }
 
-    // Returns the sum of values from 1 to the given index.
+    /**
+     * Returns the sum of values from 1 to the given index.
+     */
     int operator[](int idx) {
         return idx * M[idx] + C[idx];
     }
