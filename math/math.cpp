@@ -63,7 +63,6 @@ int power(int base, int exp, int mod) {
     return ans;
 }
 
-
 // Returns ((base^exp) mod m) using recursive fast power algorithm.
 // Note that if (base=0, exp=0) is passed to the function it will return 1.
 // O(log(exp))

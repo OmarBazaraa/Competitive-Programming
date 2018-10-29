@@ -33,7 +33,7 @@ void bfs(int u) {
         q.pop();
         
         for (int v : edges[u]) {
-            if (vis[u]++ == 0) {
+            if (vis[v]++ == 0) {
                 q.push(v);
             }
         }
