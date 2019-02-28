@@ -83,9 +83,10 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- [Modular Inverse](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L80)
 	- [Combinations (nCr)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L88)
 	- [Pascal Triangle](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L103)
-	- [Check Integer Primality](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L113)
-	- [Generate Prime Numbers (using Sieve of Eratosthenes' algorithm)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L126)
-	- [Generate Divisors (single/bulk operation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L144)
+	- [Check Integer Primality](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L149)
+	- [Check Integer Primality using Miller Rabin](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L113)
+	- [Generate Prime Numbers (using Sieve of Eratosthenes' algorithm)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L181)
+	- [Generate Divisors (single/bulk operation)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/math.cpp#L198)
 		- All divisors
 		- Prime divisors
 - [Matrix Operations](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/math)
