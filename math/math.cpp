@@ -2,6 +2,8 @@
 
 using namespace std;
 
+typedef long long Long;
+
 const int N = 1010;
 const int MOD = 1e9 + 7;
 
@@ -50,14 +52,14 @@ pair<int, int> extendedEuclid(int a, int b) {
 // Returns ((base^exp) mod m) using iterative fast power algorithm
 // Note that if (base=0, exp=0) is passed to the function it will return 1.
 // O(log(exp))
-int power(int base, int exp, int mod) {
-    int ans = 1;
-    base %= mod;
+Long power(Long base, Long exp, Long mod) {
+    Long ans = 1;
+    base %= MOD;
 
     while (exp > 0) {
-        if (exp & 1) ans = (ans * base) % mod;
+        if (exp & 1) ans = (ans * base) % MOD;
         exp >>= 1;
-        base = (base * base) % mod;
+        base = (base * base) % MOD;
     }
 
     return ans;
@@ -66,22 +68,22 @@ int power(int base, int exp, int mod) {
 // Returns ((base^exp) mod m) using recursive fast power algorithm.
 // Note that if (base=0, exp=0) is passed to the function it will return 1.
 // O(log(exp))
-int power_rec(int base, int exp, int mod) {
+Long power_rec(Long base, Long exp) {
     if (exp == 0) {
         return 1;
     }
 
-    int p = power_rec((base * base) % mod, exp >> 1, mod);
+    Long p = power_rec((base * base) % MOD, exp >> 1);
 
-    return (exp & 1) ? (p * base) % mod : p;
+    return (exp & 1) ? (p * base) % MOD : p;
 }
 
-// Returns the modular inverse of the given number modulo m.
-// (i.e. (a * mod_inverse(a)) == 1 (mod m)).
-// Note that the function works correctly only if m is a prime number.
-// O(log(m))
-int modInverse(int a, int m) {
-    return power(a, m - 2, m);
+// Returns the modular inverse of the given number modulo MOD.
+// (i.e. (a * mod_inverse(a)) == 1 (mod MOD)).
+// Note that the function works correctly only if MOD is a prime number.
+// O(log(MOD))
+Long modInverse(Long a) {
+    return power(a, MOD - 2);
 }
 
 // Returns n choose r.
@@ -119,6 +121,55 @@ bool isPrime(int n) {
     for (int i = 3; i * i <= n; i += 2)
         if (n % i == 0)
             return 0;
+    return 1;
+}
+
+// Probabilistic primality check using Miller Rabin algorithm.
+// Returns false if the given number 'n' is a composite number, true if it is a probable prime.
+bool millerRabin(Long a, Long k, Long q, Long n) {
+    Long x = power(a, k, n);
+
+    if (x == 1) {
+        return 1;
+    }
+
+    while (k--) {
+        if (x == n - 1) {
+            return 1;
+        }
+
+        x = (x * x) % n;
+    }
+
+    return 0;
+}
+
+// Returns whether the given number is prime or not using a probabilistic method.
+// O(t.log(n))
+bool isPrimeMillerRabin(Long n, Long t) {
+    if (n == 2)
+        return 1;
+
+    if (n < 2 || n % 2 == 0)
+        return 0;
+
+    // Compute coefficients k, q such that "n - 1 = power(2, k) * q"
+    Long k = 0;
+    Long q = n - 1;
+    while ((q & 1) == 0) {
+        k++;
+        q >>= 1;
+    }
+
+    // Probabilistic primality check for 't' times
+    while (t--) {
+        a = 2 + rand() % (n - 2);
+
+        if (!millerRabin()) {
+            return 0;
+        }
+    }
+
     return 1;
 }
 
