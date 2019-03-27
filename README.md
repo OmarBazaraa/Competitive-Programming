@@ -62,7 +62,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 		- [Floyd Warshal's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/shortest_path/floyd_warshal.cpp)
 - [Minimum Spanning Tree](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/minimum_spanning_tree)
 	- [Kruskal's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/minimum_spanning_tree/kruskal.cpp)
-	- Prim's Algorithm **<i>(comming soon)</i>**
+	- [Prim's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/minimum_spanning_tree/prim.cpp)
 - [Strongly Connected Components (SCC)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/strongly_connected_components)
 	- [Kosaraju's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/graphs/strongly_connected_components/kosaraju.cpp)
 - [Lowest Common Ancestor (LCA)](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/graphs/lowest_common_ancestor)
