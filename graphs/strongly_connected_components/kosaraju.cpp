@@ -14,7 +14,7 @@ vector<int> sortedNodes;    // List of topologically sorted nodes
 vector<vector<int>> scc;	// Strongly connected components
 
 // Sorts the nodes of the given directed graph in a topological order, and
-// fills the result in the given (nodes vector) vector but in reversed direction.
+// fills the result in the given "nodes" vector but in reversed direction.
 void topoSortDFS(int u, vector<int>* edges, vector<int>& nodes) {
 	vis[u] = 1;
 

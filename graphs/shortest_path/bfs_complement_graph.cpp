@@ -45,7 +45,7 @@ void bfs(int u) {
                 continue;
             }
 
-            dis[v] = dis[s] + 1;
+            dis[v] = dis[u] + 1;
             q.push(v);
         }
 

@@ -8,13 +8,13 @@ const int N = 100100, LOG_N = 20;
 // E[i]     : the i-th node in Euler path.
 // F[i]     : the index of the first occurence of the node i in Euler array.
 // LOG[i]   : floor(log2(i)).
-// ST[j][i] : the index of the node with the minimum depth in Eular tour array in range [i, i+(2^j)-1].
+// ST[j][i] : the index of the node with the minimum depth in Euler tour array in range [i, i+(2^j)-1].
 int n, m, u, v, dep[N];
 int F[N], ST[LOG_N][N << 1], LOG[N << 1];
 vector<int> E, edges[N];
 
 /**
- * Runs an Eular tour on the tree, and fills the global variables
+ * Runs an Euler tour on the tree, and fills the global variables
  * with the appropriate values.
  *
  * Upon calling this function:

@@ -83,7 +83,7 @@ Long power_rec(Long base, Long exp) {
 // Note that the function works correctly only if MOD is a prime number.
 // O(log(MOD))
 Long modInverse(Long a) {
-    return power(a, MOD - 2);
+    return power(a, MOD - 2, MOD);
 }
 
 // Returns n choose r.
@@ -163,9 +163,9 @@ bool isPrimeMillerRabin(Long n, Long t) {
 
     // Probabilistic primality check for 't' times
     while (t--) {
-        a = 2 + rand() % (n - 2);
+        Long a = 2 + rand() % (n - 2);
 
-        if (!millerRabin()) {
+        if (!millerRabin(a, k, q, n)) {
             return 0;
         }
     }
