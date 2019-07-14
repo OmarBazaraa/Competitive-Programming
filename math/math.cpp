@@ -54,12 +54,12 @@ pair<int, int> extendedEuclid(int a, int b) {
 // O(log(exp))
 Long power(Long base, Long exp, Long mod) {
     Long ans = 1;
-    base %= MOD;
+    base %= mod;
 
     while (exp > 0) {
-        if (exp & 1) ans = (ans * base) % MOD;
+        if (exp & 1) ans = (ans * base) % mod;
         exp >>= 1;
-        base = (base * base) % MOD;
+        base = (base * base) % mod;
     }
 
     return ans;

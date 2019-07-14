@@ -14,7 +14,7 @@ void buildST() {
     LOG[0] = -1;
     for (int i = 0; i < n; ++i) {
         ST[0][i] = i;
-        LOG[i + 1] = LOG[i] + !(i & (i - 1));
+        LOG[i + 1] = LOG[i] + !(i & (i + 1));
     }
 
     for (int j = 1; (1 << j) <= n; ++j) {
