@@ -59,7 +59,7 @@ public:
     /**
      * @return the size of the queue.
      */
-    T size() {
+    size_t size() {
         return qu.size();
     }
 };
