@@ -13,7 +13,7 @@ class monotonic_queue {
 
 public:
     /**
-     * Pushes a new element in the queue.
+     * Pushes a new element to the end of this queue.
      * 
      * @param v the new element to be pushed.
      */
@@ -38,28 +38,28 @@ public:
     /**
      * @return the front element of the queue.
      */
-    T front() {
+    T front() const {
         return qu.front();
     }
 
     /**
      * @return the maximum element of the queue.
      */
-    T max() {
+    T max() const {
         return mx.front();
     }
 
     /**
      * @return the minimum element of the queue.
      */
-    T min() {
+    T min() const {
         return mn.front();
     }
 
     /**
      * @return the size of the queue.
      */
-    size_t size() {
+    size_t size() const {
         return qu.size();
     }
 };
