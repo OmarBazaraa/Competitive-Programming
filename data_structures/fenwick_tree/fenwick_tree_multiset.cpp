@@ -2,9 +2,18 @@
 
 using namespace std;
 
-const int N = (1 << 17);    // Must be power of 2
+// The maximum limit of the multiset.
+// Must be power of two.
+const int N = (1 << 17);
 
-// 1-indexed multiset that stores positive integers only.
+/**
+ * Multiset that store positive integers in the range of [1, N].
+ * The multiset is implemented using Fenwick tree.
+ * 
+ * Note that the multiset is is 1-indexed.
+ * 
+ * The most complex function in this class is done in time complexity of O(log(N)).
+ */
 class fenwick_multiset {
     int cnt, BIT[N + 1];
 
@@ -25,41 +34,60 @@ class fenwick_multiset {
     }
 
 public:
-    // Default constructor.
+    /**
+     * Constructs a new Fenwick multiset.
+     */
     fenwick_multiset() {
         clear();
     }
 
-    // Clears and removes all the elements from the multiset.
+    /**
+     * Clears and removes all the elements from the multiset.
+     */
     void clear() {
         cnt = 0;
         memset(BIT, 0, sizeof(BIT));
     }
 
-    // Returns the total number of integers in the multiset.
+    /**
+     * Returns the total number of integers stored in the multiset.
+     * 
+     * @return the size of the multiset.
+     */
     int size() {
         return cnt;
     }
 
-    // Returns the number of occurrence of the given integer in the multiset.
+    /**
+     * Counts the number of occurrence of an integer in the multiset.
+     * 
+     * @param val the integer to count its occurrences.
+     * 
+     * @return how many times the given integer is stored in the multiset.
+     */
     int count(int val) {
-        if (val < 1 || val > N)
+        if (val < 1 || val > N) {
             return 0;
-
+        }
         return get(val) - get(val - 1);
     }
 
-    // Inserts a new integer value x (1 <= x <= N) to the multiset.
+    /**
+     * Inserts a new integer to the multiset.
+     * The value of the inserted integer should be in the range of [1, N].
+     * 
+     * @param val the integer to insert.
+     */
     void insert(int val) {
-        if (val < 1 || val > N) {
-            throw exception("ERROR :: invalid value to insert");
-        }
-
         update(val, 1);
         cnt++;
     }
 
-    // Removes the given integer from the multiset if exists.
+    /**
+     * Removes one occurrence of an integer from the multiset if exists.
+     * 
+     * @param val the integer to remove.
+     */
     void remove(int val) {
         if (count(val) > 0) {
             update(val, -1);
@@ -67,13 +95,16 @@ public:
         }
     }
 
-    // Returns integer from the multiset by its index.
-    // Note that the multiset is 1-indexed.
+    /**
+     * Returns an integer from the multiset by its index.
+     * Note that the multiset is kept sorted in non-descending order.
+     * The index should be in the range of [1, {@link fenwick_multiset#size()}].
+     * 
+     * @param idx the index of the integer to return.
+     * 
+     * @return the idx-th smallest integer in the multiset.
+     */
     int operator[](int idx) {
-        if (idx < 1 || idx > cnt) {
-            throw out_of_range("ERROR :: trying to access an out of range element");
-        }
-
         int val = 0;
 
         for (int len = (N >> 1); len; len >>= 1)
@@ -83,9 +114,16 @@ public:
         return val + 1;
     }
 
-    // Returns the smallest index of an integer with value
-    // greater than or equals to the given number.
-    // Note that indices are referenced as if all elements are sorted by their value.
+    /**
+     * Returns the index of the first integer with value greater
+     * than or equals to the given value.
+     * Note that the multiset is kept sorted in non-descending order.
+     * 
+     * @param val the value to returns its lower bound index.
+     * 
+     * @return the specified index; or {@code fenwick_multiset#size() + 1}
+     *         if such integer does not exist.
+     */
     int lower_bound(int val) {
         if (val <= 0)
             return 1;
@@ -95,9 +133,16 @@ public:
         return get(val - 1) + 1;
     }
 
-    // Returns the smallest index of an integer with value
-    // greater than to the given number.
-    // Note that indices are referenced as if all elements are sorted by their value.
+    /**
+     * Returns the index of the first integer with value greater
+     * than the given value.
+     * Note that the multiset is kept sorted in non-descending order.
+     * 
+     * @param val the value to returns its upper bound index.
+     * 
+     * @return the specified index; or {@code fenwick_multiset#size() + 1}
+     *         if such integer does not exist.
+     */
     int upper_bound(int val) {
         return lower_bound(val + 1);
     }
