@@ -1,9 +1,16 @@
 const int N = 100100;
 
+// The total number of sets.
 int setsCount;
+
+// DSU related variables. Do not access them directly.
 int par[N], siz[N];
 
-// Initializes an n-sets.
+/**
+ * Initializes the DSU with "n" independent sets.
+ * 
+ * @param n the number of sets to initialize.
+ */
 void init(int n) {
 	setsCount = n;
 
@@ -13,18 +20,40 @@ void init(int n) {
 	}
 }
 
-// Returns the id the given element u.
+/**
+ * Finds the set id of an element.
+ * 
+ * @param u the element to find its set.
+ * 
+ * @return the set id of the given element.
+ */
 int findSet(int u) {
 	return u == par[u] ? u : par[u] = findSet(par[u]);
 }
 
-// Checks if the given elements u and v are in the same set or not.
+/**
+ * Checks whether two elements are in the same set.
+ * 
+ * @param u the first element.
+ * @param v the second element.
+ * 
+ * @return {@code true} if elements "u" and "v" are in the same set;
+ * 		   {@code false} otherwise.
+ */
 bool sameSet(int u, int v) {
 	return findSet(u) == findSet(v);
 }
 
-// Unions both sets of the given elements u and v.
-// Returns false if the two elements were in the same set, true otherwise.
+/**
+ * Unions two sets together into one set.
+ * 
+ * @param u an element in the first set.
+ * @param v an element in the second set.
+ * 
+ * @return {@code true} if the set having element "u" is merged with the 
+ * 		   set having element "v"; {@code false} if elements "u" and "v" were
+ * 		   already in the same set.
+ */
 bool unionSets(int u, int v) {
 	u = findSet(u);
 	v = findSet(v);
@@ -39,7 +68,13 @@ bool unionSets(int u, int v) {
 	return true;
 }
 
-// Returns the size of the set of the given element u.
+/**
+ * Returns the number of elements of a set.
+ * 
+ * @param u an element in the required set.
+ * 
+ * @return the size of the set having the given element "u".
+ */
 int getSetSize(int u) {
 	return siz[findSet(u)];
 }
