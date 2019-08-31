@@ -93,7 +93,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 		- Prime divisors
 - [Matrix Operations](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/math)
 	- [Matrix Class](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/matrix.cpp)
-	- Matrix Power **<i>(comming soon)</i>**
+	- [Matrix Power](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/math/matrix_minified.cpp)
 
 ### Geomerty
 Will be added soon...
