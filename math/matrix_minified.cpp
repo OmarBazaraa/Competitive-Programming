@@ -35,7 +35,7 @@ public:
      *
      * @param n    the number of rows in the matrix.
      * @param m    the number of columns in the matrix.
-     * @param data the data to fill the matrix with
+     * @param data the data to fill the matrix with.
      */
     matrix(int n = 1, int m = 1, const vector<int>& data = {}) {
         rows = n;
@@ -46,7 +46,7 @@ public:
     /**
      * Fills the matrix with the given data.
      *
-     * @param data the data to fill the matrix with
+     * @param data the data to fill the matrix with.
      */
     void set(const vector<int>& data) {
     	int k = 0;
@@ -68,7 +68,7 @@ public:
     }
 
     /**
-     * Multiplies this matrix by the given matrix.
+     * Multiplies this matrix by the given one.
      *
      * @param rhs the matrix on the right hand side.
      *
@@ -90,7 +90,7 @@ public:
 	 *
 	 * @param exp the exponent to raise the matrix with.
 	 *
-	 * @return the resultant matrix after power.
+	 * @return the resultant matrix after exponentiation.
 	 */
     matrix operator^(long long exp) const {
         matrix base = *this;
