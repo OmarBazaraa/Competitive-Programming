@@ -49,15 +49,15 @@ public:
      * @param data the data to fill the matrix with.
      */
     void set(const vector<int>& data) {
-    	int k = 0;
-    	for (int i = 0; i < rows; ++i) {
-    		for (int j = 0; j < cols; ++j) {
-    			if (k >= data.size()) {
-    				return;
-    			}
-    			mat[i][j] = data[k++];
-    		}
-    	}
+        int k = 0;
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < cols; ++j) {
+                if (k >= data.size()) {
+                    return;
+                }
+                mat[i][j] = data[k++];
+            }
+        }
     }
 
     /**
@@ -85,13 +85,13 @@ public:
         return res;
     }
 
-	/**
-	 * Raises this matrix to the power of a certain number.
-	 *
-	 * @param exp the exponent to raise the matrix with.
-	 *
-	 * @return the resultant matrix after exponentiation.
-	 */
+    /**
+     * Raises this matrix to the power of a certain number.
+     *
+     * @param exp the exponent to raise the matrix with.
+     *
+     * @return the resultant matrix after exponentiation.
+     */
     matrix operator^(long long exp) const {
         matrix base = *this;
         matrix res = eye(rows);
@@ -113,22 +113,22 @@ public:
  * large values of "n" (i.e. 1 <= n <= 10^18).
  */
 int main() {
-	long long n;
-	cin >> n;
+    long long n;
+    cin >> n;
 
-	matrix A(2, 2, {
-		0, 1,
-		1, 1
-	});
+    matrix A(2, 2, {
+        0, 1,
+        1, 1
+    });
 
-	matrix b(2, 1, {
-		0,
-		1
-	});
+    matrix b(2, 1, {
+        0,
+        1
+    });
 
-	matrix r = (A ^ (n - 1)) * b;
+    matrix r = (A ^ (n - 1)) * b;
 
-	cout << r(1, 0) << endl;
+    cout << r(1, 0) << endl;
 
-	return 0;
+    return 0;
 }
