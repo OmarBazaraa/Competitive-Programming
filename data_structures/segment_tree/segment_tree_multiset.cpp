@@ -4,55 +4,93 @@ using namespace std;
 
 const int N = 1e9;
 
-// Segment tree node struct
+/**
+ * Segment tree node struct
+ */
 struct node {
     int size;
-    node *childL, *childR;
+    node* childL, * childR;
 
+    /**
+     * Constructs an empty node.
+     */
     node() {
         size = 0;
         childL = childR = this;
     }
 
+    /**
+     * Constructs a new node.
+     *
+     * @param s the size of the node.
+     * @param l the left child of this node.
+     * @param r the right child of this node.
+     */
     node(int s, node* l, node* r) {
         size = s;
         childL = l;
         childR = r;
     }
 
+    /**
+     * Update the size of this node.
+     */
     void update() {
         size = childL->size + childR->size;
     }
 };
 
-// 0-indexed multiset that stores integers in range of [-N, N].
+/**
+ * Multiset that store integers in the range of [-N, N].
+ * The multiset is implemented using segment tree.
+ *
+ * Note that the multiset is is 0-indexed.
+ *
+ * The most complex function in this class is done in time complexity of O(log(N)).
+ */
 class segment_multiset {
-    node *nil, *root;
+    node* nil, * root;
 
 public:
-    // Default constructor.
+    /**
+     * Constructs a new multiset.
+     */
     segment_multiset() {
         root = nil = new node();
     }
 
-    // Destructor
+    /**
+     * Destruct this multiset.
+     */
     ~segment_multiset() {
         clear();
         delete nil;
     }
 
-    // Clears all the inserted elements from the multiset.
+    /**
+     * Clears and removes all the elements in this multiset.
+     */
     void clear() {
         destroy(root);
         root = nil;
     }
 
-    // Returns the total number of integers in the multiset.
+    /**
+     * Returns the total number of integers in the multiset.
+     *
+     * @return the size of the multiset.
+     */
     int size() {
         return root->size;
     }
 
-    // Returns the number of occurrence of the given integer in the multiset.
+    /**
+     * Counts the number of occurrences of the an integer in the multiset.
+     *
+     * @param val the integer to count its occurrences.
+     *
+     * @return the number of occurrences of the given integer.
+     */
     int count(int val) {
         node* cur = root;
         int l = -N, r = N;
@@ -72,20 +110,40 @@ public:
         return cur->size;
     }
 
-    // Inserts a new integer value to the multiset.
+    /**
+     * Insert a number of occurrences of an integer to the multiset.
+     *
+     * @param val the integer to insert.
+     * @param cnt the number of occurrences to insert (note: cnt > 0).
+     */
     void insert(int val, int cnt = 1) {
         assert(cnt > 0);
         insert(root, val, cnt, -N, N);
     }
 
-    // Erases "cnt" occurances of the given integer from the multiset if exists.
-    // Returns the number of deleted elements.
+    /**
+     * Erases a number of occurrences of an integer from the multiset if exists.
+     *
+     * @param val the integer to erase.
+     * @param cnt the number of occurrences to erase (note: cnt > 0).
+     *
+     * @return the number of deleted elements.
+     */
     int erase(int val, int cnt = 1) {
         assert(cnt > 0);
         return erase(root, val, cnt, -N, N);
     }
 
-    // Returns integer from the multiset by its index (0-indexed).
+    /**
+     * Returns an integer in the multiset by its index.
+     *
+     * Note that the multiset is kept sorted in non-decreasing order,
+     * and is 0-indexed.
+     *
+     * @param idx the index.
+     *
+     * @return the "idx" smallest element currently in the multiset.
+     */
     int operator[](int idx) {
         if (idx < 0 || idx >= root->size) {
             throw out_of_range("ERROR :: trying to access an out of range element");
@@ -110,9 +168,18 @@ public:
         return r;
     }
 
-    // Returns the smallest index of an integer with value
-    // greater than or equals to the given number.
-    // Note that indices are referenced as if all elements are sorted by their value.
+    /**
+     * Returns the index of the first integer with value greater
+     * than or equals to the given value.
+     *
+     * Note that the multiset is kept sorted in non-decreasing order,
+     * and is 0-indexed.
+     *
+     * @param val the value to returns its lower bound index.
+     *
+     * @return the specified index; or {@code segment_multiset#size() + 1}
+     *         if such integer does not exist.
+     */
     int lower_bound(int val) {
         int ret = 0;
 
@@ -135,16 +202,33 @@ public:
         return ret;
     }
 
-    // Returns the smallest index of an integer with value
-    // greater than to the given number.
-    // Note that indices are referenced as if all elements are sorted by their value.
+    /**
+     * Returns the index of the first integer with value greater
+     * than the given value.
+     *
+     * Note that the multiset is kept sorted in non-decreasing order,
+     * and is 0-indexed.
+     *
+     * @param val the value to returns its upper bound index.
+     *
+     * @return the specified index; or {@code segment_multiset#size() + 1}
+     *         if such integer does not exist.
+     */
     int upper_bound(int val) {
         return lower_bound(val + 1);
     }
 
 private:
 
-    // Inserts a new integer value to the multiset.
+    /**
+     * Insert a number of occurrences of an integer to the multiset.
+     *
+     * @param root the current root of the segment tree.
+     * @param val  the integer to insert.
+     * @param cnt  the number of occurrences to insert (note: cnt > 0).
+     * @param l    the left index of the range of the current segment.
+     * @param r    the right index of the range of the current segment.
+     */
     void insert(node*& root, int val, int cnt, int l, int r) {
         if (val < l || val > r) {
             return;
@@ -166,8 +250,17 @@ private:
         insert(root->childR, val, cnt, mid + 1, r);
     }
 
-    // Erases "cnt" occurances of the given integer from the multiset if exists.
-    // Returns the number of deleted elements.
+    /**
+     * Erases a number of occurrences of an integer from the multiset if exists.
+     *
+     * @param root the current root of the segment tree.
+     * @param val  the integer to erase.
+     * @param cnt  the number of occurrences to erase (note: cnt > 0).
+     * @param l    the left index of the range of the current segment.
+     * @param r    the right index of the range of the current segment.
+     *
+     * @return the number of deleted elements.
+     */
     int erase(node*& root, int val, int cnt, int l, int r) {
         if (val < l || val > r) {
             return 0;
@@ -188,11 +281,18 @@ private:
         ret += erase(root->childL, val, cnt, l, mid);
         ret += erase(root->childR, val, cnt, mid + 1, r);
 
-        return remove(root, ret);        
+        return remove(root, ret);
     }
 
-    // Removes "cnt" occurances of from given root node and destories it if
-    // its size become smaller than or equals zero.
+    /**
+     * Removes a number of occurrences of an integer from a node and destroys it
+     * if it becomes empty.
+     *
+     * @param root the node to remove from.
+     * @param cnt  the number of occurrences to erase (note: cnt > 0).
+     *
+     * @return the number of deleted elements.
+     */
     int remove(node*& root, int cnt) {
         int ret = min(cnt, root->size);
 
@@ -206,13 +306,13 @@ private:
         return ret;
     }
 
-    // Clears the given segment tree and releases the allocated memory.
-    // O(n)
+    /**
+     * Clears the given segment tree and releases the allocated memory.
+     *
+     * @param root the root of the sub-tree to destroy.
+     */
     void destroy(node* root) {
-        if (root == nil) {
-            return;
-        }
-
+        if (root == nil) return;
         destroy(root->childL);
         destroy(root->childR);
         delete root;
