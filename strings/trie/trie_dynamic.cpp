@@ -2,51 +2,68 @@
 
 using namespace std;
 
-const int N = 100100, A = 255;
+// The size of the alphabet.
+const int ALPA_SIZE = 255;
 
-// Trie node struct
+/**
+ * Trie node struct.
+ */
 struct node {
-    node* edges[A] = {};
-
+    node* edges[ALPA_SIZE] = {};
     int wordsCount = 0;     // Number of words sharing this node
-    int wordsEndCount = 0;
+    int wordsEndCount = 0;  // Number of words ending at this node
+
+    static int count;
+
+    node() {
+        count++;
+    }
+
+    ~node() {
+        count--;
+    }
 };
 
+int node::count = 0;
+
+/**
+ * Trie class to insert, erase, and search for words in time complexity of O(n).
+ */
 class trie {
-    node* root;
-
-    // Frees up memory recourses of the trie.
-    // O(n)
-    void free(node* root) {
-        if (root == NULL) {
-            return;
-        }
-
-        for (int i = 0; i < A; ++i) {
-            free(root->edges[i]);
-        }
-
-        delete root;
-    }
+    node* root;             // The root of the trie.
+    int nodesCount;         // The number of nodes in the trie.
+    int distinctWordsCount; // The number of distinct word in the trie.
 
 public:
-    int nodesCount;
-    int distinctWordsCount;
-
-    // Constructor.
+    /**
+     * Constructs a new empty trie.
+     */
     trie() {
         root = new node();
-        nodesCount = 0;
-        distinctWordsCount = 0;
+        nodesCount = distinctWordsCount = 0;
     }
 
-    // Destructor.
+    /**
+     * Destructs this trie.
+     */
     ~trie() {
-        free(root);
+        destroy(root);
     }
 
-    // Inserts a new word in the trie.
-    // O(n)
+    /**
+     * Clears and removes all the words in this trie.
+     */
+    void clear() {
+        destroy(root);
+        root = new node();
+        nodesCount = distinctWordsCount = 0;
+    }
+
+    /**
+     * Inserts a new word in the trie.
+     *
+     * @param str the word to insert.
+     */
     void insert(const char* str) {
         node* cur = root;
 
@@ -65,44 +82,103 @@ public:
         distinctWordsCount += (++cur->wordsEndCount == 1);
     }
 
-    // Removes a word from the trie assuming its existance.
-    // O(n)
+    /**
+     * Removes a word from the trie assuming that it was added before.
+     *
+     * @param str the word to erase.
+     */
     void remove(const char* str) {
         node* cur = root;
 
         for (int i = 0; str[i]; ++i) {
-            node* nxt = cur->edges[str[i]];
+            cur->wordsCount--;
+
+            node* nxt = (cur->edges[str[i]]);
+
+            if (nxt->wordsCount == 1) {
+                destroy(nxt);
+                distinctWordsCount--;
+                cur->edges[str[i]] = NULL;
+                return;
+            }
+
             cur = nxt;
         }
 
         cur->wordsCount--;
-        distinctWordsCount -= (--cur->wordsEndCount == 0);
+        cur->wordsEndCount--;
     }
 
-    // Searches for the given word in the trie.
-    // O(n)
-    bool search(const char* str) {
+    /**
+     * Searches for a word in the trie.
+     *
+     * @param str the word to search for.
+     *
+     * @return the number of occurrences of the given word.
+     */
+    int search(const char* str) const {
+        node* cur = reach(str);
+        return cur != NULL ? cur->wordsEndCount : 0;
+    }
+
+    /**
+     * Counts the total number of words added into the trie
+     * that start with a given prefix.
+     *
+     * @param pre the prefix string.
+     *
+     * @return the number of words in the trie starting with the given prefix.
+     */
+    int getPrefixCount(const char* pre) const {
+        node* cur = reach(pre);
+        return cur != NULL ? cur->wordsCount : 0;
+    }
+
+    /**
+     * Returns the total number of distinct words added into the trie.
+     *
+     * @return the number of distinct words in the trie.
+     */
+    int getDistinctWordsCount() const {
+        return distinctWordsCount;
+    }
+
+private:
+
+    /**
+     * Follows the trie to reach the node representing the given string.
+     *
+     * @param str the string to reach.
+     *
+     * @return the node representing the given string; or {@code NULL} if not available.
+     */
+    node* reach(const char* str) const {
         node* cur = root;
 
         for (int i = 0; str[i]; ++i) {
             node* nxt = cur->edges[str[i]];
 
             if (nxt == NULL) {
-                return 0;
+                return NULL;
             }
 
             cur = nxt;
         }
 
-        return cur->wordsEndCount;
+        return cur;
     }
 
-    // Clears the trie and removes all the inserted words.
-    // O(n)
-    void clear() {
-        free(root);
-        root = new node();
-        nodesCount = 0;
-        distinctWordsCount = 0;
+    /**
+     * Clears the given trie and releases the allocated memory.
+     *
+     * @param root the root of the sub-tree to destroy.
+     */
+    void destroy(node* root) {
+        if (root == NULL) return;
+        for (int i = 0; i < ALPA_SIZE; ++i) {
+            destroy(root->edges[i]);
+        }
+        nodesCount--;
+        delete root;
     }
 };
