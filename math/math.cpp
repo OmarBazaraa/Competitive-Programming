@@ -16,12 +16,12 @@ const int N = 100100;
  */
 template<class T>
 T gcd(T a, T b) {
-	while (b) {
-		int tmp = a % b;
-		a = b;
-		b = tmp;
-	}
-	return a;
+    while (b) {
+        int tmp = a % b;
+        a = b;
+        b = tmp;
+    }
+    return a;
 }
 
 // =====================================================================================
@@ -36,7 +36,7 @@ T gcd(T a, T b) {
  */
 template<class T>
 T lcm(T a, T b) {
-	return a / gcd(a, b) * b;
+    return a / gcd(a, b) * b;
 }
 
 // =====================================================================================
@@ -52,16 +52,16 @@ T lcm(T a, T b) {
  */
 template<class T>
 pair<T, T> extendedEuclid(T a, T b) {
-	if (b == 0) {
-		return {1, 0};
-	}
+    if (b == 0) {
+        return {1, 0};
+    }
 
-	pair<T, T> p = extendedEuclid(b, a % b);
+    pair<T, T> p = extendedEuclid(b, a % b);
 
-	T s = p.first;
-	T t = p.second;
+    T s = p.first;
+    T t = p.second;
 
-	return {t, s - t * (a / b)};
+    return {t, s - t * (a / b)};
 }
 
 // =====================================================================================
@@ -80,16 +80,16 @@ pair<T, T> extendedEuclid(T a, T b) {
  */
 template<class T>
 T power(T base, T exp, T mod) {
-	T ans = 1;
-	base %= mod;
+    T ans = 1;
+    base %= mod;
 
-	while (exp > 0) {
-		if (exp & 1) ans = (ans * base) % mod;
-		exp >>= 1;
-		base = (base * base) % mod;
-	}
+    while (exp > 0) {
+        if (exp & 1) ans = (ans * base) % mod;
+        exp >>= 1;
+        base = (base * base) % mod;
+    }
 
-	return ans;
+    return ans;
 }
 
 // =====================================================================================
@@ -109,7 +109,7 @@ T power(T base, T exp, T mod) {
  */
 template<class T>
 T modInverse(T a, T m) {
-	return power(a, m - 2, m);
+    return power(a, m - 2, m);
 }
 
 // =====================================================================================
@@ -125,13 +125,13 @@ T modInverse(T a, T m) {
  * @return "n" choose "r".
  */
 int nCr(int n, int r) {
-	if (n < r)
-		return 0;
+    if (n < r)
+        return 0;
 
-	if (r == 0)
-		return 1;
+    if (r == 0)
+        return 1;
 
-	return n * nCr(n - 1, r - 1) / r;
+    return n * nCr(n - 1, r - 1) / r;
 }
 
 // =====================================================================================
@@ -149,11 +149,11 @@ int fact[N];
  * @param mod the modulus.
  */
 void init(int n, int mod) {
-	fact[0] = 1;
+    fact[0] = 1;
 
-	for (int i = 1; i <= n; ++i) {
-		fact[i] = (fact[i - 1] * 1LL * i) % mod;
-	}
+    for (int i = 1; i <= n; ++i) {
+        fact[i] = (fact[i - 1] * 1LL * i) % mod;
+    }
 }
 
 /**
@@ -168,7 +168,7 @@ void init(int n, int mod) {
  * @return "n" choose "r".
  */
 int nCr(int n, int r, int mod) {
-	return (fact[n] * modInverse(fact[r] * 1LL * fact[n - r], mod + 0LL)) % mod;
+    return (fact[n] * modInverse(fact[r] * 1LL * fact[n - r], mod + 0LL)) % mod;
 }
 
 // =====================================================================================
@@ -186,9 +186,9 @@ int comb[N][N];
  * @param mod the modulus.
  */
 void buildPT(int n, int mod) {
-	for (int i = comb[0][0] = 1; i <= n; ++i)
-		for (int j = comb[i][0] = 1; j <= i; ++j)
-			comb[i][j] = (comb[i - 1][j] + comb[i - 1][j - 1]) % mod;
+    for (int i = comb[0][0] = 1; i <= n; ++i)
+        for (int j = comb[i][0] = 1; j <= i; ++j)
+            comb[i][j] = (comb[i - 1][j] + comb[i - 1][j - 1]) % mod;
 }
 
 // =====================================================================================
@@ -204,14 +204,14 @@ void buildPT(int n, int mod) {
  */
 template<class T>
 bool isPrime(T n) {
-	if (n < 2)
-		return 0;
-	if (n % 2 == 0)
-		return (n == 2);
-	for (int i = 3; i * i <= n; i += 2)
-		if (n % i == 0)
-			return 0;
-	return 1;
+    if (n < 2)
+        return 0;
+    if (n % 2 == 0)
+        return (n == 2);
+    for (int i = 3; i * i <= n; i += 2)
+        if (n % i == 0)
+            return 0;
+    return 1;
 }
 
 // =====================================================================================
@@ -227,23 +227,23 @@ bool isPrime(T n) {
  */
 template<class T>
 bool millerRabin(T k, T q) {
-	T n = (1LL << k) * q + 1;
-	T a = 2 + rand() % (n - 2);
-	T x = power(a, q, n);
+    T n = (1LL << k) * q + 1;
+    T a = 2 + rand() % (n - 2);
+    T x = power(a, q, n);
 
-	if (x == 1) {
-		return true;
-	}
+    if (x == 1) {
+        return true;
+    }
 
-	while (k--) {
-		if (x == n - 1) {
-			return true;
-		}
+    while (k--) {
+        if (x == n - 1) {
+            return true;
+        }
 
-		x = (x * x) % n;
-	}
+        x = (x * x) % n;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -259,30 +259,30 @@ bool millerRabin(T k, T q) {
  */
 template<class T>
 bool isPrimeMillerRabin(T n, int t = 10) {
-	if (n == 2) {
-		return 1;
-	}
+    if (n == 2) {
+        return 1;
+    }
 
-	if (n < 2 || n % 2 == 0) {
-		return 0;
-	}
+    if (n < 2 || n % 2 == 0) {
+        return 0;
+    }
 
-	// Compute coefficients k, q such that "n - 1 = power(2, k) * q"
-	T k = 0;
-	T q = n - 1;
-	while ((q & 1) == 0) {
-		k++;
-		q >>= 1;
-	}
+    // Compute coefficients k, q such that "n - 1 = power(2, k) * q"
+    T k = 0;
+    T q = n - 1;
+    while ((q & 1) == 0) {
+        k++;
+        q >>= 1;
+    }
 
-	// Apply probabilistic prime check for "t" times
-	while (t--) {
-		if (!millerRabin(k, q)) {
-			return false;
-		}
-	}
+    // Apply probabilistic prime check for "t" times
+    while (t--) {
+        if (!millerRabin(k, q)) {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 
 // =====================================================================================
@@ -298,16 +298,16 @@ bool prime[N];
  * Complexity: O(n.log(log(n)))
  */
 void generatePrimes(int n) {
-	memset(prime, true, sizeof(prime));
-	prime[0] = prime[1] = false;
+    memset(prime, true, sizeof(prime));
+    prime[0] = prime[1] = false;
 
-	for (int i = 2; i * i <= n; ++i) {
-		if (!prime[i]) continue;
+    for (int i = 2; i * i <= n; ++i) {
+        if (!prime[i]) continue;
 
-		for (int j = i * i; j <= n; j += i) {
-			prime[j] = false;
-		}
-	}
+        for (int j = i * i; j <= n; j += i) {
+            prime[j] = false;
+        }
+    }
 }
 
 // =====================================================================================
@@ -322,13 +322,13 @@ vector<int> primeDivs[N];
  * Complexity: O(n.log(log(n)))
  */
 void generatePrimeDivisors(int n) {
-	for (int i = 2; i <= n; ++i) {
-		if (primeDivs[i].size()) continue;
+    for (int i = 2; i <= n; ++i) {
+        if (primeDivs[i].size()) continue;
 
-		for (int j = i; j <= n; j += i) {
-			primeDivs[j].push_back(i);
-		}
-	}
+        for (int j = i; j <= n; j += i) {
+            primeDivs[j].push_back(i);
+        }
+    }
 }
 
 // =====================================================================================
@@ -344,15 +344,15 @@ void generatePrimeDivisors(int n) {
  */
 template<class T>
 vector<T> getDivisors(T n) {
-	vector<T> divs;
-	for (T i = 1; i * i <= n; ++i) {
-		if (n % i != 0) continue;
-		divs.push_back(i);
-		if (i * i == n) continue;
-		divs.push_back(n / i);
-	}
-	sort(divs.begin(), divs.end());
-	return divs;
+    vector<T> divs;
+    for (T i = 1; i * i <= n; ++i) {
+        if (n % i != 0) continue;
+        divs.push_back(i);
+        if (i * i == n) continue;
+        divs.push_back(n / i);
+    }
+    sort(divs.begin(), divs.end());
+    return divs;
 }
 
 // =====================================================================================
@@ -367,9 +367,9 @@ vector<int> divs[N];
  * Complexity: O(n.log(n))
  */
 void generateDivisors(int n) {
-	for (int i = 1; i <= n; ++i)
-		for (int j = i; j <= n; j += i)
-			divs[j].push_back(i);
+    for (int i = 1; i <= n; ++i)
+        for (int j = i; j <= n; j += i)
+            divs[j].push_back(i);
 }
 
 // =====================================================================================
