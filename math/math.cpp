@@ -127,7 +127,7 @@ bool isPrime(int n) {
 // Probabilistic primality check using Miller Rabin algorithm.
 // Returns false if the given number 'n' is a composite number, true if it is a probable prime.
 bool millerRabin(Long a, Long k, Long q, Long n) {
-    Long x = power(a, k, n);
+    Long x = power(a, q, n);
 
     if (x == 1) {
         return 1;
