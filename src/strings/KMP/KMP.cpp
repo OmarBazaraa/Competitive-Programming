@@ -4,7 +4,7 @@ using namespace std;
 
 const int N = 100100;
 
-// KMP longest match array. Don't access it directly
+// KMP longest match array.
 int F[N];
 
 /**

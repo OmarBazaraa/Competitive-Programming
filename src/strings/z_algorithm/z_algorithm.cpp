@@ -4,7 +4,7 @@ using namespace std;
 
 const int N = 100100;
 
-// Z-Algorithm longest match array. Don't access it directly
+// Z-Algorithm longest match array.
 int Z[N];
 
 /**
