@@ -5,13 +5,17 @@ using namespace std;
 const int N = 100100;
 
 
-int n;                      // Number of nodes
-int m;                      // Number of edges
-bool vis[N];                // Visited array to mark whether node u has been visited before or not
-vector<int> edges[N];       // Graph adjacency list
-vector<int> sortedNodes;    // List of topologically sorted nodes
+int n;                      // Number of nodes.
+int m;                      // Number of edges.
+bool vis[N];                // Visited array to mark whether node "u" has been visited before or not.
+vector<int> edges[N];       // Graph adjacency list.
+vector<int> sortedNodes;    // List of topologically sorted nodes.
 
-// Depth-First Search from node u
+/**
+ * Runs a depth-first search from a given node.
+ *
+ * @param u the node to start the DFS from.
+ */
 void dfs(int u) {
     vis[u] = true;
 
@@ -22,7 +26,11 @@ void dfs(int u) {
     }
 }
 
-// Breadth-First Search from node u
+/**
+ * Runs a breadth-first search from a given node.
+ *
+ * @param u the node to start the BFS from.
+ */
 void bfs(int u) {
     queue<int> q;
     q.push(u);
@@ -31,19 +39,29 @@ void bfs(int u) {
     while (!q.empty()) {
         u = q.front();
         q.pop();
-        
+
         for (int v : edges[u]) {
-            if (vis[v]++ == 0) {
+            if (vis[v] == 0) {
+                vis[v] = 1;
                 q.push(v);
             }
         }
     }
 }
 
-// Depth-First Search topological sort from node u.
-// Sorts the nodes of the graph in a topological order, and
-// fills the result in the global (sortedNodes) vector but in reversed direction.
-// Note: Works for DAG
+/**
+ * Sorts all the nodes that are reachable from a given node "u"
+ * in a topological order using a DFS algorithm, and fills the result
+ * in the global "sortedNodes" vector in reversed direction.
+ *
+ * This function is to be called for every un-visited node once.
+ *
+ * Note that it works correctly with Directed Acyclic Graphs (DAGs).
+ *
+ * Complexity: O(n+m)
+ *
+ * @param u a node to compute its reachable graph nodes topological order.
+ */
 void topoSortDFS(int u) {
     vis[u] = true;
 
@@ -56,17 +74,20 @@ void topoSortDFS(int u) {
     sortedNodes.push_back(u);
 }
 
-// Breadth-First Search topological sort using Khan algorithm.
-// Sorts the nodes of the graph in a topological order, and
-// fills the result in the global (sortedNodes) vector.
-// Works for DAG
-// O(V+E)
+/**
+ * Sorts the graph in a topological order using Khan BFS algorithm,
+ * and fills the result in the global "sortedNodes" vector.
+ *
+ * Note that it works correctly with Directed Acyclic Graphs (DAGs).
+ *
+ * Complexity: O(n+m)
+ */
 void topoSortBFS() {
     queue<int> q;
     vector<int> inDeg(n + 1, 0);
 
     // Compute the in degree of each node
-    // (i.e. the number of in-edges towards node u)
+    // (i.e. the number of in-edges towards node "u")
     for (int i = 1; i <= n; ++i) {
         for (int v : edges[i]) {
             ++inDeg[v];
@@ -94,9 +115,12 @@ void topoSortBFS() {
     }
 }
 
-// Traverses the entire graph.
-// Note that if the graph is connected then a single DFS or BFS will be enough.
-// O(V+E)
+/**
+ * Traverses the entire graph.
+ * Note that if the graph is connected then a single DFS or BFS will be enough.
+ *
+ * Complexity: O(n+m)
+ */
 void traverse() {
     for (int i = 1; i <= n; ++i) {
         if (!vis[i]) {
@@ -110,8 +134,9 @@ void traverse() {
     }
 }
 
-// Reads and constructs the graph (i.e. number of nodes, and the edges).
-// O(n)
+/**
+ * Reads and constructs the graph.
+ */
 void read() {
     cin >> n >> m;
 

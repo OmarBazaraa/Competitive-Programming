@@ -5,17 +5,21 @@ using namespace std;
 const int N = (1 << 17);
 
 /**
- * Regular Fenwick tree class.
- * 
+ * Regular Fenwick tree class to compute and update prefix sum in O(log(N)).
+ *
  * Note that the tree is is 1-indexed.
  */
+template<class T>
 class fenwick_tree {
-    int BIT[N];
+    T BIT[N];
 
 public:
+
     /**
-     * Constructs a new Fenwick tree.
-     */
+	 * Constructs a new binary indexed tree.
+	 *
+	 * @param cap the maximum capacity of the tree.
+	 */
     fenwick_tree() {
         memset(BIT, 0, sizeof(BIT));
     }
@@ -28,7 +32,7 @@ public:
      * @param idx the index of the element to be updated.
      * @param val the value to add to the given element.
      */
-    void update(int idx, int val) {
+    void update(int idx, T val) {
         while (idx < N) {
             BIT[idx] += val;
             idx += idx & -idx;
@@ -44,8 +48,8 @@ public:
      * 
      * @return the sum of values in interval [1, idx].
      */
-    int operator[](int idx) {
-        int res = 0;
+    T operator[](int idx) {
+        T res = 0;
         while (idx > 0) {
             res += BIT[idx];
             idx -= idx & -idx;
@@ -55,14 +59,16 @@ public:
 };
 
 /**
- * Fenwick tree class with range updates.
+ * Fenwick tree class to compute and update range sum in O(log(N)).
  * 
  * Note that the tree is is 1-indexed.
  */
+template<class T>
 class range_fenwick_tree {
-    fenwick_tree M, C;
+    fenwick_tree<T> M, C;
 
 public:
+
     /**
      * Updates an interval in the Fenwick tree.
      * 
@@ -72,7 +78,7 @@ public:
      * @param r   the index of the last element in the interval.
      * @param val the value to add to each element in the given interval [l, r].
      */
-    void update(int l, int r, int val) {
+    void update(int l, int r, T val) {
         M.update(l, val);
         M.update(r + 1, -val);
         C.update(l, -val * (l - 1));
@@ -88,7 +94,7 @@ public:
      * 
      * @return the sum of values in interval [1, idx].
      */
-    int operator[](int idx) {
+    T operator[](int idx) {
         return idx * M[idx] + C[idx];
     }
 };

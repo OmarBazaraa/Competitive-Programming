@@ -12,19 +12,7 @@ struct node {
     node* edges[ALPA_SIZE] = {};
     int wordsCount = 0;     // Number of words sharing this node
     int wordsEndCount = 0;  // Number of words ending at this node
-
-    static int count;
-
-    node() {
-        count++;
-    }
-
-    ~node() {
-        count--;
-    }
 };
-
-int node::count = 0;
 
 /**
  * Trie class to insert, erase, and search for words in time complexity of O(n).

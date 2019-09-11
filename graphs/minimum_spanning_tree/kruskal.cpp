@@ -5,8 +5,9 @@ using namespace std;
 const int N = 100100;
 
 
-// Struct holds all needed information about the edges
-// with comparison operator defined for the sorting.
+/**
+ * Edge structs to holds the needed information about an edge.
+ */
 struct edge {
 	int from, to, weight;
 
@@ -18,46 +19,45 @@ struct edge {
 	}
 };
 
-int n, m;
-int par[N];
-vector<edge> edges;
 
-// Initializes an n-sets.
-void init() {
+int n;                  // The number of nodes.
+int m;                  // The number of edges.
+int par[N];             // The DSU parent array.
+vector<edge> edges;		// The edges of the graph.
+
+/**
+ * Finds the set id of an element.
+ *
+ * @param u the element to find its set id.
+ *
+ * @return the set id of the given element.
+ */
+int findSetId(int u) {
+	return u == par[u] ? u : par[u] = findSetId(par[u]);
+}
+
+/**
+ * Computes the minimum spanning tree of a weighted graph.
+ * 
+ * Complexity: O(n.log(n))
+ * 
+ * @return the total weight of the edges in the minimum spanning tree.
+ */
+int kruskalMST() {
+	int MST = 0;
+
+	sort(edges.begin(), edges.end());
+
 	for (int i = 1; i <= n; ++i) {
 		par[i] = i;
 	}
-}
-
-// Returns the id the given element u.
-int findSet(int u) {
-	return u == par[u] ? u : par[u] = findSet(par[u]);
-}
-
-// Unions both sets of the given elements u and v.
-// Returns false if the two elements were in the same set, true otherwise.
-bool unionSets(int u, int v) {
-	int x = findSet(u);
-	int y = findSet(v);
-
-	if (x == y) {
-		return false;
-	}
-
-	par[x] = y;
-	return true;
-}
-
-// Returns the total weight of the minimum spanning tree of the given weighted graph.
-// O(n.log(n))
-int kruskalMST() {
-	init();
-	sort(edges.begin(), edges.end());
-
-	int MST = 0;
 
 	for (auto& e : edges) {
-		if (unionSets(e.from, e.to)) {
+		int x = findSetId(e.from);
+		int y = findSetId(e.to);
+
+		if (x != y) {
+			par[x] = y;
 			MST += e.weight;
 		}
 	}
@@ -65,7 +65,9 @@ int kruskalMST() {
 	return MST;
 }
 
-// Reads a weighted undirected graph.
+/**
+ * Reads a weighted undirected graph.
+ */
 void read() {
 	cin >> n >> m;
 

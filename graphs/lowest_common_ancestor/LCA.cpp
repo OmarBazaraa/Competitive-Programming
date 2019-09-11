@@ -4,29 +4,39 @@ using namespace std;
 
 const int N = 100100, LOG_N = 20;
 
-// dep[i]       : the distance to reach node i from the root (node 1) (i.e. the depth).
-// LOG[i]       : floor(log2(i)).
-// par[j][i]    : the (2^j)-th ancestor of node number i.
-int n, m, u, v, dep[N];
-int par[LOG_N][N], LOG[N];
-vector<int> edges[N];
+
+//
+// Global graph variables.
+//
+int n;                  // The number of nodes.
+int m;                  // The number of edges.
+vector<int> edges[N];   // The graph adjacency list.
+
+//
+// LCA related variables.
+//
+int dep[N];             // dep[i]    : the distance between node "i" and the root of the tree.
+int par[LOG_N][N];      // par[j][i] : the (2^j)-th ancestor of node "i".
+int LOG[N];             // LOG[i]    : the floor(log2(i)).
 
 
 /**
- * Runs a depth first traversal on the tree to fill the global variables
- * with the appropriate values.
+ * Runs a depth first traversal on the tree, and fills the global variables
+ * in accordance.
+ *
+ * Do not call this function directly.
+ *
+ * Complexity: O((n+m).log(n))
  *
  * Upon calling this function:
- * @var dep[i]      will be filled with the depth of node i.
- * @var par[j][i]   will be filled with the (2^j)-th ancestor of node number i.
+ * @var dep[i]    : will hold the depth of node "i".
+ * @var par[j][i] : will hold the (2^j)-th ancestor of node "i".
  *
- * Complexity:      O(n.log(n))
- *
- * @param u         the root of the current sub-tree.
- * @param p         the parent of node u.
- * @param d         the depth or the level of node u from the root.
+ * @param u the root of the current sub-tree.
+ * @param p the parent of node "u".
+ * @param d the depth or the level of node "u" from the root.
  */
-void dfs(int u = 1, int p = 0, int d = 0) {
+void dfs(int u = 1, int p = -1, int d = 0) {
     dep[u] = d;
     par[0][u] = p;
 
@@ -42,12 +52,14 @@ void dfs(int u = 1, int p = 0, int d = 0) {
 }
 
 /**
- * Computes the floor of the log of integer from 1 to n.
+ * Computes the floor of the log of integers from 1 to "n".
+ *
+ * Do not call this function directly.
+ *
+ * Complexity: O(n)
  *
  * Upon calling this function:
- * @var LOG[i]  will be filled with floor(log2(i)).
- *
- * Complexity:  O(n)
+ * @var LOG[i] : will hold floor(log2(i)).
  */
 void computeLog() {
     LOG[0] = -1;
@@ -59,7 +71,7 @@ void computeLog() {
 /**
  * Builds the LCA data structure.
  *
- * Complexity:  O(n.log(n))
+ * Complexity: O(n.log(n))
  */
 void buildLCA() {
     dfs();
@@ -67,14 +79,14 @@ void buildLCA() {
 }
 
 /**
- * Computes the k-th ancestor of the given node.
+ * Computes the k-th ancestor of a given node.
  *
- * Complexity:  O(log(k))
+ * Complexity: O(log(k))
  *
- * @param u     the id of the node to get its k-th ancestor.
- * @param k     the order of the ancestor to return.
+ * @param u the id of the node to get its k-th ancestor.
+ * @param k the order of the ancestor to return.
  *
- * @return      the id of the k-th ancestor of node u.
+ * @return the id of the k-th ancestor of node "u".
  */
 int getAncestor(int u, int k) {
     while (k > 0) {
@@ -82,19 +94,18 @@ int getAncestor(int u, int k) {
         k -= x;
         u = par[LOG[x]][u];
     }
-
     return u;
 }
 
 /**
- * Computes the lowest common ancestor (LCA) of nodes u and v.
+ * Computes the lowest common ancestor (LCA) of of two nodes.
  *
- * Complexity:  O(log(n))
+ * Complexity: O(log(n))
  *
- * @param u     the first node id.
- * @param v     the second node id.
+ * @param u the first node id.
+ * @param v the second node id.
  *
- * @return      the LCA of the given nodes.
+ * @return the LCA of node "u" and node "v".
  */
 int getLCA(int u, int v) {
     if (dep[u] > dep[v]) {
@@ -118,32 +129,36 @@ int getLCA(int u, int v) {
 }
 
 /**
- * Computes the distance between the given pair of nodes: u and v.
+ * Computes the distance between two nodes.
  *
- * Complexity:  O(1)
+ * Complexity: O(log(n))
  *
- * @param u     the first node id.
- * @param v     the second node id.
+ * @param u the first node id.
+ * @param v the second node id.
  *
- * @return      the distance between the given nodes.
+ * @return the distance between node "u" and node "v".
  */
 int getDistance(int u, int v) {
     return dep[u] + dep[v] - 2 * dep[getLCA(u, v)];
 }
 
-// Example
-// 8 100
-// 1 2
-// 1 3
-// 1 4
-// 2 5
-// 2 6
-// 3 7
-// 5 8
+/**
+ * Example program.
+ *
+ * 8 100
+ * 1 2
+ * 1 3
+ * 1 4
+ * 2 5
+ * 2 6
+ * 3 7
+ * 5 8
+ */
 int main() {
     cin >> n >> m;
 
     for (int i = 1; i < n; ++i) {
+        int u, v;
         scanf("%d %d", &u, &v);
         edges[u].push_back(v);
         edges[v].push_back(u);
@@ -152,6 +167,7 @@ int main() {
     buildLCA();
 
     while (m--) {
+        int u, v;
         scanf("%d %d", &u, &v);
         printf("%d\n", getLCA(u, v));
     }

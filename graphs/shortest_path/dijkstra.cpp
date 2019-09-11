@@ -5,28 +5,38 @@ using namespace std;
 const int N = 100100;
 
 
-// Struct holds all needed information about the edges
-// with comparison operator defined for the priority queue sorting.
+/**
+ * Edge structs to holds the needed information about an edge.
+ */
 struct edge {
     int from, to, weight;
 
     edge() {}
     edge(int f, int t, int w) : from(f), to(t), weight(w) {}
 
-    // Note that we are actually implementing the greater than operator (not the less than operator)
-    // as the priority queue is implemented as max heap.
     bool operator<(const edge& rhs) const {
+        // Note that we are actually implementing the greater than operator
+        // (not the less than operator) to flip the priority queue to min heap
         return weight > rhs.weight;
     }
 };
 
-int n, m, dis[N], par[N];
-vector<edge> edges[N];
+int n;                  // The number of nodes.
+int m;                  // The number of edges.
+int dis[N];             // dis[v] : holds the shortest distance between the source and node "v".
+int par[N];             // par[v] : holds the parent of "v" in the shortest path the source to node "v".
+vector<edge> edges[N];  // The graph adjacency list.
 
-// Calculates the shortest path between the given node src and all other nodes
-// (Single-Source Shortest Path (SSSP)) for the given weighted graph,
-// and fills the results in the global shortest path "dis" array.
-// O(n.log(n))
+/**
+ * Computes the shortest path between the given source node and
+ * all the other nodes in a weighted graph using the Dijkstra's algorithm,
+ * and fills the results in the global "dis" and "par" arrays.
+ * (i.e. Single-Source Shortest Path (SSSP))
+ * 
+ * Complexity: O((n+m)log(n))
+ * 
+ * @param src the source node.
+ */
 void dijkstra(int src) {
     priority_queue<edge> q;
     q.push(edge(-1, src, 0));
@@ -55,9 +65,15 @@ void dijkstra(int src) {
     }
 }
 
-// Prints the shortest path from node u to node v after running
-// Dijkstra's algorithm with node u as the source.
-// Note that the path is encoded in reversed order, so we need to print it recursively.
+/**
+ * Prints the shortest path from the source to node "v".
+ * This function must not be called before running the Dijkstra's SSSP algorithm.
+ *
+ * Note that the path is encoded in reverse order,
+ * that why we need to print it recursively.
+ *
+ * @param v the last node in the path.
+ */
 void printPath(int v) {
     if (~par[v]) {
         printPath(par[v]);
@@ -66,7 +82,9 @@ void printPath(int v) {
     printf("%d ", v);
 }
 
-// Reads a weighted undirected graph.
+/**
+ * Reads a weighted undirected graph.
+ */
 void read() {
     cin >> n >> m;
 

@@ -1,17 +1,28 @@
+// N : the maximum size of the array.
+// M : ceil(log2(N)).
 const int N = 100100, M = 20;
 
-int n, a[N], ST[M][N], LOG[N];
+// The array to compute its sparse table.
+int n, a[N];
+
+//
+// Sparse table related variables.
+//
+// ST[j][i] : the sparse table value (min, max, ...etc) in the interval [i, i + (2^j) - 1].
+// LOG[i]   : floor(log2(i)).
+int ST[M][N], LOG[N];
 
 /**
- * Builds sparse table for computing min/max/gcd/lcm/..etc
+ * Builds the sparse table for computing min/max/gcd/lcm/...etc
  * for any contiguous sub-segment of the array.
  * 
- * This is an example of sparse table computing the minimum value.
+ * This is an example of computing the index of the minimum value.
  * 
  * Complexity: O(n.log(n))
  */
 void buildST() {
     LOG[0] = -1;
+
     for (int i = 0; i < n; ++i) {
         ST[0][i] = i;
         LOG[i + 1] = LOG[i] + !(i & (i + 1));
@@ -28,12 +39,15 @@ void buildST() {
 }
 
 /**
- * Queries the sparse table for the value of the interval from l to r.
+ * Queries the sparse table for the value of the interval [l, r]
+ * (i.e. from l to r inclusive).
  * 
  * Complexity: O(1)
  * 
- * @param l     the left index of the range (inclusive).
- * @param r     the right index of the range (inclusive).
+ * @param l the left index of the range (inclusive).
+ * @param r the right index of the range (inclusive).
+ * 
+ * @return the computed value of the given interval.
  */
 int query(int l, int r) {
     int g = LOG[r - l + 1];

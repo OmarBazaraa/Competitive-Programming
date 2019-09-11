@@ -5,30 +5,37 @@ using namespace std;
 const int N = 100100;
 
 
-// Struct holds all needed information about the edges
-// with comparison operator defined for the priority queue sorting.
+/**
+ * Edge structs to holds all the needed information about an edge.
+ */
 struct edge {
     int to, weight;
 
     edge() {}
     edge(int t, int w) : to(t), weight(w) {}
 
-    // Note that we are actually implementing the greater than operator (not the less than operator)
-    // as the priority queue is implemented as max heap.
     bool operator<(const edge& rhs) const {
+        // Note that we are actually implementing the greater than operator
+        // (not the less than operator) to flip the priority queue to min heap
         return weight > rhs.weight;
     }
 };
 
-int n, m;
-bool vis[N];
-vector<edge> edges[N];
+int n;                  // The number of nodes.
+int m;                  // The number of edges.
+int vis[N];             // vis[v] : whether node "v" has been visited or not.
+vector<edge> edges[N];  // The graph adjacency list.
 
-// Returns the total weight of the minimum spanning tree of the given weighted graph.
-// O(n.log(n))
+/**
+ * Computes the minimum spanning tree of a weighted graph.
+ * 
+ * Complexity: O(n.log(n))
+ * 
+ * @return the total weight of the edges in the minimum spanning tree.
+ */
 int primMST() {
     priority_queue<edge> q;
-    q.push(edge(0, 0));
+    q.push(edge(1, 0));
 
     int MST = 0;
 
@@ -53,7 +60,9 @@ int primMST() {
     return MST;
 }
 
-// Reads a weighted undirected graph.
+/**
+ * Reads a weighted undirected graph.
+ */
 void read() {
     cin >> n >> m;
 

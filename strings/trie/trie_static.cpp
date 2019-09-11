@@ -5,14 +5,15 @@ using namespace std;
 // The total length of all the string, and the size of the alphabet.
 const int N = 100100, ALPA_SIZE = 255;
 
-int trie[N][ALPA_SIZE];		// The trie.
-int nodesCount;				// The number of nodes in the trie.
-int distinctWordsCount;		// The number of distinct word in the trie.
+int trie[N][ALPA_SIZE];     // The trie.
+int nodesCount;             // The number of nodes in the trie.
+int distinctWordsCount;     // The number of distinct word in the trie.
 int wordsCount[N];          // Number of words sharing node "i"
 int wordsEndCount[N];       // Number of words ending at node "i"
 
 /**
  * Initializes the trie.
+ * Must be called before each test case.
  */
 void init() {
     nodesCount = 0;

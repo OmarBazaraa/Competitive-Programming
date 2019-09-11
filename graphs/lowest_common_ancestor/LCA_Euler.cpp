@@ -4,31 +4,42 @@ using namespace std;
 
 const int N = 100100, LOG_N = 20;
 
-// dep[i]   : the distance between node i and the root of the tree.
-// E[i]     : the i-th node in Euler path.
-// F[i]     : the index of the first occurence of the node i in Euler array.
-// LOG[i]   : floor(log2(i)).
-// ST[j][i] : the index of the node with the minimum depth in Euler tour array in range [i, i+(2^j)-1].
-int n, m, u, v, dep[N];
-int F[N], ST[LOG_N][N << 1], LOG[N << 1];
-vector<int> E, edges[N];
+
+//
+// Global graph variables.
+//
+int n;                  // The number of nodes.
+int m;                  // The number of edges.
+vector<int> edges[N];   // The graph adjacency list.
+
+//
+// LCA related variables.
+//
+int dep[N];             // dep[i]   : the distance between node "i" and the root of the tree.
+int ST[LOG_N][N << 1];  // ST[j][i] : the index of the node with the minimum depth in Euler tour array in range [i, i+(2^j)-1].
+int LOG[N << 1];        // LOG[i]   : the floor(log2(i)).
+int F[N];               // F[i]     : the index of the first occurrence of the node "i" in Euler array.
+vector<int> E;          // E[i]     : the i-th node in Euler tour.
+
 
 /**
  * Runs an Euler tour on the tree, and fills the global variables
- * with the appropriate values.
+ * in accordance.
+ *
+ * Do not call this function directly.
+ *
+ * Complexity: O(n+m)
  *
  * Upon calling this function:
- * @var dep[i]  will be filled with the depth of node i.
- * @var E[i]    will be filled with the i-th node in the Eular tour.
- * @var F[i]    will be filled with the index of the first occurence of node i in Euler array.
+ * @var dep[i] : will hold the depth of node "i".
+ * @var E[i]   : will hold the i-th node in the Euler tour.
+ * @var F[i]   : will hold the index of the first occurrence of node "i" in Euler array.
  *
- * Complexity:  O(n)
- *
- * @param u     the root of the current sub-tree.
- * @param p     the parent of node u.
- * @param d     the depth or the level of node u from the root.
+ * @param u the root of the current sub-tree.
+ * @param p the parent of node "u".
+ * @param d the depth or the level of node "u" from the root.
  */
-void dfs(int u = 1, int p = 0, int d = 0) {
+void dfs(int u = 1, int p = -1, int d = 0) {
     dep[u] = d;
     F[u] = E.size();
     E.push_back(u);
@@ -42,26 +53,30 @@ void dfs(int u = 1, int p = 0, int d = 0) {
 }
 
 /**
- * Builds the spase table to hold the index of the node with
+ * Builds the sparse table to hold the index of the node with
  * the minimum depth in Euler tour array.
  *
- * Upon calling this function:
- * @var LOG[i]      will be filled with floor(log2(i)).
- * @var ST[j][i]    will be filled with the index of the node with the minimum depth
- *                  in Eular tour array in range [i, i+(2^j)-1].
+ * Do not call this function directly.
  *
- * Complexity:      O(n.log(n))
+ * Complexity: O(n.log(n))
+ *
+ * Upon calling this function:
+ * @var LOG[i]   : will hold with floor(log2(i)).
+ * @var ST[j][i] : will hold with the index of the node with the minimum depth
+ *                 in Euler tour array in range [i, i+(2^j)-1].
  */
 void buildRMQ() {
-    int i, j, x, y;
-    for (i = 0, LOG[0] = -1; i < E.size(); ++i) {
+    LOG[0] = -1;
+
+    for (int i = 0; i < E.size(); ++i) {
         ST[0][i] = i;
         LOG[i + 1] = LOG[i] + !(i & (i + 1));
     }
-    for (j = 1; (1 << j) <= E.size(); ++j) {
-        for (i = 0; (i + (1 << j)) <= E.size(); ++i) {
-            x = ST[j - 1][i];
-            y = ST[j - 1][i + (1 << (j - 1))];
+
+    for (int j = 1; (1 << j) <= E.size(); ++j) {
+        for (int i = 0; (i + (1 << j)) <= E.size(); ++i) {
+            int x = ST[j - 1][i];
+            int y = ST[j - 1][i + (1 << (j - 1))];
             ST[j][i] = (dep[E[x]] < dep[E[y]]) ? x : y;
         }
     }
@@ -70,7 +85,7 @@ void buildRMQ() {
 /**
  * Builds the LCA data structure.
  *
- * Complexity:  O(n.log(n))
+ * Complexity: O(n.log(n))
  */
 void buildLCA() {
     dfs();
@@ -81,7 +96,14 @@ void buildLCA() {
  * Queries the sparse table to get the index of the node
  * with the minimum depth in Euler tour array within the given range.
  *
- * Complexity:  O(1)
+ * Do not call this function directly.
+ *
+ * Complexity: O(1)
+ *
+ * @param l the left range.
+ * @param r the right range.
+ *
+ * @return the index of the node with the minimum depth in Euler tour array.
  */
 int query(int l, int r) {
     if (l > r) swap(l, r);
@@ -92,46 +114,50 @@ int query(int l, int r) {
 }
 
 /**
- * Computes the lowest common ancestor (LCA) of nodes u and v.
+ * Computes the lowest common ancestor (LCA) of of two nodes.
  *
- * Complexity:  O(1)
+ * Complexity: O(1)
  *
- * @param u     the first node id.
- * @param v     the second node id.
+ * @param u the first node id.
+ * @param v the second node id.
  *
- * @return      the LCA of the given nodes.
+ * @return the LCA of node "u" and node "v".
  */
 int getLCA(int u, int v) {
     return E[query(F[u], F[v])];
 }
 
 /**
- * Computes the distance between the given pair of nodes: u and v.
+ * Computes the distance between two nodes.
  *
- * Complexity:  O(1)
+ * Complexity: O(1)
  *
- * @param u     the first node id.
- * @param v     the second node id.
+ * @param u the first node id.
+ * @param v the second node id.
  *
- * @return      the distance between the given nodes.
+ * @return the distance between node "u" and node "v".
  */
 int getDistance(int u, int v) {
     return dep[u] + dep[v] - 2 * dep[getLCA(u, v)];
 }
 
-// Example
-// 8 100
-// 1 2
-// 1 3
-// 1 4
-// 2 5
-// 2 6
-// 3 7
-// 5 8
+/**
+ * Example program.
+ *
+ * 8 100
+ * 1 2
+ * 1 3
+ * 1 4
+ * 2 5
+ * 2 6
+ * 3 7
+ * 5 8
+ */
 int main() {
     cin >> n >> m;
 
     for (int i = 1; i < n; ++i) {
+        int u, v;
         scanf("%d %d", &u, &v);
         edges[u].push_back(v);
         edges[v].push_back(u);
@@ -140,6 +166,7 @@ int main() {
     buildLCA();
 
     while (m--) {
+        int u, v;
         scanf("%d %d", &u, &v);
         printf("%d\n", getLCA(u, v));
     }

@@ -4,12 +4,20 @@ using namespace std;
 
 const int N = 100100;
 
-int dis[N];
-vector<int> edges[N];
 
-// Returns the farthest node from the given source node,
-// and fills the global distance array "dis".
-// O(n)
+int dis[N];             // dis[v] : holds the shortest distance between the source and node "v".
+vector<int> edges[N];   // The graph adjacency list.
+
+/**
+ * Computes the shortest distances from a given source node,
+ * and fills the results in the global "dis" array.
+ * 
+ * Complexity: O(n+m)
+ * 
+ * @param u the source node.
+ * 
+ * @return the farthest node from the source node.
+ */
 int bfs(int u) {
     queue<int> q;
     q.push(u);
@@ -32,9 +40,12 @@ int bfs(int u) {
     return u;
 }
 
-// Returns the length of the diameter of the tree.
-// (i.e. the length of the longest path in the tree).
-// O(n)
+/**
+ * Computes the length of the diameter of the tree
+ * (i.e. the length of the longest path in the tree).
+ * 
+ * Complexity: O(n+m)
+ */
 int calcTreeDiameter(int root) {
     int u = bfs(root);
     int v = bfs(u);

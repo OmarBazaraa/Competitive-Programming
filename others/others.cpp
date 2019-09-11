@@ -21,9 +21,15 @@ void boostIO() {
     cout.tie(0);
 }
 
-// Returns the length of the longest increasing subsequence of the array.
-// O(n.log(n))
+// The array to compute its LIS and its length.
 int n, a[N];
+
+/**
+ * Computes the length of the longest increasing subsequence (LIS) of
+ * the global array "a" in time complexity of O(n.log(n)).
+ * 
+ * @return the length of the LIS of array "a".
+ */
 int getLIS() {
     int len = 0;
     vector<int> LIS(n, INT_MAX);

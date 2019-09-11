@@ -2,59 +2,77 @@
 
 using namespace std;
 
-const int N = 100100;       // Max number of nodes
-const int M = 100100;       // Max number of edges
+const int N = 100100;       // Max number of nodes.
+const int M = 100100;       // Max number of edges.
 
 
-int n;                      // Number of nodes
-int m;                      // Number of edges
+int n;                      // Number of nodes.
+int m;                      // Number of edges.
 
-int edgeId;                 // Next edge id to be inserted
-int head[N];                // head[u]      : id of the last edge added from node u
-int nxt[M];                 // nxt[e]       : next edge id pointed from the same node as e
-int to[M];                  // to[e]        : id of the node pointed by edge e
-int weight[M];              // weight[e]    : weight of edge e
-
-bool vis[N];                // Visited array to mark whether node u has been visited before or not
+int edgeId;                 // Next edge id to be inserted.
+int head[N];                // head[u]   : the id of the last edge added from node "u".
+int nxt[M];                 // nxt[e]    : the next edge id pointed from the same node as "e".
+int to[M];                  // to[e]     : the id of the node pointed by edge "e".
+int weight[M];              // weight[e] : the weight of edge "e".
+bool vis[N];                // vis[u]    : whether node "u" has been visited before or not
 
 // Advantages of this graph representation:
 // ----------------------------------------
-// 1.   Static memory allocation (faster).
+// 1. Static memory allocation (faster).
 //
-// 2.   Every edge has an id associated with it.
-//      (i.e. lots of possibilities with easier implementation)
+// 2. Every edge has an id associated with it.
+//    (i.e. lots of possibilities with easier implementation)
 //
-// 3.   Simplicity of getting the reversed edges.
-//      (i.e. reverse(e) = e XOR 1).
+// 3. Simplicity of getting the reversed edges.
+//    (i.e. reverse(e) = e XOR 1).
 //
-// 4.   Faster graph clearing during multiple test cases.
-//      Clearing the head array is enought instead of 
-//      clearing the entire graph.
+// 4. Faster graph clearing during multiple test cases.
+//    Clearing the head array is enough instead of
+//    clearing the entire graph.
 
-// Initializes the graph
+/**
+ * Initializes the graph.
+ * Must be called before each test case.
+ */
 void init() {
     edgeId = 0;
     memset(head, -1, (n + 1) * sizeof(head[0]));
 }
 
-// Adds a new edge from node f to node t with weight w.
+/**
+ * Adds a new directed edge in the graph from node "f" to node "t"
+ * with weight "w".
+ *
+ * @param f the source node.
+ * @param t the target node.
+ * @param w the weight of the edge.
+ */
 void addEdge(int f, int t, int w) {
     int e = edgeId++;
-
     to[e] = t;
     weight[e] = w;
-    
     nxt[e] = head[f];
     head[f] = e;
 }
 
-// Adds a bi-directional edge between nodes f and t with weight w.
+/**
+ * Adds a new bi-directional edge in the graph between node "f" and node "t"
+ * with weight "w".
+ *
+ * @param f the first node.
+ * @param t the second node.
+ * @param w the weight of the edge.
+ */
 void addBiEdge(int f, int t, int w) {
     addEdge(f, t, w);
     addEdge(t, f, w);
 }
 
-// Depth-First Search from node u
+/**
+ * Runs a depth-first search from a given node.
+ *
+ * @param u the node to start the DFS from.
+ */
 void dfs(int u) {
     vis[u] = true;
 
@@ -68,8 +86,9 @@ void dfs(int u) {
     }
 }
 
-// Reads and constructs the graph (i.e. number of nodes, and the edges).
-// O(n)
+/**
+ * Reads and constructs the graph.
+ */
 void read() {
     cin >> n >> m;
 

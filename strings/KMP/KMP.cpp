@@ -4,40 +4,42 @@ using namespace std;
 
 const int N = 100100;
 
+// KMP longest match array. Don't access it directly
 int F[N];
 
 /**
  * KMP failure function.
  *
- * @param s     the pattern string.
- * @param c     the next char to get its failure index.
- * @param l     the length of the longest suffix ending at the previous char.
+ * @param pat the pattern string.
+ * @param cur the current char to get its failure index.
+ * @param len the length of the longest suffix ending at the previous character
+ *            matching a prefix of the pattern.
  *
- * @return      the length of the longest suffix ending the given char.
+ * @return the length of the longest suffix ending the given character matching a prefix of the pattern.
  */
-int failure(const char* s, char c, int l) {
-    while (l > 0 && c != s[l]) {
-        l = F[l - 1];
+int failure(const char* pat, char cur, int len) {
+    while (len > 0 && cur != pat[len]) {
+        len = F[len - 1];
     }
-    return l + (c == s[l]);
+    return len + (cur == pat[len]);
 }
 
 /**
  * Computes the length of the longest suffix ending at the i-th character
- * that match a prefix of the string, and fills the results in the global F array.
+ * that match a prefix of the string, and fills the results in the global "F" array.
  *
- * Complexity:  O(n)
+ * Complexity: O(n)
  *
- * @param s     the pattern string to compute its KMP.
+ * @param pat the pattern string to compute its KMP.
  */
-void KMP(const char* s) {
-    for (int i = 1; s[i]; ++i) {
-        F[i] = failure(s, s[i], F[i - 1]);
+void KMP(const char* pat) {
+    for (int i = 1; pat[i]; ++i) {
+        F[i] = failure(pat, pat[i], F[i - 1]);
     }
 }
 
 /**
- * Main driver program
+ * Sample driver program.
  */
 int main() {
     string pattern, text;

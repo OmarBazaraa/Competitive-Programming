@@ -6,27 +6,43 @@ using namespace std;
 const int N = 105;          // Max number of nodes
 const int M = 105;          // Max number of edges
 
-int n, m;                   // Number of nodes and number of edges
 
-int edgeId;                 // The next edge id to be inserted
-int head[N];                // head[u]      : id of the last edge added from node u
-int nxt[M];                 // nxt[e]       : next edge id pointed from the same node as e
-int to[M];                  // to[e]        : id of the node pointed by edge e
-int capacity[M];            // capacity[e]  : maximum capacity of edge e
-int flow[M];                // flow[u]      : current flow of edge e
+//
+// Graph related variables.
+//
+int n, m;                   // The number of nodes and number of edges
+int edgeId;                 // The next edge id to be inserted.
+int head[N];                // head[u]     : the id of the last edge added from node "u".
+int nxt[M];                 // nxt[e]      : the next edge id pointed from the same node as "e".
+int to[M];                  // to[e]       : the id of the node pointed by edge "e".
+int capacity[M];            // capacity[e] : the maximum capacity of edge "e".
 
-int src, snk;               // id of source and sink nodes
-int dist[N];                // dist[u]      : shortest distance between the source node and node u
-int from[N];                // from[u]      : id of the edge that leads to node u in the path from source to sink nodes
+//
+// Max flow related variables.
+//
+int src, snk;               // the id of source and sink nodes.
+int dist[N];                // dist[u]     : the shortest distance between the source and node "u".
+int from[N];                // from[u]     : the id of the edge that leads to node "u" in the path from source to sink.
+int flow[M];                // flow[u]     : the current flow of edge "e".
 
 
-// Initializes the graph
+/**
+ * Initializes the graph.
+ * Must be called before each test case.
+ */
 void init() {
     edgeId = 0;
     memset(head, -1, sizeof(head));
 }
 
-// Adds a new edge from node f to node t with capacity c.
+/**
+ * Adds a new directed edge in the graph from node "f" to node "t"
+ * with maximum capacity "c".
+ *
+ * @param f the source node.
+ * @param t the target node.
+ * @param c the capacity of the edge.
+ */
 void addEdge(int f, int t, int c) {
     int e = edgeId++;
 
@@ -38,20 +54,35 @@ void addEdge(int f, int t, int c) {
     head[f] = e;
 }
 
-// Adds an augmented edge between nodes f and t with capacity c.
+/**
+ * Adds a new augmented edge in the graph between node "f" and node "t"
+ * with maximum capacity "w".
+ *
+ * @param f the first node.
+ * @param t the second node.
+ * @param c the capacity of the edge.
+ */
 void addAugEdge(int f, int t, int c) {
     addEdge(f, t, c);
     addEdge(t, f, 0);
 }
 
-// Finds a path from the source node to the sink node while respecting 
-// the constraints on the capacities of the edges.
-// Returns whether a path is found from src to snk or not.
+/**
+ * Finds a path from the source to the sink while respecting 
+ * the constraints on the capacities of the edges.
+ * 
+ * Do not call this function directly.
+ * 
+ * Complexity: O(V+E)
+ * 
+ * @return {@code true} if a path is found; {@code false} otherwise.
+ */
 bool findPath() {
     queue<int> q;
     q.push(src);
 
     memset(dist, -1, sizeof(dist));
+
     dist[src] = 0;
 
     while (!q.empty()) {
@@ -63,7 +94,7 @@ bool findPath() {
             int c = capacity[e];
             int f = flow[e];
 
-            if (c <= f) {
+            if (f >= c) {
                 continue;
             }
 
@@ -74,16 +105,21 @@ bool findPath() {
             }
 
             if (v == snk) {
-                return 1;
+                return true;
             }
         }
     }
 
-    return 0;
+    return false;
 }
 
-// Augments the found path to the flow graph.
-// Returns the maximum flow of the previously found path.
+/**
+ * Augments the previously found path to the flow graph.
+ * 
+ * Do not call this function directly.
+ * 
+ * @return the maximum flow of the previously found path.
+ */
 int augmentPath() {
     int f = INT_MAX;
 
@@ -107,8 +143,13 @@ int augmentPath() {
     return f;
 }
 
-// Calculates and returns the maximum flow of the given graph.
-// O(min(V.E^2, (V+E).MaxFlow))
+/**
+ * Calculates the maximum flow of the graph.
+ * 
+ * Complexity: O(min(V.E^2, (V+E).MaxFlow))
+ * 
+ * @return the value of the maximum flow.
+ */
 int maxFlow() {
     int f = 0;
 
@@ -119,8 +160,9 @@ int maxFlow() {
     return f;
 }
 
-// Reads and constructs the graph (i.e. number of nodes, and the edges).
-// O(n)
+/**
+ * Reads and constructs the graph.
+ */
 void read() {
     cin >> n >> m;
 

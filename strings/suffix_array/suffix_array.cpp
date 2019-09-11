@@ -18,7 +18,7 @@ using namespace std;
 const int N = 1e5 + 5;
 
 // n          : the length of the string.
-// str        : the string it self.
+// str        : the string itself.
 // SA         : the suffix array, holding all the suffixes in lexicographical order.
 // suffixRank : array holding the rank (i.e. the order) of the i-th suffix after sorting.
 // LCP        : array holding the length of the longest common prefix between SA[i] and SA[i - 1].

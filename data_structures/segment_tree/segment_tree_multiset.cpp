@@ -2,10 +2,8 @@
 
 using namespace std;
 
-const int N = 1e9;
-
 /**
- * Segment tree node struct
+ * Segment tree node struct.
  */
 struct node {
     int size;
@@ -44,18 +42,22 @@ struct node {
  * Multiset that store integers in the range of [-N, N].
  * The multiset is implemented using segment tree.
  *
- * Note that the multiset is is 0-indexed.
+ * Note that the multiset is 0-indexed.
  *
  * The most complex function in this class is done in time complexity of O(log(N)).
  */
 class segment_multiset {
+    const int N;
     node* nil, * root;
 
 public:
+
     /**
      * Constructs a new multiset.
+     * 
+     * @param N the maximum absolute value this multiset can store.
      */
-    segment_multiset() {
+    segment_multiset(int N) : N(N) {
         root = nil = new node();
     }
 
@@ -63,7 +65,7 @@ public:
      * Destruct this multiset.
      */
     ~segment_multiset() {
-        clear();
+        destroy(root);
         delete nil;
     }
 
