@@ -217,7 +217,7 @@ bool isPrime(T n) {
 // =====================================================================================
 
 /**
- * Probabilistic check of Miller Rabin algorithm for an integer "n".
+ * Probabilistic test of Miller Rabin algorithm for an integer "n".
  * Note that: "n - 1 = power(2, k) * q".
  *
  * This function is to be called internally from "isPrimeMillerRabin" function.
@@ -226,10 +226,8 @@ bool isPrime(T n) {
  * @return {@code false} if "n" is a composite number; {@code true} if it is a probable prime.
  */
 template<class T>
-bool millerRabin(T k, T q) {
-    T n = (1LL << k) * q + 1;
-    T a = 2 + rand() % (n - 2);
-    T x = power(a, q, n);
+bool millerRabinTest(T a, T k, T q, T n) {
+    T x = power<long long>(a, q, n);
 
     if (x == 1) {
         return true;
@@ -240,31 +238,30 @@ bool millerRabin(T k, T q) {
             return true;
         }
 
-        x = (x * x) % n;
+        x = (x * 1LL * x) % n;
     }
 
     return false;
 }
 
 /**
- * Checks whether an integer is prime or not using the probabilistic method of
+ * Checks whether an integer is prime or not using a deterministic method of
  * Miller Rabin algorithm.
  *
  * Complexity: O(t.log(n))
  *
  * @param n a positive integer to check its integer primality.
- * @param t the number of times to apply the random probabilistic check.
  *
  * @return {@code true} if "n" is prime; {@code false} otherwise.
  */
 template<class T>
-bool isPrimeMillerRabin(T n, int t = 10) {
+bool isPrimeMillerRabin(T n) {
     if (n == 2) {
-        return 1;
+        return true;
     }
 
     if (n < 2 || n % 2 == 0) {
-        return 0;
+        return false;
     }
 
     // Compute coefficients k, q such that "n - 1 = power(2, k) * q"
@@ -275,9 +272,12 @@ bool isPrimeMillerRabin(T n, int t = 10) {
         q >>= 1;
     }
 
-    // Apply probabilistic prime check for "t" times
-    while (t--) {
-        if (!millerRabin(k, q)) {
+    for (int a : {2, 3, 5, 7, 11, 13, 17, 19, 23}) {
+        if (n == a) {
+            return true;
+        }
+
+        if (!millerRabinTest(a, k, q, n)) {
             return false;
         }
     }
