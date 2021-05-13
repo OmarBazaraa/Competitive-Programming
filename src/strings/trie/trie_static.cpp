@@ -17,7 +17,10 @@ int wordsEndCount[N];       // Number of words ending at node "i"
  */
 void init() {
     nodesCount = 0;
+    distinctWordsCount = 0;
     memset(trie, -1, sizeof(trie));
+    memset(wordsCount, 0, sizeof(wordsCount));
+    memset(wordsEndCount, 0, sizeof(wordsEndCount));
 }
 
 /**
