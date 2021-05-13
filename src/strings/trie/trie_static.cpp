@@ -35,7 +35,6 @@ int addEdge(int id, char c) {
     int& nxt = trie[id][c];
     if (nxt == -1) {
         nxt = ++nodesCount;
-        trie[id][c] = nxt;
     }
     return nxt;
 }
