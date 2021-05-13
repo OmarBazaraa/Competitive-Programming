@@ -17,7 +17,10 @@ int wordsEndCount[N];       // Number of words ending at node "i"
  */
 void init() {
     nodesCount = 0;
+    distinctWordsCount = 0;
     memset(trie, -1, sizeof(trie));
+    memset(wordsCount, 0, sizeof(wordsCount));
+    memset(wordsEndCount, 0, sizeof(wordsEndCount));
 }
 
 /**
@@ -32,6 +35,7 @@ int addEdge(int id, char c) {
     int& nxt = trie[id][c];
     if (nxt == -1) {
         nxt = ++nodesCount;
+        trie[id][c] = nxt;
     }
     return nxt;
 }
