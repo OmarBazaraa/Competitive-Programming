@@ -1,17 +1,19 @@
 # Competitive Programming
 
-C++ code library contains useful algorithms for competitive programming.
+C++ code library containing useful algorithms for competitive programming.
 
-#### PDF Version
-[1] You can download an easy printable minified PDF version of this library from [here](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/docs/Momentum%20Library.pdf).
+## PDF Version
 
-[2] You can download *Theoretical Computer Science Cheat Sheet* from [here](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/docs/Cheat%20Sheet.pdf).
+- You can download an easy printable minified PDF version of this library from [here](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/docs/Momentum%20Library.pdf).
+
+- You can download *Theoretical Computer Science Cheat Sheet* from [here](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/docs/Cheat%20Sheet.pdf).
 
 ## Content
 
-A brief explanation to each of the following topics will be added soon, hopefully.
+A brief explanation to each of the following topics is currently under progress. Your contributions are most welcome. Kindly check the CONTRIBUTIONS.md file for more infortmation about contrbuting to the project.
 
 ### Data Structures
+
 - [Sparse Table](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/data_structures/sparse_table)
 - [Monotonic Queue](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/data_structures/monotonic_queue)
 	- [Implemented with two stacks](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/data_structures/monotonic_queue/monotonic_queue_using_stacks.cpp)
@@ -28,11 +30,12 @@ A brief explanation to each of the following topics will be added soon, hopefull
 		- [Persistent Segment Tree](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/data_structures/segment_tree/persistent_segment_tree.cpp)
 		- [Segment Tree as Multiset](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/data_structures/segment_tree/segment_tree_multiset.cpp)
 	- [Treap](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/data_structures/treap)
-	- Splay Tree **<i>(comming soon)</i>**
+	- Splay Tree **(comming soon)**
 - [SQRT Decomposition](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/data_structures/sqrt_decomposition)
 	- [Mo's Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/data_structures/sqrt_decomposition/mo_algorithm.cpp)
 
 ### Strings
+
 - [KMP](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/strings/KMP)
 - [Z-Algorithm](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/strings/z_algorithm)
 - [Trie](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/strings/trie)
@@ -44,6 +47,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 - Aho Corasick's Algorithm **<i>(comming soon)</i>**
 
 ### Graphs
+
 - [Graph Traversal and Representation](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/graphs/traversal)
 	- [Optimized Representation](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/graphs/traversal/graph_traversal_static.cpp)
 	- [DFS](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/graphs/traversal/graph_traversal.cpp#L14)
@@ -77,6 +81,7 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- [Bridge Tree](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/graphs/others/bridge_tree.cpp)
 
 ### Math
+
 - [Basic Discrete Math & Modular Arithmetics](https://github.com/OmarBazaraa/Competitive-Programming/tree/master/src/math)
 	- [Greatest Common Divisor (GCD)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/math/math.cpp#L9)
 	- [Least Common Multiple (LCM)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/math/math.cpp#L29)
@@ -97,26 +102,36 @@ A brief explanation to each of the following topics will be added soon, hopefull
 	- [Matrix Power](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/math/matrix_minified.cpp)
 
 ### Geomerty
+
 Will be added soon...
 
 ### Search Algorithms
+
 - [Binary Search](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/search/binary_search.cpp)
 - [Ternary Search](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/search/ternary_search.cpp)
 
-### Sorting Algorithms **<i>(comming soon)</i>**
+### Sorting Algorithms **(comming soon)**
+
 - Heap Sort
 - Merge Sort
 - Quick Sort
 - Radix Sort
 
 ### Other Algorithms
+
 - [K-th Order Statistic](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/others/kth_order_statistic.cpp)
 - [Longest Increasing Sub-sequence (LIS)](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/others/others.cpp)
 - [Stress test code](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/others/stress.cpp)
 - [Code definitions](https://github.com/OmarBazaraa/Competitive-Programming/blob/master/src/others/others.cpp)
 
-## Thanks
-Special thanks to anyone contributed to this repository:
-- By teaching me any of these topics.
-- By inspiring me any code optimizations.
-- By being supportive.
+## Get started
+
+```CONTRIBUTIONS.md``` : Tells you everything you need to know in order get started with contributions to this project. Make sure to give it a thorough read. Thank you for contribution in advance.
+
+```CODE_OF_CONDUCT.md``` : These are the set of rules ( subject to updates ) which define the code of conduct in this community. Kindly adhere to these guidelines in order to make the project more inclusive.
+
+```docs``` : Contains all the information, explanation and implementation details you would require to get started with the Data Structures and Algorithms implemented in this project.
+
+```ISSUE_TEMPLATES``` : Default issue templates have already been defined, but in case you would like to submit an issue in some other format, feel free to check out the various templates available.
+
+```PR_TEMPLATES``` : Default pull request templates have already been defined, but in case you would like to submit a PR in some other format, feel free to check out the various templates available.
