@@ -1,0 +1,8 @@
+// Note: defining keybindings per workspace is not yet supported by VSCode.
+[
+    {
+        "key": "ctrl+shift+f5",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Run main.cpp"
+    }
+]
