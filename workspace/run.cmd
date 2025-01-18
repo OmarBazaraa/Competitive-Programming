@@ -1,1 +1,0 @@
-build\src.exe < input.txt
