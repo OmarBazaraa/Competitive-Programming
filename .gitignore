@@ -1,9 +1,8 @@
-# User-specific files
+# Build files
+build/
 *.exe
 *.out
 *.obj
-*.txt
 
 # User-specific directories
 workspace/*
-.vscode/
