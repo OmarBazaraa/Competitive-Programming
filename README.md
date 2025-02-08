@@ -18,7 +18,7 @@ A C++ code library that contains useful data structures and algorithms tailored 
 - [Interval Map](/src/data_structures/interval_map/interval_map.h)
 - Trees
     - [Fenwick Tree (Binary Indexed Tree)](src/data_structures/fenwick_tree)
-        - [Basic Fenwick Tree](src/data_structures/fenwick_tree/fenwick_tree.cpp)
+        - [Fenwick Tree](src/data_structures/fenwick_tree/fenwick_tree.h)
         - [Fenwick Tree with Range Update](src/data_structures/fenwick_tree/fenwick_tree_range.cpp)
         - [Fenwick Tree as Multiset](src/data_structures/fenwick_tree/fenwick_tree_multiset.cpp)
     - [Segment Tree](src/data_structures/segment_tree)
