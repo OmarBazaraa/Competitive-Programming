@@ -31,7 +31,7 @@ FetchContent_MakeAvailable(googletest)
 #
 
 # Reference all `.h` & `.cpp` files in the library.
-file(GLOB_RECURSE TEST_FILES "*.h" "*.cpp")
+file(GLOB_RECURSE TEST_FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 
 # Create a test executable.
 add_executable(${PROJECT_NAME} ${TEST_FILES})
