@@ -14,7 +14,7 @@ A C++ code library that contains useful data structures and algorithms tailored 
 - [Monotonic Queue](src/data_structures/monotonic_queue)
     - [Implemented with two stacks](src/data_structures/monotonic_queue/monotonic_queue_using_stacks.cpp)
     - [Implemented with double ended queue](src/data_structures/monotonic_queue/monotonic_queue.cpp)
-- [Disjoint-Sets (DSU)](src/data_structures/disjoint_sets_union/)
+- [Disjoint-Sets (DSU)](src/data_structures/disjoint_sets/)
 - [Interval Map](/src/data_structures/interval_map/interval_map.h)
 - Trees
     - [Fenwick Tree (Binary Indexed Tree)](src/data_structures/fenwick_tree)
