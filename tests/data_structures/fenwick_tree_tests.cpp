@@ -4,7 +4,7 @@
 
 #include "data_structures/fenwick_tree/fenwick_tree.h"
 
-TEST(fenwick_tree, InitialSetup) {
+TEST(FenwickTree, InitialSetup) {
     // Arrange.
     int n = 10;
     fenwick_tree<int> bit(n);
@@ -19,7 +19,7 @@ TEST(fenwick_tree, InitialSetup) {
     }
 }
 
-TEST(fenwick_tree, UpdateSingleElement) {
+TEST(FenwickTree, UpdateSingleElement) {
     // Arrange.
     int n = 10;
     int element = 5;
@@ -44,7 +44,7 @@ TEST(fenwick_tree, UpdateSingleElement) {
     }
 }
 
-TEST(fenwick_tree, UpdateSingleElementMultipleTimes) {
+TEST(FenwickTree, UpdateSingleElementMultipleTimes) {
     // Arrange.
     int n = 10;
     int element = 5;
@@ -60,7 +60,7 @@ TEST(fenwick_tree, UpdateSingleElementMultipleTimes) {
     EXPECT_EQ(bit.prefix_sum(element), x + y + z);
 }
 
-TEST(fenwick_tree, ComputePrefixSum) {
+TEST(FenwickTree, ComputePrefixSum) {
     // Arrange.
     std::vector<int> values = { 1, 7, 2, 3, 9, 10, -5, 6, 1, 1, 1 };
     fenwick_tree<int> bit(values.size());
