@@ -1,8 +1,12 @@
 # Build files
+out/
 build/
 *.exe
 *.out
 *.obj
+
+# IDE files
+.vs/
 
 # User-specific directories
 workspace/*
