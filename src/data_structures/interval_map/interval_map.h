@@ -20,7 +20,7 @@ private:
 
 public:
     /**
-     * Constructs a new object of the `interval_map` with a provided default value.
+     * Constructs a new object of the `interval_map` class with a provided default value.
      *
      * Time complexity: `O(1)`.
      *
@@ -89,5 +89,28 @@ public:
         {
             this->map[key_end] = val_end;
         }
+    }
+
+    /**
+     * Clears all the values in the map.
+     * 
+     * Time complexity: `O(N)`, where `N` is the number of intervals in the map.
+     */
+    void clear()
+    {
+        this->map.clear();
+    }
+
+    /**
+     * Clears all the values in the map and sets a new default value.
+     * 
+     * Time complexity: `O(N)`, where `N` is the number of intervals in the map.
+     * 
+     * @param val the new default value to use when no value is associated with a key.
+     */
+    void clear(const V& val)
+    {
+        this->val_default = val;
+        this->map.clear();
     }
 };
