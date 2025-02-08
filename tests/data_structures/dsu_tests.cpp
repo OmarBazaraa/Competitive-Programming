@@ -2,7 +2,7 @@
 
 #include "data_structures/disjoint_sets/dsu.h"
 
-TEST(dsu, InitialSetup) {
+TEST(DSU, InitialSetup) {
     // Arrange.
     int n = 10;
     dsu dsu(n);
@@ -20,7 +20,7 @@ TEST(dsu, InitialSetup) {
     }
 }
 
-TEST(dsu, UnionTwoSets) {
+TEST(DSU, UnionTwoSets) {
     // Arrange.
     dsu dsu(3);
     
@@ -46,7 +46,7 @@ TEST(dsu, UnionTwoSets) {
     EXPECT_EQ(dsu.size(), 2);
 }
 
-TEST(dsu, UnionAlreadyMergedSets) {
+TEST(DSU, UnionAlreadyMergedSets) {
     // Arrange.
     dsu dsu(3);
 
@@ -73,7 +73,7 @@ TEST(dsu, UnionAlreadyMergedSets) {
     EXPECT_EQ(dsu.size(), 2);
 }
 
-TEST(dsu, OutOfRangeAccess) {
+TEST(DSU, OutOfRangeAccess) {
     // Arrange.
     int n = 10;
     dsu dsu(n);
