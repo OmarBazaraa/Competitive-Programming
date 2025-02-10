@@ -4,27 +4,26 @@
 
 #include "data_structures/fenwick_tree/fenwick_tree.h"
 
+const int N = 50;
+
 TEST(FenwickTree, InitialSetup) {
     // Arrange.
-    int n = 10;
-    fenwick_tree<int> bit(n);
+    fenwick_tree<int, N> bit;
 
     //
     // Assert
     //
 
     // Initially all elements should be zeros.
-    for (int i = 1; i <= n; ++i) {
+    for (int i = 1; i <= N; ++i) {
         EXPECT_EQ(bit.prefix_sum(i), 0);
     }
 }
 
 TEST(FenwickTree, UpdateSingleElement) {
     // Arrange.
-    int n = 10;
-    int element = 5;
-    int value = 7;
-    fenwick_tree<int> bit(n);
+    int element = 5, value = 7;
+    fenwick_tree<int, N> bit;
 
     // Act.
     bit.update(element, value);
@@ -39,17 +38,16 @@ TEST(FenwickTree, UpdateSingleElement) {
     }
 
     // All prefix sums up to the 5th element should be 0.
-    for (int i = element; i <= n; ++i) {
+    for (int i = element; i <= N; ++i) {
         EXPECT_EQ(bit.prefix_sum(i), value);
     }
 }
 
 TEST(FenwickTree, UpdateSingleElementMultipleTimes) {
     // Arrange.
-    int n = 10;
     int element = 5;
     int x = 7, y = 3, z = 1;
-    fenwick_tree<int> bit(n);
+    fenwick_tree<int, N> bit;
 
     // Act.
     bit.update(element, x);
@@ -63,7 +61,7 @@ TEST(FenwickTree, UpdateSingleElementMultipleTimes) {
 TEST(FenwickTree, ComputePrefixSum) {
     // Arrange.
     std::vector<int> values = { 1, 7, 2, 3, 9, 10, -5, 6, 1, 1, 1 };
-    fenwick_tree<int> bit(values.size());
+    fenwick_tree<int, N> bit;
 
     //
     // Act & Assert
