@@ -1,18 +1,14 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-
 // Treap node struct
-struct node {
+struct treap_node {
     int key, priority, size;
-    node *childL, *childR;
+    treap_node *childL, *childR;
 
-    node() {
+    treap_node() {
         size = 0;
         childL = childR = this;
     }
 
-    node(int k, node* l, node* r) {
+    treap_node(int k, treap_node* l, treap_node* r) {
         key = k;
         childL = l;
         childR = r;
@@ -26,18 +22,18 @@ struct node {
 };
 
 // 0-indexed treap-based multiset.
-class treap {
-    node *nil, *root;
+class treap_multiset {
+    treap_node *nil, *root;
 
 public:
     // Constructs an emptry treap.
-    treap() {
+    treap_multiset() {
         srand(time(0));
-        root = nil = new node();
+        root = nil = new treap_node();
     }
 
     // Destructor.
-    ~treap() {
+    ~treap_multiset() {
         destroy(root);
         delete nil;
     }
@@ -56,7 +52,7 @@ public:
     // Returns the number of occurrence of the given integer in the multiset.
     int count(int key) {
         int res = 0;
-        node* cur = root;
+        treap_node* cur = root;
 
         while (cur != nil) {
             if (key <= cur->key) {
@@ -72,7 +68,7 @@ public:
 
     // Inserts the given element into the given treap.
     void insert(int key) {
-        insert(root, new node(key, nil, nil));
+        insert(root, new treap_node(key, nil, nil));
     }
 
     // Erases the given element from the treap if exists.
@@ -83,7 +79,7 @@ public:
     // Returns the idx-th node in the given treap.
     // Note that indices are referenced as if all nodes are sorted by their keys.
     int operator[](int idx) {
-        node* cur = root;
+        treap_node* cur = root;
 
         while (cur != nil && idx != cur->childL->size) {
             if (idx < cur->childL->size) {
@@ -103,7 +99,7 @@ public:
     int lower_bound(int val) {
         int ret = 0;
 
-        node* cur = root;
+        treap_node* cur = root;
 
         while (cur != nil) {
             if (val <= cur->key) {
@@ -127,7 +123,7 @@ public:
 private:
 
     // Inserts a new node into the given treap.
-    void insert(node*& root, node* newNode) {
+    void insert(treap_node*& root, treap_node* newNode) {
         if (root == nil) {
             root = newNode;
             return;
@@ -145,7 +141,7 @@ private:
 
     // Erases a single node from the treap having its key matches
     // the given key if exists.
-    bool erase(node*& root, int key) {
+    bool erase(treap_node*& root, int key) {
         if (root == nil) {
             return 0;
         }
@@ -153,7 +149,7 @@ private:
         bool ret = 1;
 
         if (key == root->key) {
-            node* temp = root;
+            treap_node* temp = root;
             merge(root->childL, root->childR, root);
             delete temp;
         } else {
@@ -168,7 +164,7 @@ private:
     // such that L contains all the nodes with values <= key and R contains the other nodes.
     // Note that the original treap will not exist anymore after the split operation.
     // O(log(n))
-    void split(node* root, node*& rootL, node*& rootR, int key) {
+    void split(treap_node* root, treap_node*& rootL, treap_node*& rootR, int key) {
         if (root == nil) {
             rootL = rootR = nil;
             return;
@@ -190,7 +186,7 @@ private:
     // in order to get a correct merge operation.
     // Note that L and R will not exist anymore after the merge operation.
     // O(log(n))
-    void merge(node* rootL, node* rootR, node*& root) {
+    void merge(treap_node* rootL, treap_node* rootR, treap_node*& root) {
         if (rootL == nil) {
             root = rootR;
             return;
@@ -214,7 +210,7 @@ private:
 
     // Clears the given treap and releases the allocated memory.
     // O(n)
-    void destroy(node* root) {
+    void destroy(treap_node* root) {
         if (root == nil) {
             return;
         }
