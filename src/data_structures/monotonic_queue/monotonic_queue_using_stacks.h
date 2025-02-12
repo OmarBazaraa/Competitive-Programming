@@ -1,16 +1,25 @@
 #include <stack>
 #include <limits>
 
+/**
+ * The `monotonic_queue_state` is a helper structure used to store the state of the elements in the queue.
+ */
 template<class T>
 struct monotonic_queue_state {
-    T val;
-    T min;
-    T max;
+    T val, min, max;
 
-    monotonic_queue_state(T val, T min, T max)
-        : val(val), min(min), max(max)
-    {
-        // Constructor.
+    monotonic_queue_state() {
+        min = std::numeric_limits<T>::max();
+        max = std::numeric_limits<T>::min();
+    }
+
+    monotonic_queue_state(T val) : val(val), min(val), max(val) {}
+
+    monotonic_queue_state(T val, T min, T max) : val(val), min(min), max(max) {}
+
+    monotonic_queue_state(T val, const monotonic_queue_state<T>& base) : val(val) {
+        min = std::min(val, base.min);
+        max = std::max(val, base.max);
     }
 };
 
@@ -29,11 +38,7 @@ public:
      * Constructs a new object of the `monotonic_queue_using_stacks` class.
      */
     monotonic_queue_using_stacks() {
-        auto state = monotonic_queue_state<T>(
-            std::numeric_limits<T>::min(),
-            std::numeric_limits<T>::max(),
-            std::numeric_limits<T>::min()
-        );
+        monotonic_queue_state<T> state;
 
         s1.push(state);
         s2.push(state);
@@ -45,7 +50,9 @@ public:
      * @param val the new element to push.
      */
     void push(T val) {
-        add(s1, val);
+        auto base = s1.top();
+
+        s1.push(monotonic_queue_state<T>(val, s1.top()));
     }
 
     /**
@@ -65,7 +72,11 @@ public:
      * @return the front element of the queue.
      */
     T front() const {
-        flip();
+        // Flip the elements from stack `s1` to stack `s2`, only if `s2` is empty.
+        if (s2.size() == 1) {
+            flip();
+        }
+
         return s2.top().val;
     }
 
@@ -98,23 +109,11 @@ public:
     }
 
 private:
-    void add(std::stack<monotonic_queue_state<T>>& stack, T val) const {
-        T max = std::max(val, stack.top().max);
-        T min = std::min(val, stack.top().min);
-
-        stack.push(monotonic_queue_state<T>(val, min, max));
-    }
-
     void flip() const {
-        // Only flip if stack `s2` is empty.
-        if (s2.size() > 1) {
-            return;
-        }
-
-        // Move all elements from stack `s1` to stack `s2`.
         while (s1.size() > 1) {
-            add(s2, s1.top().val);
+            auto base = s2.top();
 
+            s2.push(monotonic_queue_state<T>(s1.top().val, base));
             s1.pop();
         }
     }
