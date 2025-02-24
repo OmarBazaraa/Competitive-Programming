@@ -5,7 +5,7 @@
  * and can efficiently update values and compute prefix sums.
  *
  * @note
- * The tree is is 1-indexed.
+ * The tree is 1-indexed.
  *
  * @tparam T the type of the elements in the tree.
  * @tparam N the maximum capacity of the tree.

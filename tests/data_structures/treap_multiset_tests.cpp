@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <set>
-
 #include <algorithm>
 
 #include "data_structures/treap/treap_multiset.h"

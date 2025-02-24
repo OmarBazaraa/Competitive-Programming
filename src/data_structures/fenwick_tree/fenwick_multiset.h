@@ -7,7 +7,7 @@
  * set operations, it supports finding the k-th smallest element efficiently.
  *
  * @note
- * The multiset is is 1-indexed.
+ * The multiset is 1-indexed.
  *
  * @tparam P the power of 2 that represents the maximum capacity of the multiset.
  */
@@ -55,7 +55,7 @@ public:
      *
      * Time complexity: `O(log(N))`.
      *
-     * @param key the element to count its occurrences.
+     * @param key the element to count its occurrences. Should be in the range of [1, N].
      * @return the number of occurrences of the specified element.
      */
     int count(int key) const {
@@ -83,7 +83,7 @@ public:
      *
      * Time complexity: `O(log(N))`.
      *
-     * @param key the element to remove.
+     * @param key the element to remove. Should be in the range of [1, N].
      * @return `true` if the element was removed successfully; `false if the element does not exist.
      */
     bool erase(int key) {
@@ -97,22 +97,23 @@ public:
     }
 
     /**
-     * Returns an integer from the multiset by its index.
+     * Returns an element from the multiset by its index.
+     *
+     * Time complexity: `O(log(N))`.
      *
      * @note
      * The multiset is kept sorted in non-descending order.
      *
-     * @param idx the index to return its corresponding element. Should be in the range of `[1, size]`.
-     *
-     * @return the idx-th smallest integer in the multiset.
+     * @param k the index to return its corresponding element. Should be in the range of `[1, size]`.
+     * @return the k-th smallest element in the multiset.
      */
-    int operator[](int idx) {
+    int operator[](unsigned int k) {
         // Note that this methods requires that N is a power of 2.
         int val = 0;
 
         for (int len = (N >> 1); len > 0; len >>= 1) {
-            if (idx > BIT[val + len]) {
-                idx -= BIT[val += len];
+            if (k > BIT[val + len]) {
+                k -= BIT[val += len];
             }
         }
 
@@ -121,6 +122,8 @@ public:
 
     /**
      * Searches for the index of the first element with a key greater than or equals to a specified key.
+     *
+     * Time complexity: `O(log(N))`.
      *
      * @note
      * The multiset is kept sorted in non-descending order.
@@ -140,6 +143,8 @@ public:
 
     /**
      * Searches for the index of the first element with a key greater than a specified key.
+     *
+     * Time complexity: `O(log(N))`.
      *
      * @note
      * The multiset is kept sorted in non-descending order.

@@ -6,7 +6,7 @@
  * Additional to the normal `fenwick_tree` class, this data structure supports updating a range of values at once.
  *
  * @note
- * The tree is is 1-indexed.
+ * The tree is 1-indexed.
  *
  * @tparam T the type of the elements in the tree.
  * @tparam N the maximum capacity of the tree.

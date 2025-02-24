@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <set>
-
 #include <algorithm>
 
 #include "data_structures/fenwick_tree/fenwick_multiset.h"
