@@ -1,6 +1,8 @@
-cmake_minimum_required (VERSION 3.14)
+cmake_minimum_required(VERSION 3.14)
 
-project ("Momentum.Tests")
+project("Momentum.Tests")
+
+message(STATUS "Building Momentum.Tests on: ${CMAKE_HOST_SYSTEM_NAME}")
 
 # Define C++ properties.
 set(CMAKE_CXX_STANDARD 20)
