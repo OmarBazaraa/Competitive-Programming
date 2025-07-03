@@ -8,5 +8,8 @@ build/
 # IDE files
 .vs/
 
+# Platform-specific files
+.DS_Store
+
 # User-specific directories
 workspace/*
