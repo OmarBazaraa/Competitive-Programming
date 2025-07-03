@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 3.14)
 
 project("Momentum")
 
+message(STATUS "Building Momentum on: ${CMAKE_HOST_SYSTEM_NAME}")
+
 # Define C++ properties.
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
