@@ -27,7 +27,7 @@ double ternarySearchDouble() {
 	return l;
 }
 
-// Ternary search to find an interger local minimum
+// Ternary search to find an integer local minimum
 int ternarySearchInt() {
 	int l = 0, r = 1e6;
 
