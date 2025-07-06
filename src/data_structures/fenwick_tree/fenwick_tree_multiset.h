@@ -1,7 +1,7 @@
 #include <vector>
 
 /**
- * The `fenwick_multiset` is a multiset data structure, implemented using a Fenwick tree,
+ * The `fenwick_tree_multiset` is a multiset data structure, implemented using a Fenwick tree,
  * and is used to store a collection of possibly repeated integers.
  * The multiset keeps its elements sorted in non-descending order, and besides the regular
  * set operations, it supports finding the k-th smallest element efficiently.
@@ -12,7 +12,7 @@
  * @tparam P the power of 2 that represents the maximum capacity of the multiset.
  */
 template<unsigned int P>
-class fenwick_multiset {
+class fenwick_tree_multiset {
     static const int N = 1 << P;
 
     int siz;
@@ -20,11 +20,11 @@ class fenwick_multiset {
 
 public:
     /**
-     * Constructs a new object of the `fenwick_multiset` class with a fixed capacity.
+     * Constructs a new object of the `fenwick_tree_multiset` class with a fixed capacity.
      *
      * Time complexity: `O(N)`.
      */
-    fenwick_multiset() {
+    fenwick_tree_multiset() {
         siz = 0;
         memset(BIT, 0, sizeof(BIT));
     }

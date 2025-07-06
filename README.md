@@ -20,7 +20,7 @@ A C++ code library that contains useful data structures and algorithms tailored 
     - [Fenwick Tree (Binary Indexed Tree)](src/data_structures/fenwick_tree)
         - [Fenwick Tree](src/data_structures/fenwick_tree/fenwick_tree.h)
         - [Fenwick Tree with Range Update](src/data_structures/fenwick_tree/fenwick_tree_range.cpp)
-        - [Fenwick Tree as Multiset](src/data_structures/fenwick_tree/fenwick_tree_multiset.cpp)
+        - [Fenwick Multiset](src/data_structures/fenwick_tree/fenwick_multiset.h.cpp)
     - [Segment Tree](src/data_structures/segment_tree)
         - [Basic Segment Tree (static memory allocation)](src/data_structures/segment_tree/segment_tree_static.cpp)
         - [Basic Segment Tree (dynamic memory allocation)](src/data_structures/segment_tree/segment_tree_dynamic.cpp)
